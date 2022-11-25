@@ -10,12 +10,16 @@
 #include "dc_motor.h"
 #include "timers.h"
 #include "interrupts.h"
+#include "color.h"
+
 
 #define _XTAL_FREQ 64000000 //note intrinsic _delay function is 62.5ns at 64,000,000Hz  
 
 void main(void){
     Timer0_init();
     Interrupts_init();
+    color_click_init();
+    
     initDCmotorsPWM(99);
     unsigned int PWMcycle = 99;
     ANSELFbits.ANSELF2 = 0; //turn off analogue input on pin  
@@ -36,6 +40,11 @@ void main(void){
     motorR.PWMperiod=PWMcycle; //store PWMperiod for motor (value of T2PR in this case)
     
     while(1){
-        
+        set_led_color(0);
+        __delay_ms(1000);
+        set_led_color(1);
+        __delay_ms(1000);
+        set_led_color(2);
+        __delay_ms(1000);
     }
 }

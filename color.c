@@ -8,14 +8,19 @@ void color_click_init(void)
     I2C_2_Master_Init();      //Initialise i2c Master
 
      //set device PON
-	 color_writetoaddr(0x00, 0x01)
+	 color_writetoaddr(0x00, 0x01);
     __delay_ms(3); //need to wait 3ms for everthing to start up
     
     //turn on device ADC
-	color_writetoaddr(0x00, 0x03)
+	color_writetoaddr(0x00, 0x03);
 
     //set integration time
-	color_writetoaddr(0x01, 0xD5)
+	color_writetoaddr(0x01, 0xD5);
+    
+    TRISFbits.TRISF7 = 0;
+    TRISGbits.TRISG1 = 0;
+    TRISAbits.TRISA4 = 0;
+
 }
 
 void color_writetoaddr(char address, char value){
@@ -40,3 +45,21 @@ unsigned int color_read_Red(void)
 	return tmp;
 }
 
+void set_led_color(unsigned int color){
+    //Set the led color, the color is encoded as follow :
+    // red = 0, green = 1, blue = 2
+    
+    if(color == 0){
+        LATGbits.LATG1 = 1;
+        LATAbits.LATA4 = 0;
+        LATFbits.LATF7 = 0;
+    }else if(color == 1){
+        LATGbits.LATG1 = 0;
+        LATAbits.LATA4 = 1;
+        LATFbits.LATF7 = 0;
+    }else if(color == 2){
+        LATGbits.LATG1 = 0;
+        LATAbits.LATA4 = 0;
+        LATFbits.LATF7 = 1;
+    }
+}

@@ -24,4 +24,6 @@ void color_writetoaddr(char address, char value);
  ***********************************************/
 unsigned int color_read_Red(void);
 
+void set_led_color(unsigned int);
+
 #endif
