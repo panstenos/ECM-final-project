@@ -24302,13 +24302,7 @@ void color_click_init(void);
 
 void color_writetoaddr(char address, char value);
 
-
-
-
-
-unsigned int color_read_Red(void);
-
-void set_led_color(unsigned int);
+unsigned int get_color_code(void);
 # 13 "main.c" 2
 
 
@@ -24340,11 +24334,8 @@ void main(void){
     motorR.PWMperiod=PWMcycle;
 
     while(1){
-        set_led_color(0);
-        _delay((unsigned long)((1000)*(64000000/4000.0)));
-        set_led_color(1);
-        _delay((unsigned long)((1000)*(64000000/4000.0)));
-        set_led_color(2);
+        unsigned int color_code = get_color_code();
+        color_code += 1;
         _delay((unsigned long)((1000)*(64000000/4000.0)));
     }
 }

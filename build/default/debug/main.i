@@ -1,4 +1,4 @@
-# 1 "color.c"
+# 1 "main.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,16 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "color.c" 2
+# 1 "main.c" 2
+
+#pragma config FEXTOSC = HS
+#pragma config RSTOSC = EXTOSC_4PLL
+
+
+#pragma config WDTCPS = WDTCPS_31
+#pragma config WDTE = OFF
+
+
 # 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -24229,7 +24238,58 @@ __attribute__((__unsupported__("The READTIMER" "0" "() macro is not available wi
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\\pic\\include\\xc.h" 2 3
-# 1 "color.c" 2
+# 9 "main.c" 2
+
+# 1 "./dc_motor.h" 1
+
+
+
+
+
+
+
+typedef struct DC_motor {
+    char power;
+    char direction;
+    char brakemode;
+    unsigned int PWMperiod;
+    unsigned char *posDutyHighByte;
+    unsigned char *negDutyHighByte;
+} DC_motor;
+
+
+void initDCmotorsPWM(int PWMperiod);
+void setMotorPWM(DC_motor *m);
+void stop(DC_motor *mL, DC_motor *mR);
+void turnLeft(DC_motor *mL, DC_motor *mR);
+void turnRight(DC_motor *mL, DC_motor *mR);
+void fullSpeedAhead(DC_motor *mL, DC_motor *mR);
+void TimedfullSpeedAhead(DC_motor *mL, DC_motor *mR, unsigned int);
+void increment_seconds(void);
+# 10 "main.c" 2
+
+# 1 "./timers.h" 1
+
+
+
+
+
+
+
+void Timer0_init(void);
+# 11 "main.c" 2
+
+# 1 "./interrupts.h" 1
+
+
+
+
+
+
+
+void Interrupts_init(void);
+void __attribute__((picinterrupt(("high_priority")))) HighISR();
+# 12 "main.c" 2
 
 # 1 "./color.h" 1
 # 12 "./color.h"
@@ -24243,217 +24303,20 @@ void color_click_init(void);
 void color_writetoaddr(char address, char value);
 
 unsigned int get_color_code(void);
-# 2 "color.c" 2
-
-# 1 "./i2c.h" 1
-# 13 "./i2c.h"
-void I2C_2_Master_Init(void);
+# 13 "main.c" 2
 
 
 
 
-void I2C_2_Master_Idle(void);
 
-
-
-
-void I2C_2_Master_Start(void);
-
-
-
-
-void I2C_2_Master_RepStart(void);
-
-
-
-
-void I2C_2_Master_Stop(void);
-
-
-
-
-void I2C_2_Master_Write(unsigned char data_byte);
-
-
-
-
-unsigned char I2C_2_Master_Read(unsigned char ack);
-# 3 "color.c" 2
-
-
-
-struct RGB_val {
- unsigned int R;
- unsigned int G;
- unsigned int B;
-    unsigned int C;
-};
-
-struct RGB_val RGB;
-
-static struct RGB_val Red_rule = {80,0,0,20};
-static struct RGB_val Green_rule = {60,40,20,20};
-static struct RGB_val Blue_rule = {20,0,20,0};
-static struct RGB_val Yellow_rule = {100,100,80,100};
-static struct RGB_val Pink_rule = {40,100,100,100};
-static struct RGB_val Orange_rule = {80,60,60,0};
-static struct RGB_val Lightblue_rule = {60,80,100,80};
-static struct RGB_val White_rule = {100,100,100,100};
-static struct RGB_val Black_rule = {0,0,0,0};
-
-static struct RGB_val Color_rules[] = {Red_rule,Green_rule,Blue_rule,Yellow_rule,Pink_rule,Orange_rule,Lightblue_rule,White_rule,Black_rule};
-static struct RGB_val White_setup = {100,100,100,100};
-static struct RGB_val Black_setup = {0,0,0,0};
-
-void color_click_init(void)
-{
-
-    I2C_2_Master_Init();
-
-
-  color_writetoaddr(0x00, 0x01);
-    _delay((unsigned long)((3)*(64000000/4000.0)));
-
-
- color_writetoaddr(0x00, 0x03);
-
-
- color_writetoaddr(0x01, 0xD5);
-
-    TRISFbits.TRISF7 = 0;
-    TRISGbits.TRISG1 = 0;
-    TRISAbits.TRISA4 = 0;
-
-
-
-}
-
-void color_writetoaddr(char address, char value){
-    I2C_2_Master_Start();
-    I2C_2_Master_Write(0x52 | 0x00);
-    I2C_2_Master_Write(0x80 | address);
-    I2C_2_Master_Write(value);
-    I2C_2_Master_Stop();
-}
-
-unsigned int color_read_Red(void)
-{
- unsigned int tmp;
- I2C_2_Master_Start();
- I2C_2_Master_Write(0x52 | 0x00);
- I2C_2_Master_Write(0xA0 | 0x16);
- I2C_2_Master_RepStart();
- I2C_2_Master_Write(0x52 | 0x01);
- tmp=I2C_2_Master_Read(1);
- tmp=tmp | (I2C_2_Master_Read(0)<<8);
- I2C_2_Master_Stop();
- return tmp;
-}
-
-unsigned int color_read_Blue(void)
-{
- unsigned int tmp;
- I2C_2_Master_Start();
- I2C_2_Master_Write(0x52 | 0x00);
- I2C_2_Master_Write(0xA0 | 0x1A);
- I2C_2_Master_RepStart();
- I2C_2_Master_Write(0x52 | 0x01);
- tmp=I2C_2_Master_Read(1);
- tmp=tmp | (I2C_2_Master_Read(0)<<8);
- I2C_2_Master_Stop();
- return tmp;
-}
-
-unsigned int color_read_Green(void)
-{
- unsigned int tmp;
- I2C_2_Master_Start();
- I2C_2_Master_Write(0x52 | 0x00);
- I2C_2_Master_Write(0xA0 | 0x18);
- I2C_2_Master_RepStart();
- I2C_2_Master_Write(0x52 | 0x01);
- tmp=I2C_2_Master_Read(1);
- tmp=tmp | (I2C_2_Master_Read(0)<<8);
- I2C_2_Master_Stop();
- return tmp;
-}
-
-unsigned int color_read_Clear(void)
-{
- unsigned int tmp;
- I2C_2_Master_Start();
- I2C_2_Master_Write(0x52 | 0x00);
- I2C_2_Master_Write(0xA0 | 0x14);
- I2C_2_Master_RepStart();
- I2C_2_Master_Write(0x52 | 0x01);
- tmp=I2C_2_Master_Read(1);
- tmp=tmp | (I2C_2_Master_Read(0)<<8);
- I2C_2_Master_Stop();
- return tmp;
-}
-
-unsigned int get_color_distance(struct RGB_val color1, struct RGB_val color2){
-    unsigned int R_offset = color1.R >= color2.R ? color1.R - color2.R : color2.R - color1.R;
-    unsigned int G_offset = color1.G >= color2.G ? color1.G - color2.G : color2.G - color1.G;
-    unsigned int B_offset = color1.B >= color2.B ? color1.B - color2.B : color2.B - color1.B;
-    unsigned int C_offset = color1.C >= color2.C ? color1.C - color2.C : color2.C - color1.C;
-
-    return R_offset*R_offset + G_offset*G_offset + B_offset*B_offset + C_offset*C_offset;
-}
-
-void set_led_color(unsigned int color){
-
-
-
-    if(color & 0b100){
-        LATGbits.LATG1 = 1;
-    }else{
-        LATGbits.LATG1 = 0;
+void main(void){
+    Timer0_init();
+    Interrupts_init();
+    color_click_init();
+# 42 "main.c"
+    while(1){
+        unsigned int color_code = get_color_code();
+        color_code += 1;
+        _delay((unsigned long)((1000)*(64000000/4000.0)));
     }
-    if(color & 0b010){
-        LATAbits.LATA4 = 1;
-    }else{
-        LATAbits.LATA4 = 0;
-    }
-    if(color & 0b001){
-        LATFbits.LATF7 = 1;
-    }else{
-        LATFbits.LATF7 = 0;
-    }
-}
-
-unsigned int wait_time = 500;
-unsigned int get_color_code(){
-    set_led_color(0b111);
-    RGB.R = color_read_Red();
-    _delay((unsigned long)((wait_time)*(64000000/4000.0)));
-    set_led_color(0b111);
-    RGB.G = color_read_Green();
-    _delay((unsigned long)((wait_time)*(64000000/4000.0)));
-    set_led_color(0b111);
-    RGB.B = color_read_Blue();
-    _delay((unsigned long)((wait_time)*(64000000/4000.0)));
-    set_led_color(0b111);
-    RGB.C = color_read_Clear();
-    _delay((unsigned long)((wait_time)*(64000000/4000.0)));
-    set_led_color(0b000);
-
-    struct RGB_val NormalizedRGB;
-    NormalizedRGB.R = RGB.R >= Black_setup.R ? (RGB.R - Black_setup.R)*100/(White_setup.R - Black_setup.R) : 0;
-    NormalizedRGB.G = RGB.G >= Black_setup.G ? (RGB.G - Black_setup.G)*100/(White_setup.G - Black_setup.G) : 0;
-    NormalizedRGB.B = RGB.B >= Black_setup.B ? (RGB.B - Black_setup.B)*100/(White_setup.B - Black_setup.B) : 0;
-    NormalizedRGB.C = RGB.C >= Black_setup.C ? (RGB.C - Black_setup.C)*100/(White_setup.C - Black_setup.C) : 0;
-
-    unsigned int min_value = get_color_distance(RGB,Color_rules[0]);
-    unsigned int min_index = 0;
-    for(unsigned int i = 1;i < 9; i++){
-        unsigned int value = get_color_distance(RGB,Color_rules[i]);
-        if(value < min_value){
-            min_index = i;
-            min_value = value;
-        }
-    }
-    return min_index;
-
-
 }

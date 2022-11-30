@@ -20,7 +20,7 @@ void main(void){
     Interrupts_init();
     color_click_init();
     
-    initDCmotorsPWM(99);
+    /*initDCmotorsPWM(99);
     unsigned int PWMcycle = 99;
     ANSELFbits.ANSELF2 = 0; //turn off analogue input on pin  
     TRISFbits.TRISF2 = 1; // set F2 to input
@@ -37,14 +37,11 @@ void main(void){
     motorR.brakemode=1; //brake mode (slow decay)
     motorR.posDutyHighByte=(unsigned char *)(&CCPR3H); //store address of CCP1 duty high byte
     motorR.negDutyHighByte=(unsigned char *)(&CCPR4H); //store address of CCP2 duty high byte
-    motorR.PWMperiod=PWMcycle; //store PWMperiod for motor (value of T2PR in this case)
-    
+    motorR.PWMperiod=PWMcycle; //store PWMperiod for motor (value of T2PR in this case)*/
+       
     while(1){
-        set_led_color(0);
-        __delay_ms(1000);
-        set_led_color(1);
-        __delay_ms(1000);
-        set_led_color(2);
+        unsigned int color_code = get_color_code();
+        color_code += 1;
         __delay_ms(1000);
     }
 }

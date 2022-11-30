@@ -18,12 +18,6 @@ void color_click_init(void);
  ***********************************************/
 void color_writetoaddr(char address, char value);
 
-/********************************************//**
- *  Function to read the red channel
- *	Returns a 16 bit ADC value representing colour intensity
- ***********************************************/
-unsigned int color_read_Red(void);
-
-void set_led_color(unsigned int);
+unsigned int get_color_code(void);
 
 #endif
