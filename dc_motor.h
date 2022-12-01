@@ -22,6 +22,8 @@ void turnLeft(DC_motor *mL, DC_motor *mR);
 void turnRight(DC_motor *mL, DC_motor *mR);
 void fullSpeedAhead(DC_motor *mL, DC_motor *mR);
 void TimedfullSpeedAhead(DC_motor *mL, DC_motor *mR, unsigned int);
+void moveBack(DC_motor *mL, DC_motor *mR, unsigned int);
+void Calibrate(DC_motor *mL, DC_motor *mR);
 void increment_seconds(void);
 
 #endif

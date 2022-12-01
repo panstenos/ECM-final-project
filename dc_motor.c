@@ -123,16 +123,16 @@ void turnLeft(struct DC_motor *mL, struct DC_motor *mR)
     
     /* High surface roughness turning */
     int i;
-    for(i=22;i<37;i+=5){ //increase power from 20 to 30 in steps of 5
+    for(i=23;i<38;i+=5){ //increase power from 20 to 30 in steps of 5
     (*mL).direction=0;
     (*mR).direction=1;
     (*mL).power=i;   
     (*mR).power=i;
     setMotorPWM(mL);
     setMotorPWM(mR); 
-    __delay_ms(102); //turn at the specified power for 135ms
+    __delay_ms(104); //turn at the specified power for 135ms
     }
-    for(i=27;i>12;i-=5){ //decrease power from 25 to 10 in steps of 5
+    for(i=28;i>13;i-=5){ //decrease power from 25 to 10 in steps of 5
     (*mL).direction=0;
     (*mR).direction=1;
     (*mL).power=i;   
@@ -204,7 +204,8 @@ void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR)
     setMotorPWM(mR);
     __delay_ms(500);
 }
-void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR)
+
+void TimedfullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned int time)
 {
     (*mL).direction=1;
     (*mR).direction=1;
@@ -214,17 +215,44 @@ void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR)
     setMotorPWM(mR);
     __delay_ms(500);
 }
-void Calibrate(struct DC_motor *mL, struct DC_motor *mR, unsigned int time)
+
+void moveBack(struct DC_motor *mL, struct DC_motor *mR, unsigned int time)
 {
-    seconds = 0;
+    seconds = 0; // reset the seconds timer
     while (seconds<time)
     {
-    (*mL).direction=1;
-    (*mR).direction=1;
-    (*mL).power=25;
-    (*mR).power=22;
-    setMotorPWM(mL);
-    setMotorPWM(mR);
+        (*mL).direction=-1;
+        (*mR).direction=-1;
+        (*mL).power=50;
+        (*mR).power=50;
+        setMotorPWM(mL);
+        setMotorPWM(mR);
+        __delay_ms(500);
+    }
+}
+
+void Calibrate(struct DC_motor *mL, struct DC_motor *mR)
+{
+    seconds = 0; // reset seconds timer
+    while (seconds<10)
+    {
+        (*mL).direction=1;
+        (*mR).direction=1;
+        (*mL).power=100;
+        (*mR).power=100;
+        setMotorPWM(mL);
+        setMotorPWM(mR);
+    }
+    
+    seconds = 0; // reset seconds timer
+    while (seconds<10)
+    {
+        (*mL).direction=1;
+        (*mR).direction=1;
+        (*mL).power=100-(seconds+1)*10; //gradually decrease to 0
+        (*mR).power=100-(seconds+1)*10; //gradually decrease to 0
+        setMotorPWM(mL);
+        setMotorPWM(mR);
     }
 }
 void increment_seconds()
