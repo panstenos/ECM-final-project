@@ -18,6 +18,7 @@ void main(void){
     Interrupts_init();
     initDCmotorsPWM(99);
     unsigned int PWMcycle = 99;
+    
     ANSELFbits.ANSELF2 = 0; //turn off analogue input on pin  
     TRISFbits.TRISF2 = 1; // set F2 to input
     struct DC_motor motorL, motorR; // declare two motor structures
@@ -36,6 +37,16 @@ void main(void){
     motorR.PWMperiod=PWMcycle; //store PWMperiod for motor (value of T2PR in this case)
     
     while(1){
-        
+        if (!PORTFbits.RF2) // run when F2 is pressed
+        {
+            int i;
+            for (i=0;0<4;i++)
+            {
+                __delay_ms(1000);
+                turnRight(&motorL, &motorR);
+                stop(&motorL,&motorR);
+                //__delay_ms(1000);
+            }
+        }
     }
 }

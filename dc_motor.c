@@ -172,24 +172,24 @@ void turnRight(struct DC_motor *mL, struct DC_motor *mR)
     
     /*  High surface roughness turning */
     int i;
-    for(i=20;i<30;i+=5){ //increase power from 20 to 30 in steps of 5
+    for(i=25;i<40;i+=5){ //increase power from 20 to 30 in steps of 5
     (*mL).direction=1;
     (*mR).direction=0;
     (*mL).power=i;   
     (*mR).power=i;
     setMotorPWM(mL);
     setMotorPWM(mR); 
-    __delay_ms(213); //turn at the specified power for 135ms
+    __delay_ms(107); //turn at the specified power for 135ms
     }
-    for(i=20;i>5;i-=5){ //decrease power from 25 to 10 in steps of 5
+    for(i=30;i>15;i-=5){ //decrease power from 25 to 10 in steps of 5
     (*mL).direction=1;
     (*mR).direction=0;
     (*mL).power=i;   
     (*mR).power=i;
     setMotorPWM(mL);
     setMotorPWM(mR); 
-    __delay_ms(216); //turn at the specified power for 160ms
-    if(i==10){__delay_ms(350);} //turn with 10 power for another 120ms
+    __delay_ms(105); //turn at the specified power for 160ms
+    if(i==10){__delay_ms(150);} //turn with 10 power for another 120ms
     }
 }
 
