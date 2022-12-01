@@ -24303,6 +24303,11 @@ void color_click_init(void);
 void color_writetoaddr(char address, char value);
 
 unsigned int get_color_code(void);
+unsigned int get_wall_presence(void);
+
+void set_led_color(unsigned int);
+void calibrate_white(void);
+void calibrate_black(void);
 # 13 "main.c" 2
 
 
@@ -24313,29 +24318,11 @@ void main(void){
     Timer0_init();
     Interrupts_init();
     color_click_init();
-
-    initDCmotorsPWM(99);
-    unsigned int PWMcycle = 99;
-    ANSELFbits.ANSELF2 = 0;
-    TRISFbits.TRISF2 = 1;
-    struct DC_motor motorL, motorR;
-    motorL.power=0;
-    motorL.direction=1;
-    motorL.brakemode=1;
-    motorL.posDutyHighByte=(unsigned char *)(&CCPR1H);
-    motorL.negDutyHighByte=(unsigned char *)(&CCPR2H);
-    motorL.PWMperiod=PWMcycle;
-
-    motorR.power=0;
-    motorR.direction=1;
-    motorR.brakemode=1;
-    motorR.posDutyHighByte=(unsigned char *)(&CCPR3H);
-    motorR.negDutyHighByte=(unsigned char *)(&CCPR4H);
-    motorR.PWMperiod=PWMcycle;
-
+# 42 "main.c"
     while(1){
-        unsigned int color_code = get_color_code();
-        color_code += 1;
+        set_led_color(0b111);
         _delay((unsigned long)((1000)*(64000000/4000.0)));
+        unsigned int color_code = get_wall_presence();
+        color_code += 1;
     }
 }

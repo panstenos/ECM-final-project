@@ -19,5 +19,10 @@ void color_click_init(void);
 void color_writetoaddr(char address, char value);
 
 unsigned int get_color_code(void);
+unsigned int get_wall_presence(void);
+
+void set_led_color(unsigned int);
+void calibrate_white(void);
+void calibrate_black(void);
 
 #endif

@@ -22,8 +22,8 @@ static struct RGB_val White_rule = {100,100,100};
 static struct RGB_val Black_rule = {0,0,0};
 
 static struct RGB_val Color_rules[9];
-static struct RGB_val White_setup = {8400,5571,1448};
-static struct RGB_val Black_setup = {794,439,115};
+static struct RGB_val White_setup = {10492,6997,1904};
+static struct RGB_val Black_setup = {1028,587,161};
 
 void color_click_init(void)
 {   
@@ -53,6 +53,28 @@ void color_click_init(void)
     Color_rules[6] = Lightblue_rule;
     Color_rules[7] = White_rule;
     Color_rules[8] = Black_rule;
+    
+    /*
+    TRISDbits.TRISD3 = 0;
+    TRISHbits.TRISH1 = 0;
+    
+    LATDbits.LATD3 = 1;
+    LATHbits.LATH1 = 1;*/
+    
+    TRISFbits.TRISF3=1; //set TRIS value for pin (input)
+    ANSELFbits.ANSELF3=0; //turn off analogue input on pin
+    TRISFbits.TRISF2=1; //set TRIS value for pin (input)
+    ANSELFbits.ANSELF2=0; //turn off analogue input on pin
+    
+    while (PORTFbits.RF3 && PORTFbits.RF2); //Wait until the button F3 or F2 is pushed
+    if(!PORTFbits.RF2){
+        return;
+    }
+    calibrate_white();     //Calibrate white value
+    while (PORTFbits.RF3); //Wait until the button F3 is pushed
+    calibrate_black();
+    while (PORTFbits.RF3); //Wait until the button F3 is pushed
+
 }
 
 void color_writetoaddr(char address, char value){
@@ -182,4 +204,39 @@ unsigned int get_color_code(){
 
 }
 
+void calibrate_black(){
+    set_led_color(0b100);
+    __delay_ms(wait_time);
+    Black_setup.R = color_read_Red();
+    set_led_color(0b010);
+    __delay_ms(wait_time);
+    Black_setup.G = color_read_Green();
+    set_led_color(0b001);
+    __delay_ms(wait_time);
+    Black_setup.B = color_read_Blue();
+    set_led_color(0b000);
+}
 
+void calibrate_white(){
+    set_led_color(0b100);
+    __delay_ms(wait_time);
+    White_setup.R = color_read_Red();
+    set_led_color(0b010);
+    __delay_ms(wait_time);
+    White_setup.G = color_read_Green();
+    set_led_color(0b001);
+    __delay_ms(wait_time);
+    White_setup.B = color_read_Blue();
+    set_led_color(0b000);
+}
+
+unsigned int get_wall_presence(){
+    struct RGB_val wall_RGB;
+    wall_RGB.R = color_read_Red();
+    wall_RGB.G = color_read_Green();
+    wall_RGB.B = color_read_Blue();
+
+    set_led_color(0b000);
+    wall_RGB.R += 1;
+    return 1;
+}

@@ -24243,6 +24243,11 @@ void color_click_init(void);
 void color_writetoaddr(char address, char value);
 
 unsigned int get_color_code(void);
+unsigned int get_wall_presence(void);
+
+void set_led_color(unsigned int);
+void calibrate_white(void);
+void calibrate_black(void);
 # 2 "color.c" 2
 
 # 1 "./i2c.h" 1
@@ -24283,27 +24288,26 @@ unsigned char I2C_2_Master_Read(unsigned char ack);
 
 
 struct RGB_val {
- unsigned int R;
- unsigned int G;
- unsigned int B;
-    unsigned int C;
+ unsigned long R;
+ unsigned long G;
+ unsigned long B;
 };
 
 struct RGB_val RGB;
 
-static struct RGB_val Red_rule = {80,0,0,20};
-static struct RGB_val Green_rule = {60,40,20,20};
-static struct RGB_val Blue_rule = {20,0,20,0};
-static struct RGB_val Yellow_rule = {100,100,80,100};
-static struct RGB_val Pink_rule = {40,100,100,100};
-static struct RGB_val Orange_rule = {80,60,60,0};
-static struct RGB_val Lightblue_rule = {60,80,100,80};
-static struct RGB_val White_rule = {100,100,100,100};
-static struct RGB_val Black_rule = {0,0,0,0};
+static struct RGB_val Red_rule = {72,2,2};
+static struct RGB_val Green_rule = {25,54,8};
+static struct RGB_val Blue_rule = {3,9,36};
+static struct RGB_val Yellow_rule = {93,76,20};
+static struct RGB_val Pink_rule = {77,60,64};
+static struct RGB_val Orange_rule = {92,39,28};
+static struct RGB_val Lightblue_rule = {38,72,84};
+static struct RGB_val White_rule = {100,100,100};
+static struct RGB_val Black_rule = {0,0,0};
 
-static struct RGB_val Color_rules[] = {Red_rule,Green_rule,Blue_rule,Yellow_rule,Pink_rule,Orange_rule,Lightblue_rule,White_rule,Black_rule};
-static struct RGB_val White_setup = {100,100,100,100};
-static struct RGB_val Black_setup = {0,0,0,0};
+static struct RGB_val Color_rules[9];
+static struct RGB_val White_setup = {10492,6997,1904};
+static struct RGB_val Black_setup = {1028,587,161};
 
 void color_click_init(void)
 {
@@ -24324,7 +24328,29 @@ void color_click_init(void)
     TRISGbits.TRISG1 = 0;
     TRISAbits.TRISA4 = 0;
 
+    Color_rules[0] = Red_rule;
+    Color_rules[1] = Green_rule;
+    Color_rules[2] = Blue_rule;
+    Color_rules[3] = Yellow_rule;
+    Color_rules[4] = Pink_rule;
+    Color_rules[5] = Orange_rule;
+    Color_rules[6] = Lightblue_rule;
+    Color_rules[7] = White_rule;
+    Color_rules[8] = Black_rule;
+# 64 "color.c"
+    TRISFbits.TRISF3=1;
+    ANSELFbits.ANSELF3=0;
+    TRISFbits.TRISF2=1;
+    ANSELFbits.ANSELF2=0;
 
+    while (PORTFbits.RF3 && PORTFbits.RF2);
+    if(!PORTFbits.RF2){
+        return;
+    }
+    calibrate_white();
+    while (PORTFbits.RF3);
+    calibrate_black();
+    while (PORTFbits.RF3);
 
 }
 
@@ -24396,9 +24422,8 @@ unsigned int get_color_distance(struct RGB_val color1, struct RGB_val color2){
     unsigned int R_offset = color1.R >= color2.R ? color1.R - color2.R : color2.R - color1.R;
     unsigned int G_offset = color1.G >= color2.G ? color1.G - color2.G : color2.G - color1.G;
     unsigned int B_offset = color1.B >= color2.B ? color1.B - color2.B : color2.B - color1.B;
-    unsigned int C_offset = color1.C >= color2.C ? color1.C - color2.C : color2.C - color1.C;
 
-    return R_offset*R_offset + G_offset*G_offset + B_offset*B_offset + C_offset*C_offset;
+    return R_offset*R_offset + G_offset*G_offset + B_offset*B_offset;
 }
 
 void set_led_color(unsigned int color){
@@ -24424,30 +24449,28 @@ void set_led_color(unsigned int color){
 
 unsigned int wait_time = 500;
 unsigned int get_color_code(){
-    set_led_color(0b111);
+
+
+    set_led_color(0b100);
+    _delay((unsigned long)((wait_time)*(64000000/4000.0)));
     RGB.R = color_read_Red();
+    set_led_color(0b010);
     _delay((unsigned long)((wait_time)*(64000000/4000.0)));
-    set_led_color(0b111);
     RGB.G = color_read_Green();
+    set_led_color(0b001);
     _delay((unsigned long)((wait_time)*(64000000/4000.0)));
-    set_led_color(0b111);
     RGB.B = color_read_Blue();
-    _delay((unsigned long)((wait_time)*(64000000/4000.0)));
-    set_led_color(0b111);
-    RGB.C = color_read_Clear();
-    _delay((unsigned long)((wait_time)*(64000000/4000.0)));
     set_led_color(0b000);
 
     struct RGB_val NormalizedRGB;
     NormalizedRGB.R = RGB.R >= Black_setup.R ? (RGB.R - Black_setup.R)*100/(White_setup.R - Black_setup.R) : 0;
     NormalizedRGB.G = RGB.G >= Black_setup.G ? (RGB.G - Black_setup.G)*100/(White_setup.G - Black_setup.G) : 0;
     NormalizedRGB.B = RGB.B >= Black_setup.B ? (RGB.B - Black_setup.B)*100/(White_setup.B - Black_setup.B) : 0;
-    NormalizedRGB.C = RGB.C >= Black_setup.C ? (RGB.C - Black_setup.C)*100/(White_setup.C - Black_setup.C) : 0;
 
-    unsigned int min_value = get_color_distance(RGB,Color_rules[0]);
+    unsigned int min_value = get_color_distance(NormalizedRGB,Color_rules[0]);
     unsigned int min_index = 0;
     for(unsigned int i = 1;i < 9; i++){
-        unsigned int value = get_color_distance(RGB,Color_rules[i]);
+        unsigned int value = get_color_distance(NormalizedRGB,Color_rules[i]);
         if(value < min_value){
             min_index = i;
             min_value = value;
@@ -24456,4 +24479,41 @@ unsigned int get_color_code(){
     return min_index;
 
 
+}
+
+void calibrate_black(){
+    set_led_color(0b100);
+    _delay((unsigned long)((wait_time)*(64000000/4000.0)));
+    Black_setup.R = color_read_Red();
+    set_led_color(0b010);
+    _delay((unsigned long)((wait_time)*(64000000/4000.0)));
+    Black_setup.G = color_read_Green();
+    set_led_color(0b001);
+    _delay((unsigned long)((wait_time)*(64000000/4000.0)));
+    Black_setup.B = color_read_Blue();
+    set_led_color(0b000);
+}
+
+void calibrate_white(){
+    set_led_color(0b100);
+    _delay((unsigned long)((wait_time)*(64000000/4000.0)));
+    White_setup.R = color_read_Red();
+    set_led_color(0b010);
+    _delay((unsigned long)((wait_time)*(64000000/4000.0)));
+    White_setup.G = color_read_Green();
+    set_led_color(0b001);
+    _delay((unsigned long)((wait_time)*(64000000/4000.0)));
+    White_setup.B = color_read_Blue();
+    set_led_color(0b000);
+}
+
+unsigned int get_wall_presence(){
+    struct RGB_val wall_RGB;
+    wall_RGB.R = color_read_Red();
+    wall_RGB.G = color_read_Green();
+    wall_RGB.B = color_read_Blue();
+
+    set_led_color(0b000);
+    wall_RGB.R += 1;
+    return 1;
 }

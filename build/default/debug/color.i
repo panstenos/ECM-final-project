@@ -24243,6 +24243,11 @@ void color_click_init(void);
 void color_writetoaddr(char address, char value);
 
 unsigned int get_color_code(void);
+unsigned int get_wall_presence(void);
+
+void set_led_color(unsigned int);
+void calibrate_white(void);
+void calibrate_black(void);
 # 2 "color.c" 2
 
 # 1 "./i2c.h" 1
@@ -24301,8 +24306,8 @@ static struct RGB_val White_rule = {100,100,100};
 static struct RGB_val Black_rule = {0,0,0};
 
 static struct RGB_val Color_rules[9];
-static struct RGB_val White_setup = {8400,5571,1448};
-static struct RGB_val Black_setup = {794,439,115};
+static struct RGB_val White_setup = {10492,6997,1904};
+static struct RGB_val Black_setup = {1028,587,161};
 
 void color_click_init(void)
 {
@@ -24332,6 +24337,21 @@ void color_click_init(void)
     Color_rules[6] = Lightblue_rule;
     Color_rules[7] = White_rule;
     Color_rules[8] = Black_rule;
+# 64 "color.c"
+    TRISFbits.TRISF3=1;
+    ANSELFbits.ANSELF3=0;
+    TRISFbits.TRISF2=1;
+    ANSELFbits.ANSELF2=0;
+
+    while (PORTFbits.RF3 && PORTFbits.RF2);
+    if(!PORTFbits.RF2){
+        return;
+    }
+    calibrate_white();
+    while (PORTFbits.RF3);
+    calibrate_black();
+    while (PORTFbits.RF3);
+
 }
 
 void color_writetoaddr(char address, char value){
@@ -24429,6 +24449,8 @@ void set_led_color(unsigned int color){
 
 unsigned int wait_time = 500;
 unsigned int get_color_code(){
+
+
     set_led_color(0b100);
     _delay((unsigned long)((wait_time)*(64000000/4000.0)));
     RGB.R = color_read_Red();
@@ -24457,4 +24479,41 @@ unsigned int get_color_code(){
     return min_index;
 
 
+}
+
+void calibrate_black(){
+    set_led_color(0b100);
+    _delay((unsigned long)((wait_time)*(64000000/4000.0)));
+    Black_setup.R = color_read_Red();
+    set_led_color(0b010);
+    _delay((unsigned long)((wait_time)*(64000000/4000.0)));
+    Black_setup.G = color_read_Green();
+    set_led_color(0b001);
+    _delay((unsigned long)((wait_time)*(64000000/4000.0)));
+    Black_setup.B = color_read_Blue();
+    set_led_color(0b000);
+}
+
+void calibrate_white(){
+    set_led_color(0b100);
+    _delay((unsigned long)((wait_time)*(64000000/4000.0)));
+    White_setup.R = color_read_Red();
+    set_led_color(0b010);
+    _delay((unsigned long)((wait_time)*(64000000/4000.0)));
+    White_setup.G = color_read_Green();
+    set_led_color(0b001);
+    _delay((unsigned long)((wait_time)*(64000000/4000.0)));
+    White_setup.B = color_read_Blue();
+    set_led_color(0b000);
+}
+
+unsigned int get_wall_presence(){
+    struct RGB_val wall_RGB;
+    wall_RGB.R = color_read_Red();
+    wall_RGB.G = color_read_Green();
+    wall_RGB.B = color_read_Blue();
+
+    set_led_color(0b000);
+    wall_RGB.R += 1;
+    return 1;
 }

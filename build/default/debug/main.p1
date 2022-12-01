@@ -9,13 +9,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 "12 ./color.h
 [; ;./color.h: 12: void color_click_init(void);
 [v _color_click_init `(v ~T0 @X0 0 ef ]
-"21
-[; ;./color.h: 21: unsigned int get_color_code(void);
-[v _get_color_code `(ui ~T0 @X0 0 ef ]
+"24
+[; ;./color.h: 24: void set_led_color(unsigned int);
+[v _set_led_color `(v ~T0 @X0 0 ef1`ui ]
 [v F192 `(v ~T0 @X0 1 tf1`ul ]
 "12 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\builtins.h
 [v __delay `JF192 ~T0 @X0 0 e ]
 [p i __delay ]
+"22 ./color.h
+[; ;./color.h: 22: unsigned int get_wall_presence(void);
+[v _get_wall_presence `(ui ~T0 @X0 0 ef ]
 "2 main.c
 [p x FEXTOSC  =  HS      ]
 "3
@@ -2019,22 +2022,25 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 2018 ]
 {
 "43
-[; ;main.c: 43:         unsigned int color_code = get_color_code();
-[v _color_code `ui ~T0 @X0 1 a ]
-[e = _color_code ( _get_color_code ..  ]
+[; ;main.c: 43:         set_led_color(0b111);
+[e ( _set_led_color (1 -> -> 7 `i `ui ]
 "44
-[; ;main.c: 44:         color_code += 1;
-[e =+ _color_code -> -> 1 `i `ui ]
-"45
-[; ;main.c: 45:         _delay((unsigned long)((1000)*(64000000/4000.0)));
+[; ;main.c: 44:         _delay((unsigned long)((1000)*(64000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"45
+[; ;main.c: 45:         unsigned int color_code = get_wall_presence();
+[v _color_code `ui ~T0 @X0 1 a ]
+[e = _color_code ( _get_wall_presence ..  ]
 "46
-[; ;main.c: 46:     }
+[; ;main.c: 46:         color_code += 1;
+[e =+ _color_code -> -> 1 `i `ui ]
+"47
+[; ;main.c: 47:     }
 }
 [e :U 2017 ]
 [e $U 2018  ]
 [e :U 2019 ]
-"47
-[; ;main.c: 47: }
+"48
+[; ;main.c: 48: }
 [e :UE 2016 ]
 }

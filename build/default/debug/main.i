@@ -24303,6 +24303,11 @@ void color_click_init(void);
 void color_writetoaddr(char address, char value);
 
 unsigned int get_color_code(void);
+unsigned int get_wall_presence(void);
+
+void set_led_color(unsigned int);
+void calibrate_white(void);
+void calibrate_black(void);
 # 13 "main.c" 2
 
 
@@ -24315,8 +24320,9 @@ void main(void){
     color_click_init();
 # 42 "main.c"
     while(1){
-        unsigned int color_code = get_color_code();
-        color_code += 1;
+        set_led_color(0b111);
         _delay((unsigned long)((1000)*(64000000/4000.0)));
+        unsigned int color_code = get_wall_presence();
+        color_code += 1;
     }
 }

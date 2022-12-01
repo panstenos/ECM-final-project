@@ -11,40 +11,44 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$dist/default/production\final-project-panagiotis.X.production.o
-cinit CODE 0 478 478 2E 1 2
-idloc IDLOC 5 200000 200000 10 1 1
-text0 CODE 0 1E6 1E6 8A 1 2
-text1 CODE 0 156 156 90 1 2
-text2 CODE 0 32 32 124 1 2
-text3 CODE 0 3B0 3B0 44 1 2
-text4 CODE 0 270 270 50 1 2
-text5 CODE 0 2C0 2C0 50 1 2
-text6 CODE 0 310 310 50 1 2
-text7 CODE 0 360 360 50 1 2
-text8 CODE 0 550 550 A 1 2
-text9 CODE 0 3F4 3F4 42 1 2
-text10 CODE 0 436 436 42 1 2
-text11 CODE 0 4F8 4F8 20 1 2
-text12 CODE 0 538 538 C 1 2
-text13 CODE 0 55A 55A A 1 2
-text14 CODE 0 564 564 A 1 2
-text15 CODE 0 4D0 4D0 28 1 2
-text16 CODE 0 4A6 4A6 2A 1 2
-text17 CODE 0 518 518 20 1 2
-text18 CODE 0 544 544 C 1 2
-text20 CODE 0 56E 56E 6 1 2
-idataCOMRAM CODE 0 574 574 2 1 1
-cstackCOMRAM COMRAM 1 1 1 23 1 1
-temp COMRAM 1 30 30 1 1 1
-intcode CODE 0 8 8 26 1 2
-dataCOMRAM COMRAM 1 2E 2E 2 1 1
-bssCOMRAM COMRAM 1 24 24 A 1 1
-config CONFIG 4 300000 300000 C 1 1
-$C:\Users\arthu\AppData\Local\Temp\xcAs128.o
+$C:\Users\arthu\AppData\Local\Temp\xcAsjts.o
 idloc IDLOC 5 200000 200000 10 1 1
 init CODE 0 2E 2E 4 1 2
 reset_vec CODE 0 0 0 4 1 2
+config CONFIG 4 300000 300000 C 1 1
+$dist/default/production\final-project-panagiotis.X.production.o
+cinit CODE 0 2BE 2BE 6E 1 2
+idloc IDLOC 5 200000 200000 10 1 1
+text0 CODE 0 4B6 4B6 48 1 2
+text1 CODE 0 32C 32C 52 1 2
+text2 CODE 0 32 32 138 1 2
+text3 CODE 0 608 608 20 1 2
+text4 CODE 0 16A 16A AA 1 2
+text5 CODE 0 214 214 AA 1 2
+text6 CODE 0 4FE 4FE 44 1 2
+text7 CODE 0 37E 37E 50 1 2
+text8 CODE 0 3CE 3CE 50 1 2
+text9 CODE 0 41E 41E 50 1 2
+text10 CODE 0 648 648 C 1 2
+text11 CODE 0 660 660 A 1 2
+text12 CODE 0 66A 66A A 1 2
+text13 CODE 0 674 674 A 1 2
+text14 CODE 0 542 542 42 1 2
+text15 CODE 0 5E0 5E0 28 1 2
+text16 CODE 0 5B6 5B6 2A 1 2
+text17 CODE 0 628 628 20 1 2
+text18 CODE 0 654 654 C 1 2
+text20 CODE 0 67E 67E 6 1 2
+idataCOMRAM CODE 0 584 584 32 1 1
+cstackCOMRAM COMRAM 1 33 33 1D 1 1
+temp COMRAM 1 5E 5E 1 1 1
+bssBANK0 BANK0 1 A8 A8 C 1 1
+bssBANK1 BANK1 1 100 100 6C 1 1
+intcode CODE 0 8 8 26 1 2
+idataBANK0 CODE 0 46E 46E 48 1 1
+dataBANK0 BANK0 1 60 60 48 1 1
+dataCOMRAM COMRAM 1 1 1 32 1 1
+bssCOMRAM COMRAM 1 50 50 E 1 1
 config CONFIG 4 300000 300000 C 1 1
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
@@ -52,10 +56,11 @@ config CONFIG 4 300000 300000 C 1 1
 #    <class name> <range> <delta>
 # Addresses given in the range are in hexadecimal and units of delta.
 %UNUSED
-RAM 60-DE9 1
+RAM B4-FF 1
+RAM 16C-DE9 1
 SFR DEF-FFF 1
-BANK0 60-FF 1
-BANK1 100-1FF 1
+BANK0 B4-FF 1
+BANK1 16C-1FF 1
 BANK2 200-2FF 1
 BANK3 300-3FF 1
 BANK4 400-4FF 1
@@ -65,17 +70,19 @@ BANK7 700-7FF 1
 BANK8 800-8FF 1
 BANK9 900-9FF 1
 CONST 4-7 1
-CONST 576-1FFFF 1
+CONST 684-1FFFF 1
 SMALLCONST E00-1FFFF 1
 CODE 4-7 1
-CODE 576-1FFFF 1
+CODE 684-1FFFF 1
 BANK10 A00-AFF 1
 BANK11 B00-BFF 1
 BANK12 C00-CFF 1
 BANK13 D00-DE9 1
-BIGRAM 31-DE9 1
+BIGRAM 5F-5F 1
+BIGRAM B4-FF 1
+BIGRAM 16C-DE9 1
 BIGSFR DEF-FFF 1
-COMRAM 31-5F 1
+COMRAM 5F-5F 1
 EEDATA 310000-3103FF 1
 MEDIUMCONST E00-FFFF 1
 MEDIUMCONST 10E00-1FFFF 1
@@ -93,7 +100,7 @@ MEDIUMCONST 10E00-1FFFF 1
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\final-project-panagiotis.X.production.o
-8 intcode CODE >11068:C:\Users\arthu\AppData\Local\Temp\xcAs128.s
+8 intcode CODE >11177:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
 8 intcode CODE >22:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\interrupts.c
 A intcode CODE >24:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\interrupts.c
 1A intcode CODE >25:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\interrupts.c
@@ -101,250 +108,245 @@ A intcode CODE >24:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embed
 22 intcode CODE >28:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\interrupts.c
 26 intcode CODE >30:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\interrupts.c
 2A intcode CODE >32:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\interrupts.c
-56E text20 CODE >220:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-56E text20 CODE >222:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-572 text20 CODE >223:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-544 text18 CODE >10:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\interrupts.c
-544 text18 CODE >12:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\interrupts.c
-546 text18 CODE >13:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\interrupts.c
-54A text18 CODE >14:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\interrupts.c
-54C text18 CODE >15:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\interrupts.c
-54E text18 CODE >16:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\interrupts.c
-518 text17 CODE >7:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\timers.c
-518 text17 CODE >9:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\timers.c
-520 text17 CODE >10:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\timers.c
-522 text17 CODE >11:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\timers.c
-52A text17 CODE >12:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\timers.c
-52E text17 CODE >13:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\timers.c
-532 text17 CODE >14:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\timers.c
-534 text17 CODE >17:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\timers.c
-536 text17 CODE >18:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\timers.c
-4A6 text16 CODE >4:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-4A6 text16 CODE >7:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-4B0 text16 CODE >8:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-4B2 text16 CODE >9:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-4B6 text16 CODE >12:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-4B8 text16 CODE >13:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-4BA text16 CODE >14:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-4BC text16 CODE >15:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-4BE text16 CODE >16:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-4C2 text16 CODE >17:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-4C6 text16 CODE >18:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-4CA text16 CODE >19:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-4CE text16 CODE >20:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-4D0 text15 CODE >22:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-4D0 text15 CODE >24:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-4F6 text15 CODE >25:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-564 text14 CODE >27:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-564 text14 CODE >29:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-568 text14 CODE >30:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-56C text14 CODE >31:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-55A text13 CODE >39:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-55A text13 CODE >41:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-55E text13 CODE >42:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-562 text13 CODE >43:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-538 text12 CODE >45:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-53A text12 CODE >47:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-53E text12 CODE >48:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-542 text12 CODE >49:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-4F8 text11 CODE >41:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-4FA text11 CODE >42:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-4FE text11 CODE >43:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-504 text11 CODE >44:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-50C text11 CODE >45:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-512 text11 CODE >46:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-516 text11 CODE >47:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-436 text10 CODE >15:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-436 text10 CODE >18:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-43A text10 CODE >21:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-444 text10 CODE >22:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-454 text10 CODE >25:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-45E text10 CODE >28:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-468 text10 CODE >30:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-46A text10 CODE >31:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-46C text10 CODE >32:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-46E text10 CODE >34:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-470 text10 CODE >35:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-472 text10 CODE >36:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-474 text10 CODE >37:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-476 text10 CODE >39:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-3F4 text9 CODE >51:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-3F6 text9 CODE >54:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-3FA text9 CODE >55:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-3FE text9 CODE >56:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-402 text9 CODE >57:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-406 text9 CODE >58:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-40A text9 CODE >59:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-430 text9 CODE >60:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-432 text9 CODE >61:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-434 text9 CODE >62:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-550 text8 CODE >33:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-550 text8 CODE >35:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-554 text8 CODE >36:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-558 text8 CODE >37:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
-360 text7 CODE >63:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-360 text7 CODE >66:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-364 text7 CODE >67:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-36A text7 CODE >68:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-370 text7 CODE >69:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-374 text7 CODE >70:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-37A text7 CODE >71:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-388 text7 CODE >72:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-3A2 text7 CODE >73:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-3A6 text7 CODE >74:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-3AE text7 CODE >75:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-310 text6 CODE >91:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-310 text6 CODE >94:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-314 text6 CODE >95:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-31A text6 CODE >96:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-320 text6 CODE >97:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-324 text6 CODE >98:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-32A text6 CODE >99:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-338 text6 CODE >100:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-352 text6 CODE >101:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-356 text6 CODE >102:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-35E text6 CODE >103:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-2C0 text5 CODE >77:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-2C0 text5 CODE >80:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-2C4 text5 CODE >81:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-2CA text5 CODE >82:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-2D0 text5 CODE >83:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-2D4 text5 CODE >84:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-2DA text5 CODE >85:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-2E8 text5 CODE >86:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-302 text5 CODE >87:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-306 text5 CODE >88:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-30E text5 CODE >89:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-270 text4 CODE >49:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-270 text4 CODE >52:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-274 text4 CODE >53:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-27A text4 CODE >54:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-280 text4 CODE >55:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-284 text4 CODE >56:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-28A text4 CODE >57:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-298 text4 CODE >58:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-2B2 text4 CODE >59:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-2B6 text4 CODE >60:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-2BE text4 CODE >61:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-3B0 text3 CODE >106:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-3B0 text3 CODE >110:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-3BE text3 CODE >111:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-3C0 text3 CODE >112:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-3C4 text3 CODE >113:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-3C6 text3 CODE >114:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-3C6 text3 CODE >115:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-3D4 text3 CODE >116:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-3D6 text3 CODE >117:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-3DA text3 CODE >118:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-3DC text3 CODE >119:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-3DC text3 CODE >120:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-3EA text3 CODE >121:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-3EC text3 CODE >122:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-3F0 text3 CODE >123:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-3F2 text3 CODE >125:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-32 text2 CODE >128:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-32 text2 CODE >129:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-3E text2 CODE >130:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-4A text2 CODE >131:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-62 text2 CODE >132:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-6E text2 CODE >133:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-7A text2 CODE >134:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-92 text2 CODE >135:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-9E text2 CODE >136:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-AA text2 CODE >137:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-C2 text2 CODE >138:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-CE text2 CODE >139:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-DA text2 CODE >140:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-F2 text2 CODE >141:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-FE text2 CODE >143:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-140 text2 CODE >144:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-14C text2 CODE >146:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-154 text2 CODE >148:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
-156 text1 CODE >7:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-156 text1 CODE >9:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-158 text1 CODE >10:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-15A text1 CODE >11:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-15C text1 CODE >12:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-15E text1 CODE >14:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-160 text1 CODE >15:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-162 text1 CODE >16:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-164 text1 CODE >17:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-166 text1 CODE >20:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-16C text1 CODE >21:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-170 text1 CODE >22:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-174 text1 CODE >23:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-178 text1 CODE >26:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-180 text1 CODE >27:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-184 text1 CODE >28:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-18C text1 CODE >32:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-190 text1 CODE >33:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-192 text1 CODE >37:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-196 text1 CODE >38:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-19A text1 CODE >39:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-1A0 text1 CODE >40:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-1A4 text1 CODE >43:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-1A8 text1 CODE >44:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-1AC text1 CODE >45:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-1B0 text1 CODE >46:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-1B4 text1 CODE >49:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-1B6 text1 CODE >50:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-1BE text1 CODE >51:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-1C0 text1 CODE >53:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-1C2 text1 CODE >54:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-1CA text1 CODE >55:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-1CC text1 CODE >57:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-1CE text1 CODE >58:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-1D6 text1 CODE >59:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-1D8 text1 CODE >61:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-1DA text1 CODE >62:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-1E2 text1 CODE >63:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-1E4 text1 CODE >64:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
-1E6 text0 CODE >18:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
-1E6 text0 CODE >19:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
-1EA text0 CODE >20:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
-1EE text0 CODE >21:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
-1F2 text0 CODE >23:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
-1FE text0 CODE >24:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
-1FE text0 CODE >25:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
-202 text0 CODE >26:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
-204 text0 CODE >28:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
-208 text0 CODE >29:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
-20C text0 CODE >30:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
-210 text0 CODE >31:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
-218 text0 CODE >32:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
-220 text0 CODE >33:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
-228 text0 CODE >35:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
-22C text0 CODE >36:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
-230 text0 CODE >37:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
-234 text0 CODE >38:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
-23C text0 CODE >39:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
-244 text0 CODE >40:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
-24C text0 CODE >43:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
-250 text0 CODE >44:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
-478 cinit CODE >8176:C:\Users\arthu\AppData\Local\Temp\xcAs128.s
-478 cinit CODE >8178:C:\Users\arthu\AppData\Local\Temp\xcAs128.s
-478 cinit CODE >8181:C:\Users\arthu\AppData\Local\Temp\xcAs128.s
-478 cinit CODE >8205:C:\Users\arthu\AppData\Local\Temp\xcAs128.s
-47A cinit CODE >8206:C:\Users\arthu\AppData\Local\Temp\xcAs128.s
-47C cinit CODE >8207:C:\Users\arthu\AppData\Local\Temp\xcAs128.s
-47E cinit CODE >8208:C:\Users\arthu\AppData\Local\Temp\xcAs128.s
-480 cinit CODE >8209:C:\Users\arthu\AppData\Local\Temp\xcAs128.s
-482 cinit CODE >8210:C:\Users\arthu\AppData\Local\Temp\xcAs128.s
-484 cinit CODE >8211:C:\Users\arthu\AppData\Local\Temp\xcAs128.s
-486 cinit CODE >8212:C:\Users\arthu\AppData\Local\Temp\xcAs128.s
-48A cinit CODE >8213:C:\Users\arthu\AppData\Local\Temp\xcAs128.s
-48C cinit CODE >8214:C:\Users\arthu\AppData\Local\Temp\xcAs128.s
-490 cinit CODE >8218:C:\Users\arthu\AppData\Local\Temp\xcAs128.s
-494 cinit CODE >8219:C:\Users\arthu\AppData\Local\Temp\xcAs128.s
-496 cinit CODE >8220:C:\Users\arthu\AppData\Local\Temp\xcAs128.s
-496 cinit CODE >8221:C:\Users\arthu\AppData\Local\Temp\xcAs128.s
-498 cinit CODE >8222:C:\Users\arthu\AppData\Local\Temp\xcAs128.s
-49A cinit CODE >8223:C:\Users\arthu\AppData\Local\Temp\xcAs128.s
-49C cinit CODE >8229:C:\Users\arthu\AppData\Local\Temp\xcAs128.s
-49C cinit CODE >8231:C:\Users\arthu\AppData\Local\Temp\xcAs128.s
-49E cinit CODE >8232:C:\Users\arthu\AppData\Local\Temp\xcAs128.s
-4A0 cinit CODE >8233:C:\Users\arthu\AppData\Local\Temp\xcAs128.s
-4A2 cinit CODE >8234:C:\Users\arthu\AppData\Local\Temp\xcAs128.s
+67E text20 CODE >220:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
+67E text20 CODE >222:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
+682 text20 CODE >223:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
+654 text18 CODE >10:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\interrupts.c
+654 text18 CODE >12:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\interrupts.c
+656 text18 CODE >13:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\interrupts.c
+65A text18 CODE >14:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\interrupts.c
+65C text18 CODE >15:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\interrupts.c
+65E text18 CODE >16:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\interrupts.c
+628 text17 CODE >7:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\timers.c
+628 text17 CODE >9:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\timers.c
+630 text17 CODE >10:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\timers.c
+632 text17 CODE >11:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\timers.c
+63A text17 CODE >12:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\timers.c
+63E text17 CODE >13:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\timers.c
+642 text17 CODE >14:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\timers.c
+644 text17 CODE >17:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\timers.c
+646 text17 CODE >18:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\timers.c
+5B6 text16 CODE >4:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+5B6 text16 CODE >7:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+5C0 text16 CODE >8:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+5C2 text16 CODE >9:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+5C6 text16 CODE >12:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+5C8 text16 CODE >13:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+5CA text16 CODE >14:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+5CC text16 CODE >15:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+5CE text16 CODE >16:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+5D2 text16 CODE >17:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+5D6 text16 CODE >18:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+5DA text16 CODE >19:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+5DE text16 CODE >20:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+5E0 text15 CODE >22:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+5E0 text15 CODE >24:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+606 text15 CODE >25:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+542 text14 CODE >51:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+544 text14 CODE >54:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+548 text14 CODE >55:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+54C text14 CODE >56:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+550 text14 CODE >57:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+554 text14 CODE >58:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+558 text14 CODE >59:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+57E text14 CODE >60:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+580 text14 CODE >61:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+582 text14 CODE >62:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+674 text13 CODE >33:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+674 text13 CODE >35:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+678 text13 CODE >36:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+67C text13 CODE >37:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+66A text12 CODE >27:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+66A text12 CODE >29:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+66E text12 CODE >30:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+672 text12 CODE >31:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+660 text11 CODE >39:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+660 text11 CODE >41:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+664 text11 CODE >42:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+668 text11 CODE >43:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+648 text10 CODE >45:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+64A text10 CODE >47:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+64E text10 CODE >48:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+652 text10 CODE >49:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
+41E text9 CODE >102:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+41E text9 CODE >105:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+422 text9 CODE >106:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+428 text9 CODE >107:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+42E text9 CODE >108:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+432 text9 CODE >109:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+438 text9 CODE >110:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+446 text9 CODE >111:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+460 text9 CODE >112:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+464 text9 CODE >113:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+46C text9 CODE >114:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+3CE text8 CODE >116:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+3CE text8 CODE >119:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+3D2 text8 CODE >120:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+3D8 text8 CODE >121:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+3DE text8 CODE >122:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+3E2 text8 CODE >123:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+3E8 text8 CODE >124:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+3F6 text8 CODE >125:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+410 text8 CODE >126:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+414 text8 CODE >127:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+41C text8 CODE >128:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+37E text7 CODE >88:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+37E text7 CODE >91:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+382 text7 CODE >92:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+388 text7 CODE >93:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+38E text7 CODE >94:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+392 text7 CODE >95:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+398 text7 CODE >96:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+3A6 text7 CODE >97:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+3C0 text7 CODE >98:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+3C4 text7 CODE >99:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+3CC text7 CODE >100:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+4FE text6 CODE >152:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+4FE text6 CODE >156:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+50C text6 CODE >157:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+50E text6 CODE >158:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+512 text6 CODE >159:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+514 text6 CODE >160:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+514 text6 CODE >161:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+522 text6 CODE >162:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+524 text6 CODE >163:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+528 text6 CODE >164:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+52A text6 CODE >165:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+52A text6 CODE >166:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+538 text6 CODE >167:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+53A text6 CODE >168:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+53E text6 CODE >169:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+540 text6 CODE >171:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+214 text5 CODE >207:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+214 text5 CODE >208:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+220 text5 CODE >209:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+238 text5 CODE >210:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+248 text5 CODE >211:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+254 text5 CODE >212:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+26C text5 CODE >213:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+27C text5 CODE >214:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+288 text5 CODE >215:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+2A0 text5 CODE >216:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+2B0 text5 CODE >217:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+2BC text5 CODE >218:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+16A text4 CODE >220:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+16A text4 CODE >221:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+176 text4 CODE >222:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+18E text4 CODE >223:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+19E text4 CODE >224:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+1AA text4 CODE >225:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+1C2 text4 CODE >226:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+1D2 text4 CODE >227:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+1DE text4 CODE >228:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+1F6 text4 CODE >229:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+206 text4 CODE >230:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+212 text4 CODE >231:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+608 text3 CODE >80:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+60A text3 CODE >81:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+60E text3 CODE >82:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+614 text3 CODE >83:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+61C text3 CODE >84:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+622 text3 CODE >85:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+626 text3 CODE >86:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+32 text2 CODE >28:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+32 text2 CODE >31:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+36 text2 CODE >34:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+40 text2 CODE >35:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+50 text2 CODE >38:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+5A text2 CODE >41:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+64 text2 CODE >43:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+66 text2 CODE >44:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+68 text2 CODE >45:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+6A text2 CODE >47:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+7C text2 CODE >48:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+8E text2 CODE >49:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+A0 text2 CODE >50:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+B2 text2 CODE >51:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+C4 text2 CODE >52:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+D6 text2 CODE >53:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+E8 text2 CODE >54:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+FA text2 CODE >55:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+10C text2 CODE >64:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+10E text2 CODE >65:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+112 text2 CODE >66:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+114 text2 CODE >67:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+116 text2 CODE >69:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+132 text2 CODE >70:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+144 text2 CODE >73:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+148 text2 CODE >74:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+156 text2 CODE >75:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+15A text2 CODE >76:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+168 text2 CODE >78:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+32C text1 CODE >233:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+32C text1 CODE >235:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+33C text1 CODE >236:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+34C text1 CODE >237:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+35C text1 CODE >239:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+368 text1 CODE >240:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+374 text1 CODE >241:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+37C text1 CODE >242:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
+4B6 text0 CODE >18:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
+4B6 text0 CODE >19:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
+4BA text0 CODE >20:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
+4BE text0 CODE >21:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
+4C2 text0 CODE >43:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
+4CE text0 CODE >44:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
+4E6 text0 CODE >45:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
+4F2 text0 CODE >46:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
+2BE cinit CODE >8281:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2BE cinit CODE >8283:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2BE cinit CODE >8286:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2BE cinit CODE >8372:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2C0 cinit CODE >8373:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2C2 cinit CODE >8374:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2C4 cinit CODE >8375:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2C6 cinit CODE >8376:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2C8 cinit CODE >8377:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2CA cinit CODE >8378:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2CE cinit CODE >8379:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2D2 cinit CODE >8380:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2D2 cinit CODE >8381:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2D4 cinit CODE >8382:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2D8 cinit CODE >8383:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2DA cinit CODE >8384:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2DC cinit CODE >8385:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2DE cinit CODE >8389:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2E0 cinit CODE >8390:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2E2 cinit CODE >8391:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2E4 cinit CODE >8392:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2E6 cinit CODE >8393:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2E8 cinit CODE >8394:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2EA cinit CODE >8395:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2EE cinit CODE >8396:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2F2 cinit CODE >8397:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2F2 cinit CODE >8398:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2F4 cinit CODE >8399:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2F8 cinit CODE >8400:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2FA cinit CODE >8401:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2FC cinit CODE >8402:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+2FE cinit CODE >8406:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+302 cinit CODE >8407:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+304 cinit CODE >8408:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+304 cinit CODE >8409:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+306 cinit CODE >8410:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+308 cinit CODE >8411:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+30A cinit CODE >8414:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+30E cinit CODE >8415:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+310 cinit CODE >8416:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+310 cinit CODE >8417:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+312 cinit CODE >8418:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+314 cinit CODE >8419:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+316 cinit CODE >8422:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+31A cinit CODE >8423:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+31C cinit CODE >8424:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+31C cinit CODE >8425:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+31E cinit CODE >8426:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+320 cinit CODE >8427:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+322 cinit CODE >8433:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+322 cinit CODE >8435:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+324 cinit CODE >8436:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+326 cinit CODE >8437:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
+328 cinit CODE >8438:C:\Users\arthu\AppData\Local\Temp\xcAsjts.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -357,67 +359,74 @@ FE text2 CODE >143:C:\Users\arthu\OneDrive\Imperial College London\Courses\Embed
 # was defined in a psect then <psect> will be "-". File-name
 # is the name of the object file in which the symbol was defined.
 %SYMTAB
+__LdataBANK0 0 0 ABS 0 dataBANK0 dist/default/production\final-project-panagiotis.X.production.o
 __Lmediumconst 0 0 MEDIUMCONST 0 mediumconst dist/default/production\final-project-panagiotis.X.production.o
 __Hspace_0 E00 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
-__Hspace_1 31 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
+__Hspace_1 16C 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 __Hspace_2 0 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 __Hspace_4 60000C 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
-color_writetoaddr@address 4 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
+_Green_rule 19 0 COMRAM 1 dataCOMRAM dist/default/production\final-project-panagiotis.X.production.o
+color_writetoaddr@address 36 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
+__HidataBANK0 0 0 ABS 0 idataBANK0 dist/default/production\final-project-panagiotis.X.production.o
 __Hibigdata 0 0 CODE 0 ibigdata dist/default/production\final-project-panagiotis.X.production.o
-__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\arthu\AppData\Local\Temp\xcAs128.o
-_wait_time 2E 0 COMRAM 1 dataCOMRAM dist/default/production\final-project-panagiotis.X.production.o
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\arthu\AppData\Local\Temp\xcAsjts.o
+_wait_time 31 0 COMRAM 1 dataCOMRAM dist/default/production\final-project-panagiotis.X.production.o
 __Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production\final-project-panagiotis.X.production.o
-__end_of_increment_seconds 574 0 CODE 0 text20 dist/default/production\final-project-panagiotis.X.production.o
+__end_of_increment_seconds 684 0 CODE 0 text20 dist/default/production\final-project-panagiotis.X.production.o
+_Orange_rule 78 0 BANK0 1 dataBANK0 dist/default/production\final-project-panagiotis.X.production.o
 __Lsmallconst 0 0 SMALLCONST 0 smallconst dist/default/production\final-project-panagiotis.X.production.o
 _T2PR FBC 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\arthu\AppData\Local\Temp\xcAs128.o
-_main 1E6 0 CODE 0 text0 dist/default/production\final-project-panagiotis.X.production.o
-btemp 30 0 COMRAM 1 temp dist/default/production\final-project-panagiotis.X.production.o
-start 2E 0 CODE 0 init C:\Users\arthu\AppData\Local\Temp\xcAs128.o
+___sp 0 0 STACK 2 stack C:\Users\arthu\AppData\Local\Temp\xcAsjts.o
+_main 4B6 0 CODE 0 text0 dist/default/production\final-project-panagiotis.X.production.o
+btemp 5E 0 COMRAM 1 temp dist/default/production\final-project-panagiotis.X.production.o
+start 2E 0 CODE 0 init C:\Users\arthu\AppData\Local\Temp\xcAsjts.o
 __HbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production\final-project-panagiotis.X.production.o
-color_read_Green@tmp A 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
+_Pink_rule 84 0 BANK0 1 dataBANK0 dist/default/production\final-project-panagiotis.X.production.o
+__LidataBANK0 0 0 ABS 0 idataBANK0 dist/default/production\final-project-panagiotis.X.production.o
+color_read_Green@tmp 3C 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
 __Hpowerup 2E 0 CODE 0 powerup dist/default/production\final-project-panagiotis.X.production.o
-ttemp5 31 0 COMRAM 1 temp dist/default/production\final-project-panagiotis.X.production.o
-ttemp6 34 0 COMRAM 1 temp dist/default/production\final-project-panagiotis.X.production.o
-ttemp7 38 0 COMRAM 1 temp dist/default/production\final-project-panagiotis.X.production.o
+ttemp5 5F 0 COMRAM 1 temp dist/default/production\final-project-panagiotis.X.production.o
+ttemp6 62 0 COMRAM 1 temp dist/default/production\final-project-panagiotis.X.production.o
+ttemp7 66 0 COMRAM 1 temp dist/default/production\final-project-panagiotis.X.production.o
 __HdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/production\final-project-panagiotis.X.production.o
-__accesstop 60 0 ABS 0 - C:\Users\arthu\AppData\Local\Temp\xcAs128.o
-intlevel0 0 0 CODE 0 text C:\Users\arthu\AppData\Local\Temp\xcAs128.o
-intlevel1 0 0 CODE 0 text C:\Users\arthu\AppData\Local\Temp\xcAs128.o
-intlevel2 0 0 CODE 0 text C:\Users\arthu\AppData\Local\Temp\xcAs128.o
-intlevel3 0 0 CODE 0 text C:\Users\arthu\AppData\Local\Temp\xcAs128.o
+__accesstop 60 0 ABS 0 - C:\Users\arthu\AppData\Local\Temp\xcAsjts.o
+intlevel0 0 0 CODE 0 text C:\Users\arthu\AppData\Local\Temp\xcAsjts.o
+intlevel1 0 0 CODE 0 text C:\Users\arthu\AppData\Local\Temp\xcAsjts.o
+intlevel2 0 0 CODE 0 text C:\Users\arthu\AppData\Local\Temp\xcAsjts.o
+intlevel3 0 0 CODE 0 text C:\Users\arthu\AppData\Local\Temp\xcAsjts.o
 __LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production\final-project-panagiotis.X.production.o
 __LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production\final-project-panagiotis.X.production.o
-wtemp8 31 0 COMRAM 1 temp dist/default/production\final-project-panagiotis.X.production.o
+wtemp8 5F 0 COMRAM 1 temp dist/default/production\final-project-panagiotis.X.production.o
+_Red_rule 25 0 COMRAM 1 dataCOMRAM dist/default/production\final-project-panagiotis.X.production.o
 __Hifardata 0 0 CODE 0 ifardata dist/default/production\final-project-panagiotis.X.production.o
 __Hclrtext 0 0 ABS 0 clrtext dist/default/production\final-project-panagiotis.X.production.o
-__pidataCOMRAM 574 0 CODE 0 idataCOMRAM dist/default/production\final-project-panagiotis.X.production.o
-__end_of_Interrupts_init 550 0 CODE 0 text18 dist/default/production\final-project-panagiotis.X.production.o
-_get_color_code 32 0 CODE 0 text2 dist/default/production\final-project-panagiotis.X.production.o
-___inthi_sp 0 0 STACK 2 stack C:\Users\arthu\AppData\Local\Temp\xcAs128.o
-___intlo_sp 0 0 STACK 2 stack C:\Users\arthu\AppData\Local\Temp\xcAs128.o
-I2C_2_Master_Read@ack 3 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
-I2C_2_Master_Read@tmp 4 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
+_Black_setup 1 0 COMRAM 1 dataCOMRAM dist/default/production\final-project-panagiotis.X.production.o
+__pidataCOMRAM 584 0 CODE 0 idataCOMRAM dist/default/production\final-project-panagiotis.X.production.o
+?_get_wall_presence 3E 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
+__end_of_Interrupts_init 660 0 CODE 0 text18 dist/default/production\final-project-panagiotis.X.production.o
+___inthi_sp 0 0 STACK 2 stack C:\Users\arthu\AppData\Local\Temp\xcAsjts.o
+___intlo_sp 0 0 STACK 2 stack C:\Users\arthu\AppData\Local\Temp\xcAsjts.o
+I2C_2_Master_Read@ack 35 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
+I2C_2_Master_Read@tmp 36 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
 __LdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/production\final-project-panagiotis.X.production.o
 _CCPR1H FAA 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 _CCPR2H FA6 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 _CCPR3H F25 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 _CCPR4H F21 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
-color_writetoaddr@value 3 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
+color_writetoaddr@value 35 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
 __Hintcode_body 0 0 ABS 0 intcode_body dist/default/production\final-project-panagiotis.X.production.o
-_increment_seconds 56E 0 CODE 0 text20 dist/default/production\final-project-panagiotis.X.production.o
+_increment_seconds 67E 0 CODE 0 text20 dist/default/production\final-project-panagiotis.X.production.o
 __Lintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production\final-project-panagiotis.X.production.o
 __Hmediumconst 0 0 MEDIUMCONST 0 mediumconst dist/default/production\final-project-panagiotis.X.production.o
-color_read_Blue@tmp A 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
+color_read_Blue@tmp 3C 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
 __Hintcodelo 2E 0 CODE 0 intcodelo dist/default/production\final-project-panagiotis.X.production.o
-_set_led_color 3B0 0 CODE 0 text3 dist/default/production\final-project-panagiotis.X.production.o
+_set_led_color 4FE 0 CODE 0 text6 dist/default/production\final-project-panagiotis.X.production.o
 __LidataCOMRAM 0 0 ABS 0 idataCOMRAM dist/default/production\final-project-panagiotis.X.production.o
 __Lintcodelo 2E 0 CODE 0 intcodelo dist/default/production\final-project-panagiotis.X.production.o
-_Interrupts_init 544 0 CODE 0 text18 dist/default/production\final-project-panagiotis.X.production.o
+_Interrupts_init 654 0 CODE 0 text18 dist/default/production\final-project-panagiotis.X.production.o
 _SSP2CON1bits ED9 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
-start_initialization 478 0 CODE 0 cinit dist/default/production\final-project-panagiotis.X.production.o
+start_initialization 2BE 0 CODE 0 cinit dist/default/production\final-project-panagiotis.X.production.o
 _SSP2CON2bits EDA 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
-__end_of_get_color_code 156 0 CODE 0 text2 dist/default/production\final-project-panagiotis.X.production.o
 __HnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production\final-project-panagiotis.X.production.o
 _TRISAbits F81 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 _TRISCbits F83 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
@@ -425,19 +434,17 @@ _TRISDbits F84 0 ABS 0 - dist/default/production\final-project-panagiotis.X.prod
 _TRISEbits F85 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 _TRISFbits F86 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 _TRISGbits F87 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
-_TRISHbits F88 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 ___rparam_used 1 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
-?_get_color_code C 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
 _RC7PPS E69 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 _RD5PPS E6F 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 _RD6PPS E70 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 _RE2PPS E74 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 _RE4PPS E76 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 _RG6PPS E88 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
-__end_of_I2C_2_Master_Start 56E 0 CODE 0 text14 dist/default/production\final-project-panagiotis.X.production.o
-__end_of_I2C_2_Master_Write 544 0 CODE 0 text12 dist/default/production\final-project-panagiotis.X.production.o
-I2C_2_Master_Write@data_byte 2 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
-isa$xinst 0 0 ABS 0 - C:\Users\arthu\AppData\Local\Temp\xcAs128.o
+__end_of_I2C_2_Master_Start 674 0 CODE 0 text12 dist/default/production\final-project-panagiotis.X.production.o
+__end_of_I2C_2_Master_Write 654 0 CODE 0 text10 dist/default/production\final-project-panagiotis.X.production.o
+I2C_2_Master_Write@data_byte 34 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
+isa$xinst 0 0 ABS 0 - C:\Users\arthu\AppData\Local\Temp\xcAsjts.o
 __Hbank0 0 0 ABS 0 bank0 dist/default/production\final-project-panagiotis.X.production.o
 __Hbank1 0 0 ABS 0 bank1 dist/default/production\final-project-panagiotis.X.production.o
 __Hbank2 0 0 ABS 0 bank2 dist/default/production\final-project-panagiotis.X.production.o
@@ -452,9 +459,8 @@ __Hcinit 0 0 ABS 0 cinit dist/default/production\final-project-panagiotis.X.prod
 __Hconst 0 0 CONST 0 const dist/default/production\final-project-panagiotis.X.production.o
 __Hidata 0 0 CODE 0 idata dist/default/production\final-project-panagiotis.X.production.o
 __Hidloc 200010 0 IDLOC 5 idloc dist/default/production\final-project-panagiotis.X.production.o
-_color_read_Clear 310 0 CODE 0 text6 dist/default/production\final-project-panagiotis.X.production.o
 __Hnvbit 0 0 COMRAM 1 nvbit dist/default/production\final-project-panagiotis.X.production.o
-_color_read_Green 2C0 0 CODE 0 text5 dist/default/production\final-project-panagiotis.X.production.o
+_color_read_Green 3CE 0 CODE 0 text8 dist/default/production\final-project-panagiotis.X.production.o
 __Hparam 0 0 COMRAM 1 rparam dist/default/production\final-project-panagiotis.X.production.o
 __Hrdata 0 0 COMRAM 1 rdata dist/default/production\final-project-panagiotis.X.production.o
 __Hstack 0 0 STACK 2 stack dist/default/production\final-project-panagiotis.X.production.o
@@ -475,10 +481,11 @@ __Hbank13 0 0 ABS 0 bank13 dist/default/production\final-project-panagiotis.X.pr
 __Hbigbss 0 0 BIGRAM 1 bigbss dist/default/production\final-project-panagiotis.X.production.o
 __Hbigram 0 0 ABS 0 bigram dist/default/production\final-project-panagiotis.X.production.o
 __Hbigsfr 0 0 ABS 0 bigsfr dist/default/production\final-project-panagiotis.X.production.o
-__smallconst 0 0 SMALLCONST 0 smallconst C:\Users\arthu\AppData\Local\Temp\xcAs128.o
+__smallconst 0 0 SMALLCONST 0 smallconst C:\Users\arthu\AppData\Local\Temp\xcAsjts.o
 __end_of_HighISR 2E 0 CODE 0 intcode dist/default/production\final-project-panagiotis.X.production.o
 __Hcomram 0 0 ABS 0 comram dist/default/production\final-project-panagiotis.X.production.o
 __Hconfig 30000C 0 CONFIG 4 config dist/default/production\final-project-panagiotis.X.production.o
+_Lightblue_rule 6C 0 BANK0 1 dataBANK0 dist/default/production\final-project-panagiotis.X.production.o
 _T2HLTbits FBE 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 __Lbank0 0 0 ABS 0 bank0 dist/default/production\final-project-panagiotis.X.production.o
 __Lbank1 0 0 ABS 0 bank1 dist/default/production\final-project-panagiotis.X.production.o
@@ -508,11 +515,11 @@ __Ltext6 0 0 ABS 0 text6 dist/default/production\final-project-panagiotis.X.prod
 __Ltext7 0 0 ABS 0 text7 dist/default/production\final-project-panagiotis.X.production.o
 __Ltext8 0 0 ABS 0 text8 dist/default/production\final-project-panagiotis.X.production.o
 __Ltext9 0 0 ABS 0 text9 dist/default/production\final-project-panagiotis.X.production.o
-_I2C_2_Master_Start 564 0 CODE 0 text14 dist/default/production\final-project-panagiotis.X.production.o
-initDCmotorsPWM@PWMperiod 1 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
-_I2C_2_Master_Write 538 0 CODE 0 text12 dist/default/production\final-project-panagiotis.X.production.o
+_I2C_2_Master_Start 66A 0 CODE 0 text12 dist/default/production\final-project-panagiotis.X.production.o
+_I2C_2_Master_Write 648 0 CODE 0 text10 dist/default/production\final-project-panagiotis.X.production.o
 __Hfarbss 0 0 FARRAM 0 farbss dist/default/production\final-project-panagiotis.X.production.o
 __Lintcode_body 0 0 ABS 0 intcode_body dist/default/production\final-project-panagiotis.X.production.o
+_PORTFbits F8E 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 _INTCONbits FF2 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 __Habs1 0 0 ABS 0 abs1 dist/default/production\final-project-panagiotis.X.production.o
 __Hdata 0 0 ABS 0 data dist/default/production\final-project-panagiotis.X.production.o
@@ -520,7 +527,7 @@ __Hheap 0 0 HEAP 7 heap dist/default/production\final-project-panagiotis.X.produ
 __Hinit 32 0 CODE 0 init dist/default/production\final-project-panagiotis.X.production.o
 __Hrbit 0 0 COMRAM 1 rbit dist/default/production\final-project-panagiotis.X.production.o
 __Hrbss 0 0 COMRAM 1 rbss dist/default/production\final-project-panagiotis.X.production.o
-__Htemp 31 0 COMRAM 1 temp dist/default/production\final-project-panagiotis.X.production.o
+__Htemp 5F 0 COMRAM 1 temp dist/default/production\final-project-panagiotis.X.production.o
 __Htext 0 0 ABS 0 text dist/default/production\final-project-panagiotis.X.production.o
 __Labs1 0 0 ABS 0 abs1 dist/default/production\final-project-panagiotis.X.production.o
 __Ldata 0 0 ABS 0 data dist/default/production\final-project-panagiotis.X.production.o
@@ -528,32 +535,37 @@ __Lheap 0 0 HEAP 7 heap dist/default/production\final-project-panagiotis.X.produ
 __Linit 2E 0 CODE 0 init dist/default/production\final-project-panagiotis.X.production.o
 __Lrbit 0 0 COMRAM 1 rbit dist/default/production\final-project-panagiotis.X.production.o
 __Lrbss 0 0 COMRAM 1 rbss dist/default/production\final-project-panagiotis.X.production.o
-__Ltemp 30 0 COMRAM 1 temp dist/default/production\final-project-panagiotis.X.production.o
+__Ltemp 5E 0 COMRAM 1 temp dist/default/production\final-project-panagiotis.X.production.o
 __Ltext 0 0 ABS 0 text dist/default/production\final-project-panagiotis.X.production.o
 _SSP2CON2 EDA 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 _SSP2STAT ED8 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
-int$flags 30 0 COMRAM 1 temp dist/default/production\final-project-panagiotis.X.production.o
+int$flags 5E 0 COMRAM 1 temp dist/default/production\final-project-panagiotis.X.production.o
 __HcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
-_Timer0_init 518 0 CODE 0 text17 dist/default/production\final-project-panagiotis.X.production.o
+_Timer0_init 628 0 CODE 0 text17 dist/default/production\final-project-panagiotis.X.production.o
 __Hintret 0 0 ABS 0 intret dist/default/production\final-project-panagiotis.X.production.o
 __Hirdata 0 0 CODE 0 irdata dist/default/production\final-project-panagiotis.X.production.o
-_RGB 24 0 COMRAM 1 bssCOMRAM dist/default/production\final-project-panagiotis.X.production.o
-__S0 576 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
-__S1 31 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
+_RGB 50 0 COMRAM 1 bssCOMRAM dist/default/production\final-project-panagiotis.X.production.o
+__S0 684 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
+__S1 16C 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 __S4 0 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 __S5 0 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
-_color_read_Red 270 0 CODE 0 text4 dist/default/production\final-project-panagiotis.X.production.o
-__end_of_set_led_color 3F4 0 CODE 0 text3 dist/default/production\final-project-panagiotis.X.production.o
+_color_read_Red 37E 0 CODE 0 text7 dist/default/production\final-project-panagiotis.X.production.o
+__end_of_set_led_color 542 0 CODE 0 text6 dist/default/production\final-project-panagiotis.X.production.o
 __HidataCOMRAM 0 0 ABS 0 idataCOMRAM dist/default/production\final-project-panagiotis.X.production.o
 __Lbigdata 0 0 BIGRAM 1 bigdata dist/default/production\final-project-panagiotis.X.production.o
 __Hnvrram 0 0 COMRAM 1 nvrram dist/default/production\final-project-panagiotis.X.production.o
+_Blue_rule 9C 0 BANK0 1 dataBANK0 dist/default/production\final-project-panagiotis.X.production.o
 __Lintentry 0 0 ABS 0 intentry dist/default/production\final-project-panagiotis.X.production.o
-_color_click_init 436 0 CODE 0 text10 dist/default/production\final-project-panagiotis.X.production.o
+_color_click_init 32 0 CODE 0 text2 dist/default/production\final-project-panagiotis.X.production.o
 __Hramtop E00 0 RAM 0 ramtop dist/default/production\final-project-panagiotis.X.production.o
 __Hrparam 0 0 COMRAM 1 rparam dist/default/production\final-project-panagiotis.X.production.o
 _CCPTMRS0bits FAD 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
+__pdataBANK0 60 0 BANK0 1 dataBANK0 dist/default/production\final-project-panagiotis.X.production.o
 __activetblptr 0 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
+_White_setup D 0 COMRAM 1 dataCOMRAM dist/default/production\final-project-panagiotis.X.production.o
 __Hstruct 0 0 COMRAM 1 struct dist/default/production\final-project-panagiotis.X.production.o
+__LbssBANK0 0 0 ABS 0 bssBANK0 dist/default/production\final-project-panagiotis.X.production.o
+__LbssBANK1 0 0 ABS 0 bssBANK1 dist/default/production\final-project-panagiotis.X.production.o
 __Htext10 0 0 ABS 0 text10 dist/default/production\final-project-panagiotis.X.production.o
 __Htext11 0 0 ABS 0 text11 dist/default/production\final-project-panagiotis.X.production.o
 __Htext12 0 0 ABS 0 text12 dist/default/production\final-project-panagiotis.X.production.o
@@ -564,20 +576,20 @@ __Htext16 0 0 ABS 0 text16 dist/default/production\final-project-panagiotis.X.pr
 __Htext17 0 0 ABS 0 text17 dist/default/production\final-project-panagiotis.X.production.o
 __Htext18 0 0 ABS 0 text18 dist/default/production\final-project-panagiotis.X.production.o
 __Htext20 0 0 ABS 0 text20 dist/default/production\final-project-panagiotis.X.production.o
-__end_of_color_read_Clear 360 0 CODE 0 text6 dist/default/production\final-project-panagiotis.X.production.o
-__end_of_color_read_Green 310 0 CODE 0 text5 dist/default/production\final-project-panagiotis.X.production.o
+__end_of_color_read_Green 41E 0 CODE 0 text8 dist/default/production\final-project-panagiotis.X.production.o
 _PIE0bits E29 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 _PIE2bits E2B 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
-__ptext10 436 0 CODE 0 text10 dist/default/production\final-project-panagiotis.X.production.o
-__ptext11 4F8 0 CODE 0 text11 dist/default/production\final-project-panagiotis.X.production.o
-__ptext12 538 0 CODE 0 text12 dist/default/production\final-project-panagiotis.X.production.o
-__ptext13 55A 0 CODE 0 text13 dist/default/production\final-project-panagiotis.X.production.o
-__ptext14 564 0 CODE 0 text14 dist/default/production\final-project-panagiotis.X.production.o
-__ptext15 4D0 0 CODE 0 text15 dist/default/production\final-project-panagiotis.X.production.o
-__ptext16 4A6 0 CODE 0 text16 dist/default/production\final-project-panagiotis.X.production.o
-__ptext17 518 0 CODE 0 text17 dist/default/production\final-project-panagiotis.X.production.o
-__ptext18 544 0 CODE 0 text18 dist/default/production\final-project-panagiotis.X.production.o
-__ptext20 56E 0 CODE 0 text20 dist/default/production\final-project-panagiotis.X.production.o
+__ptext10 648 0 CODE 0 text10 dist/default/production\final-project-panagiotis.X.production.o
+__ptext11 660 0 CODE 0 text11 dist/default/production\final-project-panagiotis.X.production.o
+__ptext12 66A 0 CODE 0 text12 dist/default/production\final-project-panagiotis.X.production.o
+__ptext13 674 0 CODE 0 text13 dist/default/production\final-project-panagiotis.X.production.o
+__ptext14 542 0 CODE 0 text14 dist/default/production\final-project-panagiotis.X.production.o
+__ptext15 5E0 0 CODE 0 text15 dist/default/production\final-project-panagiotis.X.production.o
+__ptext16 5B6 0 CODE 0 text16 dist/default/production\final-project-panagiotis.X.production.o
+__ptext17 628 0 CODE 0 text17 dist/default/production\final-project-panagiotis.X.production.o
+__ptext18 654 0 CODE 0 text18 dist/default/production\final-project-panagiotis.X.production.o
+__ptext20 67E 0 CODE 0 text20 dist/default/production\final-project-panagiotis.X.production.o
+__end_of_calibrate_black 2BE 0 CODE 0 text5 dist/default/production\final-project-panagiotis.X.production.o
 __Lbank10 0 0 ABS 0 bank10 dist/default/production\final-project-panagiotis.X.production.o
 __Lbank11 0 0 ABS 0 bank11 dist/default/production\final-project-panagiotis.X.production.o
 __Lbank12 0 0 ABS 0 bank12 dist/default/production\final-project-panagiotis.X.production.o
@@ -585,63 +597,68 @@ __Lbank13 0 0 ABS 0 bank13 dist/default/production\final-project-panagiotis.X.pr
 __Lbigbss 0 0 BIGRAM 1 bigbss dist/default/production\final-project-panagiotis.X.production.o
 __Lbigram 0 0 ABS 0 bigram dist/default/production\final-project-panagiotis.X.production.o
 __Lbigsfr 0 0 ABS 0 bigsfr dist/default/production\final-project-panagiotis.X.production.o
-color_read_Red@tmp A 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
-__end_of_color_read_Red 2C0 0 CODE 0 text4 dist/default/production\final-project-panagiotis.X.production.o
+__end_of_calibrate_white 214 0 CODE 0 text4 dist/default/production\final-project-panagiotis.X.production.o
+color_read_Red@tmp 3C 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
+__end_of_color_read_Red 3CE 0 CODE 0 text7 dist/default/production\final-project-panagiotis.X.production.o
 __Lcomram 0 0 ABS 0 comram dist/default/production\final-project-panagiotis.X.production.o
 __Lconfig 0 0 CONFIG 4 config dist/default/production\final-project-panagiotis.X.production.o
 _LATAbits F79 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 _LATCbits F7B 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
-_LATDbits F7C 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 _LATEbits F7D 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 _LATFbits F7E 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 _LATGbits F7F 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
-_LATHbits F80 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
-__end_of_I2C_2_Master_Idle 4F8 0 CODE 0 text15 dist/default/production\final-project-panagiotis.X.production.o
-__end_of_I2C_2_Master_Init 4D0 0 CODE 0 text16 dist/default/production\final-project-panagiotis.X.production.o
-__end_of_I2C_2_Master_Read 436 0 CODE 0 text9 dist/default/production\final-project-panagiotis.X.production.o
-__end_of_I2C_2_Master_Stop 564 0 CODE 0 text13 dist/default/production\final-project-panagiotis.X.production.o
+__end_of_get_wall_presence 37E 0 CODE 0 text1 dist/default/production\final-project-panagiotis.X.production.o
+__end_of_I2C_2_Master_Idle 608 0 CODE 0 text15 dist/default/production\final-project-panagiotis.X.production.o
+__end_of_I2C_2_Master_Init 5E0 0 CODE 0 text16 dist/default/production\final-project-panagiotis.X.production.o
+__end_of_I2C_2_Master_Read 584 0 CODE 0 text14 dist/default/production\final-project-panagiotis.X.production.o
+__end_of_I2C_2_Master_Stop 66A 0 CODE 0 text11 dist/default/production\final-project-panagiotis.X.production.o
 __Lfarbss 0 0 FARRAM 0 farbss dist/default/production\final-project-panagiotis.X.production.o
-?_color_read_Red 5 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
+?_color_read_Red 37 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
 __Lfardata 0 0 FARRAM 0 fardata dist/default/production\final-project-panagiotis.X.production.o
-isa$std 1 0 ABS 0 - C:\Users\arthu\AppData\Local\Temp\xcAs128.o
-stackhi 0 0 ABS 0 - C:\Users\arthu\AppData\Local\Temp\xcAs128.o
-stacklo 0 0 ABS 0 - C:\Users\arthu\AppData\Local\Temp\xcAs128.o
+isa$std 1 0 ABS 0 - C:\Users\arthu\AppData\Local\Temp\xcAsjts.o
+stackhi 0 0 ABS 0 - C:\Users\arthu\AppData\Local\Temp\xcAsjts.o
+stacklo 0 0 ABS 0 - C:\Users\arthu\AppData\Local\Temp\xcAsjts.o
+main@color_code 4E 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
 __Lintcode 8 0 CODE 0 intcode dist/default/production\final-project-panagiotis.X.production.o
-_seconds 2C 0 COMRAM 1 bssCOMRAM dist/default/production\final-project-panagiotis.X.production.o
+_seconds 5C 0 COMRAM 1 bssCOMRAM dist/default/production\final-project-panagiotis.X.production.o
 __Lintret 0 0 ABS 0 intret dist/default/production\final-project-panagiotis.X.production.o
 __Lirdata 0 0 CODE 0 irdata dist/default/production\final-project-panagiotis.X.production.o
+get_wall_presence@wall_RGB 40 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
 __Lspace_0 0 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 __Lspace_1 0 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 __Lspace_2 0 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 __Lspace_4 0 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
-__pbssCOMRAM 24 0 COMRAM 1 bssCOMRAM dist/default/production\final-project-panagiotis.X.production.o
-color_read_Clear@tmp A 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
+__pbssCOMRAM 50 0 COMRAM 1 bssCOMRAM dist/default/production\final-project-panagiotis.X.production.o
 _PIR0bits E33 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 __LcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
-end_of_initialization 49C 0 CODE 0 cinit dist/default/production\final-project-panagiotis.X.production.o
-__end_of_color_click_init 478 0 CODE 0 text10 dist/default/production\final-project-panagiotis.X.production.o
+end_of_initialization 322 0 CODE 0 cinit dist/default/production\final-project-panagiotis.X.production.o
+__end_of_color_click_init 16A 0 CODE 0 text2 dist/default/production\final-project-panagiotis.X.production.o
 _T2CLKCONbits FBF 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
+_calibrate_black 214 0 CODE 0 text5 dist/default/production\final-project-panagiotis.X.production.o
 __Lnvrram 0 0 COMRAM 1 nvrram dist/default/production\final-project-panagiotis.X.production.o
 __Hintentry 0 0 ABS 0 intentry dist/default/production\final-project-panagiotis.X.production.o
+_calibrate_white 16A 0 CODE 0 text4 dist/default/production\final-project-panagiotis.X.production.o
 _CCP4CONbits F22 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 __Hreset_vec 4 0 CODE 0 reset_vec dist/default/production\final-project-panagiotis.X.production.o
-?_color_read_Blue 5 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
-__end_of_initDCmotorsPWM 1E6 0 CODE 0 text1 dist/default/production\final-project-panagiotis.X.production.o
+?_color_read_Blue 37 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
+__HbssBANK0 0 0 ABS 0 bssBANK0 dist/default/production\final-project-panagiotis.X.production.o
+__HbssBANK1 0 0 ABS 0 bssBANK1 dist/default/production\final-project-panagiotis.X.production.o
 __Lramtop E00 0 RAM 0 ramtop dist/default/production\final-project-panagiotis.X.production.o
 __Lrparam 0 0 COMRAM 1 rparam dist/default/production\final-project-panagiotis.X.production.o
-__pcinit 478 0 CODE 0 cinit dist/default/production\final-project-panagiotis.X.production.o
-__end_of_color_read_Blue 3B0 0 CODE 0 text7 dist/default/production\final-project-panagiotis.X.production.o
-__ptext0 1E6 0 CODE 0 text0 dist/default/production\final-project-panagiotis.X.production.o
-__ptext1 156 0 CODE 0 text1 dist/default/production\final-project-panagiotis.X.production.o
+__pcinit 2BE 0 CODE 0 cinit dist/default/production\final-project-panagiotis.X.production.o
+_Yellow_rule 90 0 BANK0 1 dataBANK0 dist/default/production\final-project-panagiotis.X.production.o
+__end_of_color_read_Blue 46E 0 CODE 0 text9 dist/default/production\final-project-panagiotis.X.production.o
+__ptext0 4B6 0 CODE 0 text0 dist/default/production\final-project-panagiotis.X.production.o
+__ptext1 32C 0 CODE 0 text1 dist/default/production\final-project-panagiotis.X.production.o
 __ptext2 32 0 CODE 0 text2 dist/default/production\final-project-panagiotis.X.production.o
-__ptext3 3B0 0 CODE 0 text3 dist/default/production\final-project-panagiotis.X.production.o
-__ptext4 270 0 CODE 0 text4 dist/default/production\final-project-panagiotis.X.production.o
-__ptext5 2C0 0 CODE 0 text5 dist/default/production\final-project-panagiotis.X.production.o
-__ptext6 310 0 CODE 0 text6 dist/default/production\final-project-panagiotis.X.production.o
-__ptext7 360 0 CODE 0 text7 dist/default/production\final-project-panagiotis.X.production.o
-__ptext8 550 0 CODE 0 text8 dist/default/production\final-project-panagiotis.X.production.o
-__ptext9 3F4 0 CODE 0 text9 dist/default/production\final-project-panagiotis.X.production.o
-__end_of_I2C_2_Master_RepStart 55A 0 CODE 0 text8 dist/default/production\final-project-panagiotis.X.production.o
+__ptext3 608 0 CODE 0 text3 dist/default/production\final-project-panagiotis.X.production.o
+__ptext4 16A 0 CODE 0 text4 dist/default/production\final-project-panagiotis.X.production.o
+__ptext5 214 0 CODE 0 text5 dist/default/production\final-project-panagiotis.X.production.o
+__ptext6 4FE 0 CODE 0 text6 dist/default/production\final-project-panagiotis.X.production.o
+__ptext7 37E 0 CODE 0 text7 dist/default/production\final-project-panagiotis.X.production.o
+__ptext8 3CE 0 CODE 0 text8 dist/default/production\final-project-panagiotis.X.production.o
+__ptext9 41E 0 CODE 0 text9 dist/default/production\final-project-panagiotis.X.production.o
+__end_of_I2C_2_Master_RepStart 67E 0 CODE 0 text13 dist/default/production\final-project-panagiotis.X.production.o
 __Lstruct 0 0 COMRAM 1 struct dist/default/production\final-project-panagiotis.X.production.o
 __Ltext10 0 0 ABS 0 text10 dist/default/production\final-project-panagiotis.X.production.o
 __Ltext11 0 0 ABS 0 text11 dist/default/production\final-project-panagiotis.X.production.o
@@ -653,39 +670,39 @@ __Ltext16 0 0 ABS 0 text16 dist/default/production\final-project-panagiotis.X.pr
 __Ltext17 0 0 ABS 0 text17 dist/default/production\final-project-panagiotis.X.production.o
 __Ltext18 0 0 ABS 0 text18 dist/default/production\final-project-panagiotis.X.production.o
 __Ltext20 0 0 ABS 0 text20 dist/default/production\final-project-panagiotis.X.production.o
-__end_of_color_writetoaddr 518 0 CODE 0 text11 dist/default/production\final-project-panagiotis.X.production.o
-__ramtop E00 0 RAM 0 ramtop C:\Users\arthu\AppData\Local\Temp\xcAs128.o
+__end_of_color_writetoaddr 628 0 CODE 0 text3 dist/default/production\final-project-panagiotis.X.production.o
+__ramtop E00 0 RAM 0 ramtop C:\Users\arthu\AppData\Local\Temp\xcAsjts.o
 _HighISR 8 0 CODE 0 intcode dist/default/production\final-project-panagiotis.X.production.o
-main@motorL 12 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
-main@motorR 1B 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
 __Lpowerup 2E 0 CODE 0 powerup dist/default/production\final-project-panagiotis.X.production.o
 __Leeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production\final-project-panagiotis.X.production.o
 __Lreset_vec 0 0 CODE 0 reset_vec dist/default/production\final-project-panagiotis.X.production.o
-_I2C_2_Master_RepStart 550 0 CODE 0 text8 dist/default/production\final-project-panagiotis.X.production.o
+_get_wall_presence 32C 0 CODE 0 text1 dist/default/production\final-project-panagiotis.X.production.o
+_I2C_2_Master_RepStart 674 0 CODE 0 text13 dist/default/production\final-project-panagiotis.X.production.o
 _CCP3CONbits F26 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
-___heap_hi 0 0 ABS 0 - C:\Users\arthu\AppData\Local\Temp\xcAs128.o
-___heap_lo 0 0 ABS 0 - C:\Users\arthu\AppData\Local\Temp\xcAs128.o
-_I2C_2_Master_Idle 4D0 0 CODE 0 text15 dist/default/production\final-project-panagiotis.X.production.o
-_I2C_2_Master_Init 4A6 0 CODE 0 text16 dist/default/production\final-project-panagiotis.X.production.o
-_I2C_2_Master_Read 3F4 0 CODE 0 text9 dist/default/production\final-project-panagiotis.X.production.o
-_I2C_2_Master_Stop 55A 0 CODE 0 text13 dist/default/production\final-project-panagiotis.X.production.o
+___heap_hi 0 0 ABS 0 - C:\Users\arthu\AppData\Local\Temp\xcAsjts.o
+___heap_lo 0 0 ABS 0 - C:\Users\arthu\AppData\Local\Temp\xcAsjts.o
+_I2C_2_Master_Idle 5E0 0 CODE 0 text15 dist/default/production\final-project-panagiotis.X.production.o
+_I2C_2_Master_Init 5B6 0 CODE 0 text16 dist/default/production\final-project-panagiotis.X.production.o
+_I2C_2_Master_Read 542 0 CODE 0 text14 dist/default/production\final-project-panagiotis.X.production.o
+_I2C_2_Master_Stop 660 0 CODE 0 text11 dist/default/production\final-project-panagiotis.X.production.o
+_White_rule 60 0 BANK0 1 dataBANK0 dist/default/production\final-project-panagiotis.X.production.o
 ___param_bank 0 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 __Hbigdata 0 0 BIGRAM 1 bigdata dist/default/production\final-project-panagiotis.X.production.o
-__end_of__initialization 49C 0 CODE 0 cinit dist/default/production\final-project-panagiotis.X.production.o
+__end_of__initialization 322 0 CODE 0 cinit dist/default/production\final-project-panagiotis.X.production.o
 __Libigdata 0 0 CODE 0 ibigdata dist/default/production\final-project-panagiotis.X.production.o
+__pidataBANK0 46E 0 CODE 0 idataBANK0 dist/default/production\final-project-panagiotis.X.production.o
 __Lclrtext 0 0 ABS 0 clrtext dist/default/production\final-project-panagiotis.X.production.o
-__end_of_Timer0_init 538 0 CODE 0 text17 dist/default/production\final-project-panagiotis.X.production.o
-_initDCmotorsPWM 156 0 CODE 0 text1 dist/default/production\final-project-panagiotis.X.production.o
-set_led_color@color 1 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
-__pcstackCOMRAM 1 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
+__end_of_Timer0_init 648 0 CODE 0 text17 dist/default/production\final-project-panagiotis.X.production.o
+set_led_color@color 33 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
+__pcstackCOMRAM 33 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
+_Black_rule A8 0 BANK0 1 bssBANK0 dist/default/production\final-project-panagiotis.X.production.o
 _T0CON0bits FD5 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 _T0CON1bits FD6 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
-_color_read_Blue 360 0 CODE 0 text7 dist/default/production\final-project-panagiotis.X.production.o
+_color_read_Blue 41E 0 CODE 0 text9 dist/default/production\final-project-panagiotis.X.production.o
 _SSP2ADD ED6 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 _SSP2BUF ED5 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
-?_color_read_Clear 5 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
-?_color_read_Green 5 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
-__end_of_main 270 0 CODE 0 text0 dist/default/production\final-project-panagiotis.X.production.o
+?_color_read_Green 37 0 COMRAM 1 cstackCOMRAM dist/default/production\final-project-panagiotis.X.production.o
+__end_of_main 4FE 0 CODE 0 text0 dist/default/production\final-project-panagiotis.X.production.o
 _CCP2CONbits FA7 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 __pintcode 8 0 CODE 0 intcode dist/default/production\final-project-panagiotis.X.production.o
 _TMR0H FD4 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
@@ -698,11 +715,15 @@ __LRAM 1 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production
 __Lbss 0 0 RAM 1 bss dist/default/production\final-project-panagiotis.X.production.o
 __Lram 0 0 ABS 0 ram dist/default/production\final-project-panagiotis.X.production.o
 __Lsfr 0 0 ABS 0 sfr dist/default/production\final-project-panagiotis.X.production.o
-__initialization 478 0 CODE 0 cinit dist/default/production\final-project-panagiotis.X.production.o
-__pdataCOMRAM 2E 0 COMRAM 1 dataCOMRAM dist/default/production\final-project-panagiotis.X.production.o
+_Color_rules 100 0 BANK1 1 bssBANK1 dist/default/production\final-project-panagiotis.X.production.o
+__HdataBANK0 0 0 ABS 0 dataBANK0 dist/default/production\final-project-panagiotis.X.production.o
+__initialization 2BE 0 CODE 0 cinit dist/default/production\final-project-panagiotis.X.production.o
+__pbssBANK0 A8 0 BANK0 1 bssBANK0 dist/default/production\final-project-panagiotis.X.production.o
+__pbssBANK1 100 0 BANK1 1 bssBANK1 dist/default/production\final-project-panagiotis.X.production.o
+__pdataCOMRAM 1 0 COMRAM 1 dataCOMRAM dist/default/production\final-project-panagiotis.X.production.o
 _T2CONbits FBD 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
 __Hfardata 0 0 FARRAM 0 fardata dist/default/production\final-project-panagiotis.X.production.o
-_color_writetoaddr 4F8 0 CODE 0 text11 dist/default/production\final-project-panagiotis.X.production.o
+_color_writetoaddr 608 0 CODE 0 text3 dist/default/production\final-project-panagiotis.X.production.o
 __Hsmallconst 0 0 SMALLCONST 0 smallconst dist/default/production\final-project-panagiotis.X.production.o
 __Lifardata 0 0 CODE 0 ifardata dist/default/production\final-project-panagiotis.X.production.o
 _SSP2CLKPPS E1C 0 ABS 0 - dist/default/production\final-project-panagiotis.X.production.o
@@ -736,9 +757,11 @@ __Hintcode 2E 0 CODE 0 intcode dist/default/production\final-project-panagiotis.
 # and size are in units of delta. The file address is in units of bytes.
 # All other numeric quantities are in decimal.
 %SEGMENTS
-cstackCOMRAM 1 1 1 30 1
 reset_vec 0 0 0 4 1
-intcode 0 8 8 56E 1
+bssBANK1 1 100 100 6C 1
+intcode 0 8 8 67C 1
+dataBANK0 1 60 60 54 1
+dataCOMRAM 1 1 1 5E 1
 # %NOTES Section
 # This section contains data of all the note-psects.  The beginning of the section
 # is indicated by %NOTES. The first line indicates the name and decimal
