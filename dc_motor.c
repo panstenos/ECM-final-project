@@ -123,24 +123,24 @@ void turnLeft(struct DC_motor *mL, struct DC_motor *mR)
     
     /* High surface roughness turning */
     int i;
-    for(i=20;i<30;i+=5){ //increase power from 20 to 30 in steps of 5
+    for(i=22;i<37;i+=5){ //increase power from 20 to 30 in steps of 5
     (*mL).direction=0;
     (*mR).direction=1;
     (*mL).power=i;   
     (*mR).power=i;
     setMotorPWM(mL);
     setMotorPWM(mR); 
-    __delay_ms(137); //turn at the specified power for 135ms
+    __delay_ms(102); //turn at the specified power for 135ms
     }
-    for(i=20;i>5;i-=5){ //decrease power from 25 to 10 in steps of 5
+    for(i=27;i>12;i-=5){ //decrease power from 25 to 10 in steps of 5
     (*mL).direction=0;
     (*mR).direction=1;
     (*mL).power=i;   
     (*mR).power=i;
     setMotorPWM(mL);
     setMotorPWM(mR); 
-    __delay_ms(146); //turn at the specified power for 160ms
-    if(i==10){__delay_ms(350);} //turn with 10 power for another 120ms
+    __delay_ms(100); //turn at the specified power for 160ms
+    //if(i==10){__delay_ms(150);} //turn with 10 power for another 120ms
     }
     // */
 }
@@ -189,7 +189,7 @@ void turnRight(struct DC_motor *mL, struct DC_motor *mR)
     setMotorPWM(mL);
     setMotorPWM(mR); 
     __delay_ms(105); //turn at the specified power for 160ms
-    if(i==10){__delay_ms(150);} //turn with 10 power for another 120ms
+    //if(i==10){__delay_ms(150);} //turn with 10 power for another 120ms
     }
 }
 
@@ -204,7 +204,17 @@ void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR)
     setMotorPWM(mR);
     __delay_ms(500);
 }
-void TimedfullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned int time)
+void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR)
+{
+    (*mL).direction=1;
+    (*mR).direction=1;
+    (*mL).power=50;
+    (*mR).power=50;
+    setMotorPWM(mL);
+    setMotorPWM(mR);
+    __delay_ms(500);
+}
+void Calibrate(struct DC_motor *mL, struct DC_motor *mR, unsigned int time)
 {
     seconds = 0;
     while (seconds<time)

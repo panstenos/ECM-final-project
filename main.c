@@ -43,7 +43,7 @@ void main(void){
             for (i=0;0<4;i++)
             {
                 __delay_ms(1000);
-                turnRight(&motorL, &motorR);
+                turnLeft(&motorL, &motorR);
                 stop(&motorL,&motorR);
                 //__delay_ms(1000);
             }
