@@ -20,6 +20,8 @@ void main(void){
     Interrupts_init();
     color_click_init();
     
+    TRISHbits.TRISH3 = 0;
+    
     /*initDCmotorsPWM(99);
     unsigned int PWMcycle = 99;
     ANSELFbits.ANSELF2 = 0; //turn off analogue input on pin  
@@ -40,9 +42,13 @@ void main(void){
     motorR.PWMperiod=PWMcycle; //store PWMperiod for motor (value of T2PR in this case)*/
        
     while(1){
-        set_led_color(0b000);
-        __delay_ms(1000);
-        unsigned int color_code = get_wall_presence();
-        color_code += 1;
+        unsigned int wall_presence = get_wall_presence();
+        if(wall_presence == 1){
+            LATHbits.LATH3 = 1;
+            unsigned int color_code = get_color_code();
+            color_code += 1;
+        }else{
+            LATHbits.LATH3 = 0;
+        }
     }
 }

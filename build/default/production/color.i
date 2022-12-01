@@ -24306,8 +24306,8 @@ static struct RGB_val White_rule = {100,100,100};
 static struct RGB_val Black_rule = {0,0,0};
 
 static struct RGB_val Color_rules[9];
-static struct RGB_val White_setup = {10492,6997,1904};
-static struct RGB_val Black_setup = {1028,587,161};
+struct RGB_val White_setup = {10492,6997,1904};
+struct RGB_val Black_setup = {1028,587,161};
 
 void color_click_init(void)
 {
@@ -24447,7 +24447,7 @@ void set_led_color(unsigned int color){
     }
 }
 
-unsigned int wait_time = 500;
+unsigned int wait_time = 220;
 unsigned int get_color_code(){
 
 
@@ -24508,12 +24508,12 @@ void calibrate_white(){
 }
 
 unsigned int get_wall_presence(){
-    struct RGB_val wall_RGB;
-    wall_RGB.R = color_read_Red();
-    wall_RGB.G = color_read_Green();
-    wall_RGB.B = color_read_Blue();
-
     set_led_color(0b000);
-    wall_RGB.R += 1;
-    return 1;
+    _delay((unsigned long)((wait_time)*(64000000/4000.0)));
+    unsigned int clear1 = color_read_Clear();
+    set_led_color(0b111);
+    _delay((unsigned long)((wait_time)*(64000000/4000.0)));
+    unsigned int clear2 = color_read_Clear();
+    set_led_color(0b000);
+    return clear2 >= clear1*4;
 }

@@ -25,8 +25,6 @@ static struct RGB_val Color_rules[9];
 struct RGB_val White_setup = {10492,6997,1904};
 struct RGB_val Black_setup = {1028,587,161};
 
-unsigned int White_treshold = 740;
-
 void color_click_init(void)
 {   
     //setup colour sensor via i2c interface
@@ -172,7 +170,7 @@ void set_led_color(unsigned int color){
     }
 }
 
-unsigned int wait_time = 500;
+unsigned int wait_time = 220;
 unsigned int get_color_code(){ 
     // Returns an int representing the detected color
     //Red -> 0 | Green -> 1 | Blue -> 2 | Yellow -> 3 | Pink -> 4 | Orange -> 5 | Lightblue -> 6 | White -> 7 | Black -> 8
@@ -220,9 +218,6 @@ void calibrate_black(){
 }
 
 void calibrate_white(){
-    set_led_color(0b000);
-    __delay_ms(wait_time);
-    White_treshold = (color_read_Red() + color_read_Blue() + color_read_Green())*1.3;
     set_led_color(0b100);
     __delay_ms(wait_time);
     White_setup.R = color_read_Red();
@@ -236,6 +231,12 @@ void calibrate_white(){
 }
 
 unsigned int get_wall_presence(){
-    unsigned int light_value = color_read_Red() + color_read_Green() + color_read_Blue();
-    return light_value < White_treshold;
+    set_led_color(0b000);
+    __delay_ms(wait_time);
+    unsigned int clear1 = color_read_Clear(); //Clear value with led turned off
+    set_led_color(0b111);
+    __delay_ms(wait_time);
+    unsigned int clear2 = color_read_Clear(); //Clear value with led turned on
+    set_led_color(0b000);
+    return clear2 >= clear1*8;
 }

@@ -2227,8 +2227,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;color.c: 24: static struct RGB_val Color_rules[9];
 [v _Color_rules `S2015 ~T0 @X0 -> 9 `i s ]
 "25
-[; ;color.c: 25: static struct RGB_val White_setup = {10492,6997,1904};
-[v _White_setup `S2015 ~T0 @X0 1 s ]
+[; ;color.c: 25: struct RGB_val White_setup = {10492,6997,1904};
+[v _White_setup `S2015 ~T0 @X0 1 e ]
 [i _White_setup
 :U ..
 :U ..
@@ -2239,8 +2239,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 "26
-[; ;color.c: 26: static struct RGB_val Black_setup = {1028,587,161};
-[v _Black_setup `S2015 ~T0 @X0 1 s ]
+[; ;color.c: 26: struct RGB_val Black_setup = {1028,587,161};
+[v _Black_setup `S2015 ~T0 @X0 1 e ]
 [i _Black_setup
 :U ..
 :U ..
@@ -2662,10 +2662,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 2033 ]
 }
 "173
-[; ;color.c: 173: unsigned int wait_time = 500;
+[; ;color.c: 173: unsigned int wait_time = 220;
 [v _wait_time `ui ~T0 @X0 1 e ]
 [i _wait_time
--> -> 500 `i `ui
+-> -> 220 `i `ui
 ]
 "174
 [; ;color.c: 174: unsigned int get_color_code(){
@@ -2852,26 +2852,31 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _get_wall_presence ]
 [f ]
 "234
-[; ;color.c: 234:     struct RGB_val wall_RGB;
-[v _wall_RGB `S2015 ~T0 @X0 1 a ]
-"235
-[; ;color.c: 235:     wall_RGB.R = color_read_Red();
-[e = . _wall_RGB 0 -> ( _color_read_Red ..  `ul ]
-"236
-[; ;color.c: 236:     wall_RGB.G = color_read_Green();
-[e = . _wall_RGB 1 -> ( _color_read_Green ..  `ul ]
-"237
-[; ;color.c: 237:     wall_RGB.B = color_read_Blue();
-[e = . _wall_RGB 2 -> ( _color_read_Blue ..  `ul ]
-"239
-[; ;color.c: 239:     set_led_color(0b000);
+[; ;color.c: 234:     set_led_color(0b000);
 [e ( _set_led_color (1 -> -> 0 `i `ui ]
+"235
+[; ;color.c: 235:     _delay((unsigned long)((wait_time)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> _wait_time `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"236
+[; ;color.c: 236:     unsigned int clear1 = color_read_Clear();
+[v _clear1 `ui ~T0 @X0 1 a ]
+[e = _clear1 ( _color_read_Clear ..  ]
+"237
+[; ;color.c: 237:     set_led_color(0b111);
+[e ( _set_led_color (1 -> -> 7 `i `ui ]
+"238
+[; ;color.c: 238:     _delay((unsigned long)((wait_time)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> _wait_time `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"239
+[; ;color.c: 239:     unsigned int clear2 = color_read_Clear();
+[v _clear2 `ui ~T0 @X0 1 a ]
+[e = _clear2 ( _color_read_Clear ..  ]
 "240
-[; ;color.c: 240:     wall_RGB.R += 1;
-[e =+ . _wall_RGB 0 -> -> -> 1 `i `l `ul ]
+[; ;color.c: 240:     set_led_color(0b000);
+[e ( _set_led_color (1 -> -> 0 `i `ui ]
 "241
-[; ;color.c: 241:     return 1;
-[e ) -> -> 1 `i `ui ]
+[; ;color.c: 241:     return clear2 >= clear1*4;
+[e ) -> -> >= _clear2 * _clear1 -> -> 4 `i `ui `i `ui ]
 [e $UE 2047  ]
 "242
 [; ;color.c: 242: }
