@@ -24320,7 +24320,7 @@ void main(void){
     color_click_init();
 # 42 "main.c"
     while(1){
-        set_led_color(0b111);
+        set_led_color(0b000);
         _delay((unsigned long)((1000)*(64000000/4000.0)));
         unsigned int color_code = get_wall_presence();
         color_code += 1;

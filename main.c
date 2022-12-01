@@ -40,7 +40,7 @@ void main(void){
     motorR.PWMperiod=PWMcycle; //store PWMperiod for motor (value of T2PR in this case)*/
        
     while(1){
-        set_led_color(0b111);
+        set_led_color(0b000);
         __delay_ms(1000);
         unsigned int color_code = get_wall_presence();
         color_code += 1;

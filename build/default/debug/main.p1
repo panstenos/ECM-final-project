@@ -2022,8 +2022,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 2018 ]
 {
 "43
-[; ;main.c: 43:         set_led_color(0b111);
-[e ( _set_led_color (1 -> -> 7 `i `ui ]
+[; ;main.c: 43:         set_led_color(0b000);
+[e ( _set_led_color (1 -> -> 0 `i `ui ]
 "44
 [; ;main.c: 44:         _delay((unsigned long)((1000)*(64000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
