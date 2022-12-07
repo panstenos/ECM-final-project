@@ -311,8 +311,13 @@ void increment_seconds()
 // color 0-8 detecting color; state 0 -> moving forwards 1 -> not moving forwards; list -> add list elements etc.
 void RobotMovement(unsigned int color, unsigned int state, struct DC_motor motorL, struct DC_motor motorR)
 {
+    if(state == 0)
+    {
+        
+    }
     //RED + R90     r
     if(color == 0){
+        // move back a bit
         turnLeft(&motorL, &motorR);
         // add r to the list
     }
