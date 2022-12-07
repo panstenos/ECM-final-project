@@ -10,6 +10,7 @@
 #include "dc_motor.h"
 #include "timers.h"
 #include "interrupts.h"
+#include "color.h"
 
 #define _XTAL_FREQ 64000000 //note intrinsic _delay function is 62.5ns at 64,000,000Hz  
 
@@ -18,7 +19,8 @@ void main(void){
     Interrupts_init();
     initDCmotorsPWM(99);
     unsigned int PWMcycle = 99;
-    
+    color_click_init();
+        
     ANSELFbits.ANSELF2 = 0; //turn off analogue input on pin  
     TRISFbits.TRISF2 = 1; // set F2 to input
     struct DC_motor motorL, motorR; // declare two motor structures
