@@ -24,6 +24,8 @@ static struct RGB_val Black_rule = {0,0,0};
 static struct RGB_val Color_rules[9];
 struct RGB_val White_setup = {10492,6997,1904};
 struct RGB_val Black_setup = {1028,587,161};
+unsigned int wall_coef = 15;
+
 
 void color_click_init(void)
 {   
@@ -215,6 +217,13 @@ void calibrate_black(){
     __delay_ms(wait_time);
     Black_setup.B = color_read_Blue();
     set_led_color(0b000);
+    __delay_ms(wait_time);
+    unsigned int clear1 = color_read_Clear(); //Clear value with led turned off
+    set_led_color(0b111);
+    __delay_ms(wait_time);
+    unsigned int clear2 = color_read_Clear(); //Clear value with led turned on
+    set_led_color(0b000);
+    wall_coef = clear2/clear1/2;
 }
 
 void calibrate_white(){
@@ -238,5 +247,5 @@ unsigned int get_wall_presence(){
     __delay_ms(wait_time);
     unsigned int clear2 = color_read_Clear(); //Clear value with led turned on
     set_led_color(0b000);
-    return clear2 >= clear1*8;
+    return clear2 >= clear1*wall_coef;
 }

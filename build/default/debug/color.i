@@ -24308,6 +24308,8 @@ static struct RGB_val Black_rule = {0,0,0};
 static struct RGB_val Color_rules[9];
 struct RGB_val White_setup = {10492,6997,1904};
 struct RGB_val Black_setup = {1028,587,161};
+unsigned int wall_coef = 15;
+
 
 void color_click_init(void)
 {
@@ -24337,7 +24339,7 @@ void color_click_init(void)
     Color_rules[6] = Lightblue_rule;
     Color_rules[7] = White_rule;
     Color_rules[8] = Black_rule;
-# 64 "color.c"
+# 66 "color.c"
     TRISFbits.TRISF3=1;
     ANSELFbits.ANSELF3=0;
     TRISFbits.TRISF2=1;
@@ -24492,6 +24494,13 @@ void calibrate_black(){
     _delay((unsigned long)((wait_time)*(64000000/4000.0)));
     Black_setup.B = color_read_Blue();
     set_led_color(0b000);
+    _delay((unsigned long)((wait_time)*(64000000/4000.0)));
+    unsigned int clear1 = color_read_Clear();
+    set_led_color(0b111);
+    _delay((unsigned long)((wait_time)*(64000000/4000.0)));
+    unsigned int clear2 = color_read_Clear();
+    set_led_color(0b000);
+    wall_coef = clear2/clear1/2;
 }
 
 void calibrate_white(){
@@ -24515,5 +24524,5 @@ unsigned int get_wall_presence(){
     _delay((unsigned long)((wait_time)*(64000000/4000.0)));
     unsigned int clear2 = color_read_Clear();
     set_led_color(0b000);
-    return clear2 >= clear1*8;
+    return clear2 >= clear1*wall_coef;
 }
