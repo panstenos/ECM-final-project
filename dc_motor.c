@@ -307,3 +307,68 @@ void increment_seconds()
 { //main counter function
     seconds += 1; // increment by the second
 }
+
+// color 0-8 detecting color; state 0 -> moving forwards 1 -> not moving forwards; list -> add list elements etc.
+void RobotMovement(unsigned int color, unsigned int state, struct DC_motor motorL, struct DC_motor motorR)
+{
+    //RED + R90     r
+    if(color == 0){
+        turnLeft(&motorL, &motorR);
+        // add r to the list
+    }
+    //GRE + L90     l
+    if(color == 1){
+        turnRight(&motorL, &motorR);
+        // add l to the list 
+    }
+    //BLU + 180     u
+    if(color == 2){
+        int i;
+        for (i=0;i<2;1++){
+        turnRight(&motorL, &motorR);
+        // add r to the list twice (or l depending on accuracy)
+        }
+    }
+    //YEL + B1R90   -1 , r *
+    if(color == 3){
+        //if the last element of the list is integer greater or equal to a block
+        //  subtract 1 block 
+        //  add r to the list
+        
+        //else
+            //if the last element of the list is r
+            //  change it to l
+            //if the last element of the list is l
+            //  change it to r
+        //  add 0l to the list
+        //  add l to the list
+    }
+    //PIN + B1L90   -1 , l *
+    
+    if(color == 4){
+        //if the last element of the list is integer greater or equal to a block
+        //  subtract 01 block 
+        //  add l to the list
+        
+        //else
+            //if the last element of the list is r
+            //  change it to l
+            //if the last element of the list is l
+            //  change it to r
+        //  add 0l to the list
+        //  add r to the list
+    }
+    //ORA + R135    R
+    if(color == 5){
+        turnRightLong(&motorL, &motorR);
+    }
+    //LIB + L135    L
+    if(color == 6){
+        turnLeftLong(&motorL, &motorR);
+    }    
+    //WHITE
+    if(color == 7){
+        turnLeft(&motorL, &motorR);
+    }
+    
+}
