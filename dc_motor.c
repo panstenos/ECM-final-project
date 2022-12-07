@@ -142,7 +142,6 @@ void turnLeft(struct DC_motor *mL, struct DC_motor *mR)
     __delay_ms(100); //turn at the specified power for 160ms
     //if(i==10){__delay_ms(150);} //turn with 10 power for another 120ms
     }
-    // */
 }
 //function to make the robot turn right 
 void turnRight(struct DC_motor *mL, struct DC_motor *mR)
@@ -193,6 +192,55 @@ void turnRight(struct DC_motor *mL, struct DC_motor *mR)
     }
 }
 
+void turnLeftLong(struct DC_motor *mL, struct DC_motor *mR)
+{ 
+    /* High surface roughness turning */
+    int i;
+    for(i=23;i<38;i+=5){ //increase power from 20 to 30 in steps of 5
+    (*mL).direction=0;
+    (*mR).direction=1;
+    (*mL).power=i;   
+    (*mR).power=i;
+    setMotorPWM(mL);
+    setMotorPWM(mR); 
+    __delay_ms(156); //turn at the specified power for 135ms
+    }
+    for(i=28;i>13;i-=5){ //decrease power from 25 to 10 in steps of 5
+    (*mL).direction=0;
+    (*mR).direction=1;
+    (*mL).power=i;   
+    (*mR).power=i;
+    setMotorPWM(mL);
+    setMotorPWM(mR); 
+    __delay_ms(150); //turn at the specified power for 160ms
+    //if(i==10){__delay_ms(150);} //turn with 10 power for another 120ms
+    }
+}
+
+void turnRightLong(struct DC_motor *mL, struct DC_motor *mR)
+{  
+    /*  High surface roughness turning */
+    int i;
+    for(i=25;i<40;i+=5){ //increase power from 20 to 30 in steps of 5
+    (*mL).direction=1;
+    (*mR).direction=0;
+    (*mL).power=i;   
+    (*mR).power=i;
+    setMotorPWM(mL);
+    setMotorPWM(mR); 
+    __delay_ms(161); //turn at the specified power for 135ms
+    }
+    for(i=30;i>15;i-=5){ //decrease power from 25 to 10 in steps of 5
+    (*mL).direction=1;
+    (*mR).direction=0;
+    (*mL).power=i;   
+    (*mR).power=i;
+    setMotorPWM(mL);
+    setMotorPWM(mR); 
+    __delay_ms(157); //turn at the specified power for 160ms
+    //if(i==10){__delay_ms(150);} //turn with 10 power for another 120ms
+    }
+}
 //function to make the robot go straight
 void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR)
 {
