@@ -2,7 +2,8 @@
 #include "dc_motor.h"
 
 int seconds = 0;
-
+unsigned int timer_list[50];
+unsigned int index = 0;
 // function initialise T2 and CCP for DC motor control
 void initDCmotorsPWM(int PWMperiod){
     //initialise your TRIS and LAT registers for PWM  
@@ -269,8 +270,8 @@ void moveBack(struct DC_motor *mL, struct DC_motor *mR, unsigned int time)
     seconds = 0; // reset the seconds timer
     while (seconds<time)
     {
-        (*mL).direction=-1;
-        (*mR).direction=-1;
+        (*mL).direction=0;
+        (*mR).direction=0;
         (*mL).power=50;
         (*mR).power=50;
         setMotorPWM(mL);
@@ -278,6 +279,17 @@ void moveBack(struct DC_motor *mL, struct DC_motor *mR, unsigned int time)
         __delay_ms(500);
     }
 }
+
+void moveForward(struct DC_motor *mL, struct DC_motor *mR)
+{
+    (*mL).direction=-1;
+    (*mR).direction=-1;
+    (*mL).power=50;
+    (*mR).power=50;
+    setMotorPWM(mL);
+    setMotorPWM(mR);
+}
+
 
 void Calibrate(struct DC_motor *mL, struct DC_motor *mR)
 {
@@ -312,8 +324,12 @@ void increment_seconds()
 void RobotMovement(unsigned int color, unsigned int state, struct DC_motor motorL, struct DC_motor motorR)
 {
     if(state == 0)
-    {
-        
+    {       
+        seconds = 0;
+    }
+    if(state == 1){
+        timer_list[index] = seconds;
+        index++;
     }
     //RED + R90     r
     if(color == 0){
@@ -329,7 +345,7 @@ void RobotMovement(unsigned int color, unsigned int state, struct DC_motor motor
     //BLU + 180     u
     if(color == 2){
         int i;
-        for (i=0;i<2;1++){
+        for (i=0;i<2;i++){
         turnRight(&motorL, &motorR);
         // add r to the list twice (or l depending on accuracy)
         }

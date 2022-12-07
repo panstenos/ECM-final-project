@@ -26,7 +26,9 @@ void fullSpeedAhead(DC_motor *mL, DC_motor *mR);
 void TimedfullSpeedAhead(DC_motor *mL, DC_motor *mR, unsigned int);
 void moveBack(DC_motor *mL, DC_motor *mR, unsigned int);
 void Calibrate(DC_motor *mL, DC_motor *mR);
-void RobotMovement(unsigned int, unsigned int, struct, struct);
+void RobotMovement(unsigned int, unsigned int, DC_motor, DC_motor);
 void increment_seconds(void);
+
+void moveForward(struct DC_motor *mL, struct DC_motor *mR);
 
 #endif

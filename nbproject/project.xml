@@ -4,8 +4,12 @@
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
             <name>final-project-panagiotis</name>
-            <creation-uuid>943e4bb8-9836-4603-a513-c99e953ef8d9</creation-uuid>
+            <creation-uuid>7786f107-128b-4463-99a2-4a766d46a322</creation-uuid>
             <make-project-type>0</make-project-type>
+            <c-extensions>c</c-extensions>
+            <cpp-extensions/>
+            <header-extensions>h</header-extensions>
+            <asminc-extensions/>
             <sourceEncoding>ISO-8859-1</sourceEncoding>
             <make-dep-projects/>
             <sourceRootList>

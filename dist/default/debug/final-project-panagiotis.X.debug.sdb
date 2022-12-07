@@ -61,9 +61,23 @@
 [v _calibrate_white calibrate_white `(v  1 e 1 0 ]
 "242
 [v _get_wall_presence get_wall_presence `(ui  1 e 2 0 ]
-"67 C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
+"8 C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
+[v _initDCmotorsPWM initDCmotorsPWM `(v  1 e 1 0 ]
+"68
 [v _setMotorPWM setMotorPWM `(v  1 e 1 0 ]
-"220
+"91
+[v _stop stop `(v  1 e 1 0 ]
+"100
+[v _turnLeft turnLeft `(v  1 e 1 0 ]
+"148
+[v _turnRight turnRight `(v  1 e 1 0 ]
+"196
+[v _turnLeftLong turnLeftLong `(v  1 e 1 0 ]
+"221
+[v _turnRightLong turnRightLong `(v  1 e 1 0 ]
+"283
+[v _moveForward moveForward `(v  1 e 1 0 ]
+"318
 [v _increment_seconds increment_seconds `(v  1 e 1 0 ]
 "4 C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
 [v _I2C_2_Master_Init I2C_2_Master_Init `(v  1 e 1 0 ]
@@ -83,15 +97,15 @@
 [v _Interrupts_init Interrupts_init `(v  1 e 1 0 ]
 "22
 [v _HighISR HighISR `IIH(v  1 e 1 0 ]
-"18 C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
+"17 C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
 [v _main main `(v  1 e 1 0 ]
 "7 C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\timers.c
 [v _Timer0_init Timer0_init `(v  1 e 1 0 ]
-"3797 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h
+"3797 C:\Program Files\Microchip\xc8\v2.40\pic\include\proc\pic18f67k40.h
 [v _SSP2CLKPPS SSP2CLKPPS `VEuc  1 e 1 @3612 ]
 "3863
 [v _SSP2DATPPS SSP2DATPPS `VEuc  1 e 1 @3613 ]
-[s S1452 . 1 `uc 1 INT0IE 1 0 :1:0 
+[s S1554 . 1 `uc 1 INT0IE 1 0 :1:0 
 `uc 1 INT1IE 1 0 :1:1 
 `uc 1 INT2IE 1 0 :1:2 
 `uc 1 INT3IE 1 0 :1:3 
@@ -99,9 +113,9 @@
 `uc 1 TMR0IE 1 0 :1:5 
 ]
 "4558
-[u S1459 . 1 `S1452 1 . 1 0 ]
-[v _PIE0bits PIE0bits `VES1459  1 e 1 @3625 ]
-[s S1469 . 1 `uc 1 C1IE 1 0 :1:0 
+[u S1561 . 1 `S1554 1 . 1 0 ]
+[v _PIE0bits PIE0bits `VES1561  1 e 1 @3625 ]
+[s S1571 . 1 `uc 1 C1IE 1 0 :1:0 
 `uc 1 C2IE 1 0 :1:1 
 `uc 1 C3IE 1 0 :1:2 
 `uc 1 . 1 0 :3:3 
@@ -109,12 +123,12 @@
 `uc 1 HLVDIE 1 0 :1:7 
 ]
 "4660
-[s S1476 . 1 `uc 1 . 1 0 :6:0 
+[s S1578 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 CMIE 1 0 :1:6 
 ]
-[u S1479 . 1 `S1469 1 . 1 0 `S1476 1 . 1 0 ]
-[v _PIE2bits PIE2bits `VES1479  1 e 1 @3627 ]
-[s S1493 . 1 `uc 1 INT0IF 1 0 :1:0 
+[u S1581 . 1 `S1571 1 . 1 0 `S1578 1 . 1 0 ]
+[v _PIE2bits PIE2bits `VES1581  1 e 1 @3627 ]
+[s S1595 . 1 `uc 1 INT0IF 1 0 :1:0 
 `uc 1 INT1IF 1 0 :1:1 
 `uc 1 INT2IF 1 0 :1:2 
 `uc 1 INT3IF 1 0 :1:3 
@@ -122,8 +136,8 @@
 `uc 1 TMR0IF 1 0 :1:5 
 ]
 "5103
-[u S1500 . 1 `S1493 1 . 1 0 ]
-[v _PIR0bits PIR0bits `VES1500  1 e 1 @3635 ]
+[u S1602 . 1 `S1595 1 . 1 0 ]
+[v _PIR0bits PIR0bits `VES1602  1 e 1 @3635 ]
 "8209
 [v _RC7PPS RC7PPS `VEuc  1 e 1 @3689 ]
 "8509
@@ -136,7 +150,7 @@
 [v _RE4PPS RE4PPS `VEuc  1 e 1 @3702 ]
 "9709
 [v _RG6PPS RG6PPS `VEuc  1 e 1 @3720 ]
-[s S1268 . 1 `uc 1 ANSELD0 1 0 :1:0 
+[s S1370 . 1 `uc 1 ANSELD0 1 0 :1:0 
 `uc 1 ANSELD1 1 0 :1:1 
 `uc 1 ANSELD2 1 0 :1:2 
 `uc 1 ANSELD3 1 0 :1:3 
@@ -146,8 +160,8 @@
 `uc 1 ANSELD7 1 0 :1:7 
 ]
 "11514
-[u S1277 . 1 `S1268 1 . 1 0 ]
-[v _ANSELDbits ANSELDbits `VES1277  1 e 1 @3751 ]
+[u S1379 . 1 `S1370 1 . 1 0 ]
+[v _ANSELDbits ANSELDbits `VES1379  1 e 1 @3751 ]
 [s S107 . 1 `uc 1 ANSELF0 1 0 :1:0 
 `uc 1 ANSELF1 1 0 :1:1 
 `uc 1 ANSELF2 1 0 :1:2 
@@ -166,19 +180,19 @@
 [v _SSP2ADD SSP2ADD `VEuc  1 e 1 @3798 ]
 "14407
 [v _SSP2STAT SSP2STAT `VEuc  1 e 1 @3800 ]
-[s S1201 . 1 `uc 1 SSPM 1 0 :4:0 
+[s S1303 . 1 `uc 1 SSPM 1 0 :4:0 
 `uc 1 CKP 1 0 :1:4 
 `uc 1 SSPEN 1 0 :1:5 
 `uc 1 SSPOV 1 0 :1:6 
 `uc 1 WCOL 1 0 :1:7 
 ]
 "14891
-[s S1207 . 1 `uc 1 SSPM0 1 0 :1:0 
+[s S1309 . 1 `uc 1 SSPM0 1 0 :1:0 
 `uc 1 SSPM1 1 0 :1:1 
 `uc 1 SSPM2 1 0 :1:2 
 `uc 1 SSPM3 1 0 :1:3 
 ]
-[s S1212 . 1 `uc 1 SSPM02 1 0 :1:0 
+[s S1314 . 1 `uc 1 SSPM02 1 0 :1:0 
 `uc 1 SSPM12 1 0 :1:1 
 `uc 1 SSPM22 1 0 :1:2 
 `uc 1 SSPM32 1 0 :1:3 
@@ -187,11 +201,11 @@
 `uc 1 SSPOV2 1 0 :1:6 
 `uc 1 WCOL2 1 0 :1:7 
 ]
-[u S1221 . 1 `S1201 1 . 1 0 `S1207 1 . 1 0 `S1212 1 . 1 0 ]
-[v _SSP2CON1bits SSP2CON1bits `VES1221  1 e 1 @3801 ]
+[u S1323 . 1 `S1303 1 . 1 0 `S1309 1 . 1 0 `S1314 1 . 1 0 ]
+[v _SSP2CON1bits SSP2CON1bits `VES1323  1 e 1 @3801 ]
 "14981
 [v _SSP2CON2 SSP2CON2 `VEuc  1 e 1 @3802 ]
-[s S1295 . 1 `uc 1 SEN 1 0 :1:0 
+[s S1397 . 1 `uc 1 SEN 1 0 :1:0 
 `uc 1 RSEN 1 0 :1:1 
 `uc 1 PEN 1 0 :1:2 
 `uc 1 RCEN 1 0 :1:3 
@@ -201,17 +215,17 @@
 `uc 1 GCEN 1 0 :1:7 
 ]
 "15028
-[s S1304 . 1 `uc 1 . 1 0 :1:0 
+[s S1406 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADMSK 1 0 :5:1 
 ]
-[s S1307 . 1 `uc 1 . 1 0 :1:0 
+[s S1409 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADMSK1 1 0 :1:1 
 `uc 1 ADMSK2 1 0 :1:2 
 `uc 1 ADMSK3 1 0 :1:3 
 `uc 1 ADMSK4 1 0 :1:4 
 `uc 1 ADMSK5 1 0 :1:5 
 ]
-[s S1314 . 1 `uc 1 SEN2 1 0 :1:0 
+[s S1416 . 1 `uc 1 SEN2 1 0 :1:0 
 `uc 1 ADMSK12 1 0 :1:1 
 `uc 1 ADMSK22 1 0 :1:2 
 `uc 1 ADMSK32 1 0 :1:3 
@@ -220,15 +234,15 @@
 `uc 1 ACKSTAT2 1 0 :1:6 
 `uc 1 GCEN2 1 0 :1:7 
 ]
-[s S1323 . 1 `uc 1 . 1 0 :1:0 
+[s S1425 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 RSEN2 1 0 :1:1 
 `uc 1 PEN2 1 0 :1:2 
 `uc 1 RCEN2 1 0 :1:3 
 `uc 1 ADMSK42 1 0 :1:4 
 `uc 1 ADMSK52 1 0 :1:5 
 ]
-[u S1330 . 1 `S1295 1 . 1 0 `S1304 1 . 1 0 `S1307 1 . 1 0 `S1314 1 . 1 0 `S1323 1 . 1 0 ]
-[v _SSP2CON2bits SSP2CON2bits `VES1330  1 e 1 @3802 ]
+[u S1432 . 1 `S1397 1 . 1 0 `S1406 1 . 1 0 `S1409 1 . 1 0 `S1416 1 . 1 0 `S1425 1 . 1 0 ]
+[v _SSP2CON2bits SSP2CON2bits `VES1432  1 e 1 @3802 ]
 "21099
 [v _CCPR4H CCPR4H `VEuc  1 e 1 @3873 ]
 [s S915 . 1 `uc 1 MODE 1 0 :4:0 
@@ -374,31 +388,6 @@
 ]
 [u S203 . 1 `S188 1 . 1 0 `S197 1 . 1 0 ]
 [v _LATGbits LATGbits `VES203  1 e 1 @3967 ]
-[s S1561 . 1 `uc 1 LATH0 1 0 :1:0 
-`uc 1 LATH1 1 0 :1:1 
-`uc 1 LATH2 1 0 :1:2 
-`uc 1 LATH3 1 0 :1:3 
-]
-"29265
-[s S1566 . 1 `uc 1 LH0 1 0 :1:0 
-`uc 1 LH1 1 0 :1:1 
-`uc 1 LH2 1 0 :1:2 
-`uc 1 LH3 1 0 :1:3 
-]
-[s S1571 . 1 `uc 1 . 1 0 :4:0 
-`uc 1 LH4 1 0 :1:4 
-]
-[s S1574 . 1 `uc 1 . 1 0 :5:0 
-`uc 1 LH5 1 0 :1:5 
-]
-[s S1577 . 1 `uc 1 . 1 0 :6:0 
-`uc 1 LH6 1 0 :1:6 
-]
-[s S1580 . 1 `uc 1 . 1 0 :7:0 
-`uc 1 LH7 1 0 :1:7 
-]
-[u S1583 . 1 `S1561 1 . 1 0 `S1566 1 . 1 0 `S1571 1 . 1 0 `S1574 1 . 1 0 `S1577 1 . 1 0 `S1580 1 . 1 0 ]
-[v _LATHbits LATHbits `VES1583  1 e 1 @3968 ]
 [s S86 . 1 `uc 1 TRISA0 1 0 :1:0 
 `uc 1 TRISA1 1 0 :1:1 
 `uc 1 TRISA2 1 0 :1:2 
@@ -423,7 +412,7 @@
 "29596
 [u S504 . 1 `S495 1 . 1 0 ]
 [v _TRISCbits TRISCbits `VES504  1 e 1 @3971 ]
-[s S1247 . 1 `uc 1 TRISD0 1 0 :1:0 
+[s S1349 . 1 `uc 1 TRISD0 1 0 :1:0 
 `uc 1 TRISD1 1 0 :1:1 
 `uc 1 TRISD2 1 0 :1:2 
 `uc 1 TRISD3 1 0 :1:3 
@@ -433,8 +422,8 @@
 `uc 1 TRISD7 1 0 :1:7 
 ]
 "29718
-[u S1256 . 1 `S1247 1 . 1 0 ]
-[v _TRISDbits TRISDbits `VES1256  1 e 1 @3972 ]
+[u S1358 . 1 `S1349 1 . 1 0 ]
+[v _TRISDbits TRISDbits `VES1358  1 e 1 @3972 ]
 [s S474 . 1 `uc 1 TRISE0 1 0 :1:0 
 `uc 1 TRISE1 1 0 :1:1 
 `uc 1 TRISE2 1 0 :1:2 
@@ -471,14 +460,6 @@
 "30019
 [u S74 . 1 `S65 1 . 1 0 ]
 [v _TRISGbits TRISGbits `VES74  1 e 1 @3975 ]
-[s S1547 . 1 `uc 1 TRISH0 1 0 :1:0 
-`uc 1 TRISH1 1 0 :1:1 
-`uc 1 TRISH2 1 0 :1:2 
-`uc 1 TRISH3 1 0 :1:3 
-]
-"30072
-[u S1552 . 1 `S1547 1 . 1 0 ]
-[v _TRISHbits TRISHbits `VES1552  1 e 1 @3976 ]
 [s S128 . 1 `uc 1 RF0 1 0 :1:0 
 `uc 1 RF1 1 0 :1:1 
 `uc 1 RF2 1 0 :1:2 
@@ -658,29 +639,29 @@
 [v _TMR0L TMR0L `VEuc  1 e 1 @4051 ]
 "39327
 [v _TMR0H TMR0H `VEuc  1 e 1 @4052 ]
-[s S1681 . 1 `uc 1 T0OUTPS 1 0 :4:0 
+[s S1765 . 1 `uc 1 T0OUTPS 1 0 :4:0 
 `uc 1 T016BIT 1 0 :1:4 
 `uc 1 T0OUT 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 `uc 1 T0EN 1 0 :1:7 
 ]
 "39601
-[s S1687 . 1 `uc 1 T0OUTPS0 1 0 :1:0 
+[s S1771 . 1 `uc 1 T0OUTPS0 1 0 :1:0 
 `uc 1 T0OUTPS1 1 0 :1:1 
 `uc 1 T0OUTPS2 1 0 :1:2 
 `uc 1 T0OUTPS3 1 0 :1:3 
 ]
 "39601
-[u S1692 . 1 `S1681 1 . 1 0 `S1687 1 . 1 0 ]
+[u S1776 . 1 `S1765 1 . 1 0 `S1771 1 . 1 0 ]
 "39601
 "39601
-[v _T0CON0bits T0CON0bits `VES1692  1 e 1 @4053 ]
-[s S1633 . 1 `uc 1 T0CKPS 1 0 :4:0 
+[v _T0CON0bits T0CON0bits `VES1776  1 e 1 @4053 ]
+[s S1717 . 1 `uc 1 T0CKPS 1 0 :4:0 
 `uc 1 T0ASYNC 1 0 :1:4 
 `uc 1 T0CS 1 0 :3:5 
 ]
 "39677
-[s S1637 . 1 `uc 1 T0CKPS0 1 0 :1:0 
+[s S1721 . 1 `uc 1 T0CKPS0 1 0 :1:0 
 `uc 1 T0CKPS1 1 0 :1:1 
 `uc 1 T0CKPS2 1 0 :1:2 
 `uc 1 T0CKPS3 1 0 :1:3 
@@ -690,20 +671,20 @@
 `uc 1 T0CS2 1 0 :1:7 
 ]
 "39677
-[s S1646 . 1 `uc 1 T0PS0 1 0 :1:0 
+[s S1730 . 1 `uc 1 T0PS0 1 0 :1:0 
 `uc 1 T0PS1 1 0 :1:1 
 `uc 1 T0PS2 1 0 :1:2 
 `uc 1 T0PS3 1 0 :1:3 
 ]
 "39677
-[s S1651 . 1 `uc 1 T0PS 1 0 :4:0 
+[s S1735 . 1 `uc 1 T0PS 1 0 :4:0 
 ]
 "39677
-[u S1653 . 1 `S1633 1 . 1 0 `S1637 1 . 1 0 `S1646 1 . 1 0 `S1651 1 . 1 0 ]
+[u S1737 . 1 `S1717 1 . 1 0 `S1721 1 . 1 0 `S1730 1 . 1 0 `S1735 1 . 1 0 ]
 "39677
 "39677
-[v _T0CON1bits T0CON1bits `VES1653  1 e 1 @4054 ]
-[s S1413 . 1 `uc 1 INT0EDG 1 0 :1:0 
+[v _T0CON1bits T0CON1bits `VES1737  1 e 1 @4054 ]
+[s S1515 . 1 `uc 1 INT0EDG 1 0 :1:0 
 `uc 1 INT1EDG 1 0 :1:1 
 `uc 1 INT2EDG 1 0 :1:2 
 `uc 1 INT3EDG 1 0 :1:3 
@@ -713,20 +694,20 @@
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
 "40500
-[s S1422 . 1 `uc 1 . 1 0 :6:0 
+[s S1524 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
 "40500
-[s S1426 . 1 `uc 1 . 1 0 :6:0 
+[s S1528 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
 "40500
-[u S1430 . 1 `S1413 1 . 1 0 `S1422 1 . 1 0 `S1426 1 . 1 0 ]
+[u S1532 . 1 `S1515 1 . 1 0 `S1524 1 . 1 0 `S1528 1 . 1 0 ]
 "40500
 "40500
-[v _INTCONbits INTCONbits `VES1430  1 e 1 @4082 ]
+[v _INTCONbits INTCONbits `VES1532  1 e 1 @4082 ]
 [s S24 RGB_val 12 `ul 1 R 4 0 `ul 1 G 4 4 `ul 1 B 4 8 ]
 "12 C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
 [v _RGB RGB `S24  1 e 12 0 ]
@@ -758,14 +739,53 @@
 [v _wall_coef wall_coef `ui  1 e 2 0 ]
 "4 C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
 [v _seconds seconds `i  1 e 2 0 ]
-"18 C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
+"5
+[v _timer_list timer_list `[50]ui  1 e 100 0 ]
+"6
+[v _index index `ui  1 e 2 0 ]
+"17 C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"48
+"46
 [v main@color_code color_code `ui  1 a 2 56 ]
-"45
-[v main@wall_presence wall_presence `ui  1 a 2 58 ]
-"54
+[s S1015 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
+"26
+[v main@motorR motorR `S1015  1 a 9 67 ]
+[v main@motorL motorL `S1015  1 a 9 58 ]
+"51
+} 0
+"91 C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
+[v _stop stop `(v  1 e 1 0 ]
+{
+[s S1015 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
+[v stop@mL mL `*.39S1015  1 p 2 19 ]
+[v stop@mR mR `*.39S1015  1 p 2 21 ]
+"97
+} 0
+"283
+[v _moveForward moveForward `(v  1 e 1 0 ]
+{
+[s S1015 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
+[v moveForward@mL mL `*.39S1015  1 p 2 19 ]
+[v moveForward@mR mR `*.39S1015  1 p 2 21 ]
+"291
+} 0
+"68
+[v _setMotorPWM setMotorPWM `(v  1 e 1 0 ]
+{
+"70
+[v setMotorPWM@negDuty negDuty `uc  1 a 1 18 ]
+[v setMotorPWM@posDuty posDuty `uc  1 a 1 17 ]
+[s S1015 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
+"68
+[v setMotorPWM@m m `*.39S1015  1 p 2 13 ]
+"88
+} 0
+"8
+[v _initDCmotorsPWM initDCmotorsPWM `(v  1 e 1 0 ]
+{
+[v initDCmotorsPWM@PWMperiod PWMperiod `i  1 p 2 0 ]
+"65
 } 0
 "242 C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\color.c
 [v _get_wall_presence get_wall_presence `(ui  1 e 2 0 ]
@@ -862,9 +882,9 @@
 [v _calibrate_black calibrate_black `(v  1 e 1 0 ]
 {
 "224
-[v calibrate_black@clear2 clear2 `ui  1 a 2 15 ]
+[v calibrate_black@clear2 clear2 `ui  1 a 2 17 ]
 "221
-[v calibrate_black@clear1 clear1 `ui  1 a 2 13 ]
+[v calibrate_black@clear1 clear1 `ui  1 a 2 15 ]
 "227
 } 0
 "154
@@ -946,12 +966,12 @@
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
 {
 "10
-[v ___lwdiv@quotient quotient `ui  1 a 2 4 ]
+[v ___lwdiv@quotient quotient `ui  1 a 2 10 ]
 "11
-[v ___lwdiv@counter counter `uc  1 a 1 6 ]
+[v ___lwdiv@counter counter `uc  1 a 1 12 ]
 "7
-[v ___lwdiv@dividend dividend `ui  1 p 2 0 ]
-[v ___lwdiv@divisor divisor `ui  1 p 2 2 ]
+[v ___lwdiv@dividend dividend `ui  1 p 2 6 ]
+[v ___lwdiv@divisor divisor `ui  1 p 2 8 ]
 "30
 } 0
 "4 C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\i2c.c
@@ -962,7 +982,7 @@
 "7 C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\timers.c
 [v _Timer0_init Timer0_init `(v  1 e 1 0 ]
 {
-"18
+"19
 } 0
 "10 C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\interrupts.c
 [v _Interrupts_init Interrupts_init `(v  1 e 1 0 ]
@@ -974,8 +994,8 @@
 {
 "32
 } 0
-"220 C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
+"318 C:\Users\arthu\OneDrive\Imperial College London\Courses\Embedded C for Microcontrollers\final-project-panagiotis.X\dc_motor.c
 [v _increment_seconds increment_seconds `(v  1 e 1 0 ]
 {
-"223
+"321
 } 0

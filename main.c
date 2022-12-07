@@ -38,28 +38,16 @@ void main(void){
     motorR.negDutyHighByte=(unsigned char *)(&CCPR4H); //store address of CCP2 duty high byte
     motorR.PWMperiod=PWMcycle; //store PWMperiod for motor (value of T2PR in this case)
     
-    while(1){    
-        if (!PORTFbits.RF2) // run when F2 is pressed
-        {
-        /*
-            int i;
-            for (i=0;i<4;i++)
-            {
-                __delay_ms(1000);
-                turnLeft(&motorL, &motorR);
-                stop(&motorL,&motorR);
-                //__delay_ms(1000);
-            }
-            __delay_ms(1000);
-            Calibrate(&motorL, &motorR);
+    moveForward(&motorL,&motorR);
+    while(1){
+        if(get_wall_presence() == 1){
             stop(&motorL,&motorR);
-        */
-            moveBack(&motorL, &motorR, 30);   
-            
+            //RobotMovement(get_color_code(), 1, &motorL, &motorR);
+            unsigned int color_code = get_color_code();
+            moveBack(&motorL,&motorR,20);
+            moveForward(&motorL,&motorR);
         }
-    }
-    
-    
+    }    
 }
 
 // fetching test
