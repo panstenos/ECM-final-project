@@ -23,7 +23,7 @@ void __interrupt(high_priority) HighISR()
 {   
     if(PIR0bits.TMR0IF == 1){//check the interrupt flag
     increment_seconds(); //call the function to increment the seconds
-    // set the timer to reset at 3035 every time the it overflows
+    // set the timer to reset at 38375 every time the it overflows to measure 1/10 of a second
     TMR0H=0b11100111;            
     TMR0L=0b10010101;
 

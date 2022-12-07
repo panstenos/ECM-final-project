@@ -123,26 +123,25 @@ void turnLeft(struct DC_motor *mL, struct DC_motor *mR)
     
     /* High surface roughness turning */
     int i;
-    for(i=20;i<30;i+=5){ //increase power from 20 to 30 in steps of 5
+    for(i=23;i<38;i+=5){ //increase power from 20 to 30 in steps of 5
     (*mL).direction=0;
     (*mR).direction=1;
     (*mL).power=i;   
     (*mR).power=i;
     setMotorPWM(mL);
     setMotorPWM(mR); 
-    __delay_ms(137); //turn at the specified power for 135ms
+    __delay_ms(104); //turn at the specified power for 135ms
     }
-    for(i=20;i>5;i-=5){ //decrease power from 25 to 10 in steps of 5
+    for(i=28;i>13;i-=5){ //decrease power from 25 to 10 in steps of 5
     (*mL).direction=0;
     (*mR).direction=1;
     (*mL).power=i;   
     (*mR).power=i;
     setMotorPWM(mL);
     setMotorPWM(mR); 
-    __delay_ms(146); //turn at the specified power for 160ms
-    if(i==10){__delay_ms(350);} //turn with 10 power for another 120ms
+    __delay_ms(100); //turn at the specified power for 160ms
+    //if(i==10){__delay_ms(150);} //turn with 10 power for another 120ms
     }
-    // */
 }
 //function to make the robot turn right 
 void turnRight(struct DC_motor *mL, struct DC_motor *mR)
@@ -172,27 +171,76 @@ void turnRight(struct DC_motor *mL, struct DC_motor *mR)
     
     /*  High surface roughness turning */
     int i;
-    for(i=20;i<30;i+=5){ //increase power from 20 to 30 in steps of 5
+    for(i=25;i<40;i+=5){ //increase power from 20 to 30 in steps of 5
     (*mL).direction=1;
     (*mR).direction=0;
     (*mL).power=i;   
     (*mR).power=i;
     setMotorPWM(mL);
     setMotorPWM(mR); 
-    __delay_ms(213); //turn at the specified power for 135ms
+    __delay_ms(107); //turn at the specified power for 135ms
     }
-    for(i=20;i>5;i-=5){ //decrease power from 25 to 10 in steps of 5
+    for(i=30;i>15;i-=5){ //decrease power from 25 to 10 in steps of 5
     (*mL).direction=1;
     (*mR).direction=0;
     (*mL).power=i;   
     (*mR).power=i;
     setMotorPWM(mL);
     setMotorPWM(mR); 
-    __delay_ms(216); //turn at the specified power for 160ms
-    if(i==10){__delay_ms(350);} //turn with 10 power for another 120ms
+    __delay_ms(105); //turn at the specified power for 160ms
+    //if(i==10){__delay_ms(150);} //turn with 10 power for another 120ms
     }
 }
 
+void turnLeftLong(struct DC_motor *mL, struct DC_motor *mR)
+{ 
+    /* High surface roughness turning */
+    int i;
+    for(i=23;i<38;i+=5){ //increase power from 20 to 30 in steps of 5
+    (*mL).direction=0;
+    (*mR).direction=1;
+    (*mL).power=i;   
+    (*mR).power=i;
+    setMotorPWM(mL);
+    setMotorPWM(mR); 
+    __delay_ms(156); //turn at the specified power for 135ms
+    }
+    for(i=28;i>13;i-=5){ //decrease power from 25 to 10 in steps of 5
+    (*mL).direction=0;
+    (*mR).direction=1;
+    (*mL).power=i;   
+    (*mR).power=i;
+    setMotorPWM(mL);
+    setMotorPWM(mR); 
+    __delay_ms(150); //turn at the specified power for 160ms
+    //if(i==10){__delay_ms(150);} //turn with 10 power for another 120ms
+    }
+}
+
+void turnRightLong(struct DC_motor *mL, struct DC_motor *mR)
+{  
+    /*  High surface roughness turning */
+    int i;
+    for(i=25;i<40;i+=5){ //increase power from 20 to 30 in steps of 5
+    (*mL).direction=1;
+    (*mR).direction=0;
+    (*mL).power=i;   
+    (*mR).power=i;
+    setMotorPWM(mL);
+    setMotorPWM(mR); 
+    __delay_ms(161); //turn at the specified power for 135ms
+    }
+    for(i=30;i>15;i-=5){ //decrease power from 25 to 10 in steps of 5
+    (*mL).direction=1;
+    (*mR).direction=0;
+    (*mL).power=i;   
+    (*mR).power=i;
+    setMotorPWM(mL);
+    setMotorPWM(mR); 
+    __delay_ms(157); //turn at the specified power for 160ms
+    //if(i==10){__delay_ms(150);} //turn with 10 power for another 120ms
+    }
+}
 //function to make the robot go straight
 void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR)
 {
@@ -204,20 +252,128 @@ void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR)
     setMotorPWM(mR);
     __delay_ms(500);
 }
+
 void TimedfullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned int time)
 {
-    seconds = 0;
-    while (seconds<time)
-    {
     (*mL).direction=1;
     (*mR).direction=1;
-    (*mL).power=25;
-    (*mR).power=22;
+    (*mL).power=50;
+    (*mR).power=50;
     setMotorPWM(mL);
     setMotorPWM(mR);
+    __delay_ms(500);
+}
+
+void moveBack(struct DC_motor *mL, struct DC_motor *mR, unsigned int time)
+{
+    seconds = 0; // reset the seconds timer
+    while (seconds<time)
+    {
+        (*mL).direction=-1;
+        (*mR).direction=-1;
+        (*mL).power=50;
+        (*mR).power=50;
+        setMotorPWM(mL);
+        setMotorPWM(mR);
+        __delay_ms(500);
+    }
+}
+
+void Calibrate(struct DC_motor *mL, struct DC_motor *mR)
+{
+    seconds = 0; // reset seconds timer
+    while (seconds<10)
+    {
+        (*mL).direction=1;
+        (*mR).direction=1;
+        (*mL).power=100;
+        (*mR).power=100;
+        setMotorPWM(mL);
+        setMotorPWM(mR);
+    }
+    
+    seconds = 0; // reset seconds timer
+    while (seconds<10)
+    {
+        (*mL).direction=1;
+        (*mR).direction=1;
+        (*mL).power=100-(seconds+1)*10; //gradually decrease to 0
+        (*mR).power=100-(seconds+1)*10; //gradually decrease to 0
+        setMotorPWM(mL);
+        setMotorPWM(mR);
     }
 }
 void increment_seconds()
 { //main counter function
     seconds += 1; // increment by the second
+}
+
+// color 0-8 detecting color; state 0 -> moving forwards 1 -> not moving forwards; list -> add list elements etc.
+void RobotMovement(unsigned int color, unsigned int state, struct DC_motor motorL, struct DC_motor motorR)
+{
+    if(state == 0)
+    {
+        
+    }
+    //RED + R90     r
+    if(color == 0){
+        // move back a bit
+        turnLeft(&motorL, &motorR);
+        // add r to the list
+    }
+    //GRE + L90     l
+    if(color == 1){
+        turnRight(&motorL, &motorR);
+        // add l to the list 
+    }
+    //BLU + 180     u
+    if(color == 2){
+        int i;
+        for (i=0;i<2;1++){
+        turnRight(&motorL, &motorR);
+        // add r to the list twice (or l depending on accuracy)
+        }
+    }
+    //YEL + B1R90   -1 , r *
+    if(color == 3){
+        //if the last element of the list is integer greater or equal to a block
+        //  subtract 1 block 
+        //  add r to the list
+        
+        //else
+            //if the last element of the list is r
+            //  change it to l
+            //if the last element of the list is l
+            //  change it to r
+        //  add 0l to the list
+        //  add l to the list
+    }
+    //PIN + B1L90   -1 , l *
+    
+    if(color == 4){
+        //if the last element of the list is integer greater or equal to a block
+        //  subtract 01 block 
+        //  add l to the list
+        
+        //else
+            //if the last element of the list is r
+            //  change it to l
+            //if the last element of the list is l
+            //  change it to r
+        //  add 0l to the list
+        //  add r to the list
+    }
+    //ORA + R135    R
+    if(color == 5){
+        turnRightLong(&motorL, &motorR);
+    }
+    //LIB + L135    L
+    if(color == 6){
+        turnLeftLong(&motorL, &motorR);
+    }    
+    //WHITE
+    if(color == 7){
+        turnLeft(&motorL, &motorR);
+    }
+    
 }

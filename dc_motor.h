@@ -20,8 +20,13 @@ void setMotorPWM(DC_motor *m);
 void stop(DC_motor *mL, DC_motor *mR);
 void turnLeft(DC_motor *mL, DC_motor *mR);
 void turnRight(DC_motor *mL, DC_motor *mR);
+void turnLeftLong(DC_motor *mL, DC_motor *mR);
+void turnRightLong(DC_motor *mL, DC_motor *mR);
 void fullSpeedAhead(DC_motor *mL, DC_motor *mR);
 void TimedfullSpeedAhead(DC_motor *mL, DC_motor *mR, unsigned int);
+void moveBack(DC_motor *mL, DC_motor *mR, unsigned int);
+void Calibrate(DC_motor *mL, DC_motor *mR);
+void RobotMovement(unsigned int, unsigned int, struct, struct);
 void increment_seconds(void);
 
 #endif
