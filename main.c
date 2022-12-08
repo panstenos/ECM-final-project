@@ -41,11 +41,11 @@ void main(void){
     fullSpeedAhead(&motorL,&motorR); //start by moving ahead
     while(1){
         if(get_wall_presence() == 1){
+            add_seconds_to_list(); // add seconds of moving ahead to the list
             stop(&motorL,&motorR); // stop and add seconds movement to the list
-            moveBack(&motorL, &motorR, 10); // move back to the centre of the block
-            RobotMovement(get_color_code(), 1, &motorL, &motorR);
-            //unsigned int color_code = get_color_code();
-            moveBack(&motorL,&motorR,20);
+            moveBack(&motorL, &motorR, 10); // move back to the centre of the block 
+            unsigned int color_code = get_color_code(); // get the color code
+            RobotMovement(unsigned int color_code, struct DC_motor motorL, struct DC_motor motorR); // move according to the colour
             fullSpeedAhead(&motorL,&motorR); //move ahead
         }
     }    

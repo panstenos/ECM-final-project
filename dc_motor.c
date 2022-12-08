@@ -4,6 +4,7 @@
 int seconds = 0;
 int movement_list[50]; 
 int index = 0;
+
 // function initialise T2 and CCP for DC motor control
 void initDCmotorsPWM(int PWMperiod){
     //initialise your TRIS and LAT registers for PWM  
@@ -313,71 +314,115 @@ void increment_seconds()
 // color 0-8 detecting color; state 0 -> moving forwards 1 -> not moving forwards; list -> add list elements etc.
 void RobotMovement(unsigned int color, struct DC_motor motorL, struct DC_motor motorR)
 {
-    //RED + R90     r
+    //RED + R90     r   -1
     if(color == 0){
-        // move back a bit
-        turnLeft(&motorL, &motorR);
-        // add r to the list
-    }
-    //GRE + L90     l
-    if(color == 1){
         turnRight(&motorL, &motorR);
-        // add l to the list 
+        movement_list[index] = -1; // trace that step and add to the list 
+        index++;
     }
-    //BLU + 180     u
+    //GRE + L90     l   -2
+    if(color == 1){
+        turnLeft(&motorL, &motorR);
+        movement_list[index] = -2; // trace that step and add to the list 
+        index++;
+    }
+    //BLU + 180     u   -1 x2
     if(color == 2){
         int i;
-        for (i=0;i<2;1++){
+        for (i=0;i<2;i++){
         turnRight(&motorL, &motorR);
-        // add r to the list twice (or l depending on accuracy)
+        movement_list[index] = -1; // trace that step and add to the list 
+        index++;
         }
     }
     //YEL + B1R90   -1 , r *
     if(color == 3){
         //if the last element of the list is integer greater or equal to a block
+        if (movement_list[index-1] > 10)
+        {
         //  subtract 1 block 
+            movement_list[index-1] -= 20;
         //  add r to the list
-        
-        //else
+            movement_list[index] = -1;
+            index += 1;
+        }else{    
             //if the last element of the list is r
+            if (movement_list[index-1] == -1)
+            {
             //  change it to l
+                movement_list[index-1] = -2;
+            }
             //if the last element of the list is l
+            if (movement_list[index-1] == -2)
+            {
             //  change it to r
+                movement_list[index-1] = -1;
+            }
         //  add 0l to the list
+        movement_list[index] = 20; // add a block's length    
+        index += 1;
         //  add l to the list
-    }
+        movement_list[index] = -2;
+        index += 1;
+        } 
     //PIN + B1L90   -1 , l *
     
     if(color == 4){
-        //if the last element of the list is integer greater or equal to a block
+//if the last element of the list is integer greater or equal to a block
+        if (movement_list[index-1] > 10)
+        {
         //  subtract 01 block 
+            movement_list[index-1] -= 20;
         //  add l to the list
-        
-        //else
+            movement_list[index] = -2;
+            index += 1;
+        }else{    
             //if the last element of the list is r
+            if (movement_list[index-1] == -1)
+            {
             //  change it to l
+                movement_list[index-1] = -2;
+            }
             //if the last element of the list is l
+            if (movement_list[index-1] == -2)
+            {
             //  change it to r
+                movement_list[index-1] = -1;
+            }
         //  add 0l to the list
+        movement_list[index] = 20; // add a block's length    
+        index += 1;
         //  add r to the list
+        movement_list[index] = -1;
+        index += 1;
+        } 
     }
     //ORA + R135    R
     if(color == 5){
         turnRightLong(&motorL, &motorR);
+        movement_list[index] = -3;
+        index += 1;
     }
     //LIB + L135    L
     if(color == 6){
         turnLeftLong(&motorL, &motorR);
+        movement_list[index] = -4;
+        index += 1;
     }    
     //WHITE
     if(color == 7){
-        turnLeft(&motorL, &motorR);
+        int i;
+        for (i=0;i<2;i++){
+        turnRight(&motorL, &motorR); // u-turn
     }
     
 }
 
 void add_seconds_to_list(void)
 {
-    movement_list[index] = seconds; //import the seconds to the list
-    index++; // increase the index value for the next value
+    if (seconds > 20) // set some threshold here for what is considered to be a block 
+    {
+        movement_list[index] = seconds - 10; //import the seconds to the list remove half block and add to the list 
+        index++; // increase the index value for the next value
+    }
 }

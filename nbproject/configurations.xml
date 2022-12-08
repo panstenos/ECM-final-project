@@ -12,10 +12,6 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>.gitattributes</itemPath>
-      <itemPath>.gitignore</itemPath>
-      <itemPath>Makefile</itemPath>
-      <itemPath>README.md</itemPath>
       <itemPath>color.c</itemPath>
       <itemPath>color.h</itemPath>
       <itemPath>dc_motor.c</itemPath>
@@ -45,7 +41,7 @@
         <targetDevice>PIC18F67K40</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>noID</platformTool>
+        <platformTool>pk4hybrid</platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>2.40</languageToolchainVersion>
         <platform>3</platform>
