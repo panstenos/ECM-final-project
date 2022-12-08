@@ -2,7 +2,8 @@
 #include "dc_motor.h"
 
 int seconds = 0;
-
+int movement_list[50]; 
+int index = 0;
 // function initialise T2 and CCP for DC motor control
 void initDCmotorsPWM(int PWMperiod){
     //initialise your TRIS and LAT registers for PWM  
@@ -244,17 +245,18 @@ void turnRightLong(struct DC_motor *mL, struct DC_motor *mR)
 //function to make the robot go straight
 void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR)
 {
+    seconds = 0; // reset the timer
     (*mL).direction=1;
     (*mR).direction=1;
-    (*mL).power=50;
-    (*mR).power=50;
+    (*mL).power=40;
+    (*mR).power=38;
     setMotorPWM(mL);
     setMotorPWM(mR);
-    __delay_ms(500);
 }
 
 void TimedfullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned int time)
 {
+    // used for returning back to the entrance
     (*mL).direction=1;
     (*mR).direction=1;
     (*mL).power=50;
@@ -267,10 +269,10 @@ void TimedfullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned int 
 void moveBack(struct DC_motor *mL, struct DC_motor *mR, unsigned int time)
 {
     seconds = 0; // reset the seconds timer
-    while (seconds<time)
+    while (seconds<time) // run as much as ordered
     {
-        (*mL).direction=-1;
-        (*mR).direction=-1;
+        (*mL).direction=0;
+        (*mR).direction=0;
         (*mL).power=50;
         (*mR).power=50;
         setMotorPWM(mL);
@@ -309,12 +311,8 @@ void increment_seconds()
 }
 
 // color 0-8 detecting color; state 0 -> moving forwards 1 -> not moving forwards; list -> add list elements etc.
-void RobotMovement(unsigned int color, unsigned int state, struct DC_motor motorL, struct DC_motor motorR)
+void RobotMovement(unsigned int color, struct DC_motor motorL, struct DC_motor motorR)
 {
-    if(state == 0)
-    {
-        
-    }
     //RED + R90     r
     if(color == 0){
         // move back a bit
@@ -376,4 +374,10 @@ void RobotMovement(unsigned int color, unsigned int state, struct DC_motor motor
         turnLeft(&motorL, &motorR);
     }
     
+}
+
+void add_seconds_to_list(void)
+{
+    movement_list[index] = seconds; //import the seconds to the list
+    index++; // increase the index value for the next value
 }
