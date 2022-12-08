@@ -24500,7 +24500,7 @@ void calibrate_black(){
     _delay((unsigned long)((wait_time)*(64000000/4000.0)));
     unsigned int clear2 = color_read_Clear();
     set_led_color(0b000);
-    wall_coef = clear2/clear1/2;
+    wall_coef = clear2/clear1/5;
 }
 
 void calibrate_white(){

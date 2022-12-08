@@ -2828,8 +2828,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;color.c: 225:     set_led_color(0b000);
 [e ( _set_led_color (1 -> -> 0 `i `ui ]
 "226
-[; ;color.c: 226:     wall_coef = clear2/clear1/2;
-[e = _wall_coef / / _clear2 _clear1 -> -> 2 `i `ui ]
+[; ;color.c: 226:     wall_coef = clear2/clear1/5;
+[e = _wall_coef / / _clear2 _clear1 -> -> 5 `i `ui ]
 "227
 [; ;color.c: 227: }
 [e :UE 2045 ]

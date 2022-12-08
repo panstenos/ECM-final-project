@@ -95,6 +95,7 @@ void stop(struct DC_motor *mL, struct DC_motor *mR)
     (*mR).power=0;
     setMotorPWM(mL);
     setMotorPWM(mR);
+    __delay_ms(100);
 }
 
 //function to make the robot turn left 
@@ -257,14 +258,17 @@ void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR)
 
 void TimedfullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned int time)
 {
-    // used for returning back to the entrance
-    (*mL).direction=1;
-    (*mR).direction=1;
-    (*mL).power=50;
-    (*mR).power=50;
-    setMotorPWM(mL);
-    setMotorPWM(mR);
-    __delay_ms(500);
+    seconds = 0;
+    while (seconds<time)
+    {
+        // used for returning back to the entrance
+        (*mL).direction=1;
+        (*mR).direction=1;
+        (*mL).power=40;
+        (*mR).power=40;
+        setMotorPWM(mL);
+        setMotorPWM(mR);
+        }
 }
 
 void moveBack(struct DC_motor *mL, struct DC_motor *mR, unsigned int time)
@@ -427,5 +431,17 @@ void add_seconds_to_list(void)
     {
         movement_list[index] = seconds - 10; //import the seconds to the list remove half block and add to the list 
         index++; // increase the index value for the next value
+    }
+}
+
+void return_back(struct DC_motor *motorL, struct DC_motor *motorR)
+{
+    while (index > 0){
+        if (movement_list[index-1] == -1){turnLeft(&motorL, &motorR);}
+        else if (movement_list[index-1] == -2){turnRight(&motorL, &motorR);}
+        else if (movement_list[index-1] == -3){turnLeftLong(&motorL, &motorR);}
+        else if (movement_list[index-1] == -4){turnRightLong(&motorL, &motorR);}
+        else if (movement_list[index-1] > 0){TimedfullSpeedAhead(&motorL, &motorR, movement_list[index-1]);}
+        index -= 1;
     }
 }

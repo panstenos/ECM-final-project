@@ -24345,13 +24345,10 @@ void main(void){
 
     fullSpeedAhead(&motorL,&motorR);
     while(1){
-        if(get_wall_presence() == 1){
-            add_seconds_to_list();
-            stop(&motorL,&motorR);
-            unsigned int color_code = get_color_code();
-            moveBack(&motorL, &motorR, 10);
-            RobotMovement(color_code, &motorL, &motorR);
-            fullSpeedAhead(&motorL,&motorR);
-        }
+# 53 "main.c"
+        TimedfullSpeedAhead(&motorL,&motorR,10);
+        stop(&motorL,&motorR);
+        _delay((unsigned long)((1000)*(64000000/4000.0)));
+        _delay((unsigned long)((1000)*(64000000/4000.0)));
     }
 }

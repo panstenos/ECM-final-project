@@ -24476,14 +24476,17 @@ void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR)
 
 void TimedfullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned int time)
 {
+    seconds = 0;
+    while (seconds<time)
+    {
 
-    (*mL).direction=1;
-    (*mR).direction=1;
-    (*mL).power=50;
-    (*mR).power=50;
-    setMotorPWM(mL);
-    setMotorPWM(mR);
-    _delay((unsigned long)((500)*(64000000/4000.0)));
+        (*mL).direction=1;
+        (*mR).direction=1;
+        (*mL).power=40;
+        (*mR).power=40;
+        setMotorPWM(mL);
+        setMotorPWM(mR);
+        }
 }
 
 void moveBack(struct DC_motor *mL, struct DC_motor *mR, unsigned int time)
