@@ -223,7 +223,7 @@ void calibrate_black(){
     __delay_ms(wait_time);
     unsigned int clear2 = color_read_Clear(); //Clear value with led turned on
     set_led_color(0b000);
-    wall_coef = clear2/clear1/2;
+    wall_coef = clear2/clear1/5;
 }
 
 void calibrate_white(){
