@@ -95,11 +95,11 @@ void stop(struct DC_motor *mL, struct DC_motor *mR)
     (*mR).power=0;
     setMotorPWM(mL);
     setMotorPWM(mR);
-    __delay_ms(100);
+    __delay_ms(1000);
 }
 
 //function to make the robot turn left 
-void turnLeft(struct DC_motor *mL, struct DC_motor *mR)
+void turnLeft(DC_motor *mL, DC_motor *mR)
 {
     /* Small surface roughness turning
     int i;
@@ -284,6 +284,8 @@ void moveBack(struct DC_motor *mL, struct DC_motor *mR, unsigned int time)
         setMotorPWM(mR);
         __delay_ms(500);
     }
+    stop(&mL,&mR); // stop and add seconds movement to the list
+
 }
 
 void Calibrate(struct DC_motor *mL, struct DC_motor *mR)
@@ -316,17 +318,18 @@ void increment_seconds()
 }
 
 // color 0-8 detecting color; state 0 -> moving forwards 1 -> not moving forwards; list -> add list elements etc.
-void RobotMovement(unsigned int color, struct DC_motor *motorL, struct DC_motor *motorR)
+void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
 {
+    
     //RED + R90     r   -1
     if(color == 0){
-        turnRight(&motorL, &motorR);
+        turnRight(motorL, motorR);
         movement_list[index] = -1; // trace that step and add to the list 
         index++;
     }
     //GRE + L90     l   -2
     if(color == 1){
-        turnLeft(&motorL, &motorR);
+        turnLeft(motorL, motorR);
         movement_list[index] = -2; // trace that step and add to the list 
         index++;
     }
@@ -334,7 +337,7 @@ void RobotMovement(unsigned int color, struct DC_motor *motorL, struct DC_motor 
     if(color == 2){
         int i;
         for (i=0;i<2;i++){
-            turnRight(&motorL, &motorR);
+            turnRight(motorL, motorR);
             movement_list[index] = -1; // trace that step and add to the list 
             index++;
         }
@@ -404,13 +407,13 @@ void RobotMovement(unsigned int color, struct DC_motor *motorL, struct DC_motor 
     }
     //ORA + R135    R
     if(color == 5){
-        turnRightLong(&motorL, &motorR);
+        turnRightLong(motorL, motorR);
         movement_list[index] = -3;
         index += 1;
     }
     //LIB + L135    L
     if(color == 6){
-        turnLeftLong(&motorL, &motorR);
+        turnLeftLong(motorL, motorR);
         movement_list[index] = -4;
         index += 1;
     }    
@@ -418,7 +421,7 @@ void RobotMovement(unsigned int color, struct DC_motor *motorL, struct DC_motor 
     if(color == 7){
         int i;
         for (i=0;i<2;i++){
-        turnRight(&motorL, &motorR); // u-turn
+        turnRight(motorL, motorR); // u-turn
         }
     }
     

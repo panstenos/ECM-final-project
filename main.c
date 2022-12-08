@@ -23,7 +23,7 @@ void main(void){
         
     ANSELFbits.ANSELF2 = 0; //turn off analogue input on pin  
     TRISFbits.TRISF2 = 1; // set F2 to input
-    struct DC_motor motorL, motorR; // declare two motor structures
+    DC_motor motorL, motorR; // declare two motor structures
     motorL.power=0; //zero power to start
     motorL.direction=1; //set default motor direction
     motorL.brakemode=1; //brake mode (slow decay)
@@ -40,16 +40,20 @@ void main(void){
     
     fullSpeedAhead(&motorL,&motorR); //start by moving ahead
     while(1){
-        
         if(get_wall_presence() == 1){
             add_seconds_to_list(); // add seconds of moving ahead to the list
             stop(&motorL,&motorR); // stop and add seconds movement to the list
             unsigned int color_code = get_color_code(); // get the color code
             moveBack(&motorL, &motorR, 10); // move back to the centre of the block 
+            stop(&motorL,&motorR);
+            /*if(color_code == 1){
+                turnLeft(&motorL,&motorR);
+            }*/
             RobotMovement(color_code, &motorL, &motorR); // move according to the colour
             stop(&motorL,&motorR); // stop and add seconds movement to the list
             fullSpeedAhead(&motorL,&motorR); //move ahead
         }
+       
     }    
 }
 
