@@ -24269,7 +24269,7 @@ void fullSpeedAhead(DC_motor *mL, DC_motor *mR);
 void TimedfullSpeedAhead(DC_motor *mL, DC_motor *mR, unsigned int);
 void moveBack(DC_motor *mL, DC_motor *mR, unsigned int);
 void Calibrate(DC_motor *mL, DC_motor *mR);
-void RobotMovement(unsigned int, struct DC_motor motorL, struct DC_motor motorR);
+void RobotMovement(unsigned int, struct DC_motor *motorL, struct DC_motor *motorR);
 void increment_seconds(void);
 void add_seconds_to_list(void);
 # 10 "main.c" 2
@@ -24348,9 +24348,9 @@ void main(void){
         if(get_wall_presence() == 1){
             add_seconds_to_list();
             stop(&motorL,&motorR);
-            moveBack(&motorL, &motorR, 10);
             unsigned int color_code = get_color_code();
-            RobotMovement(unsigned int color_code, struct DC_motor motorL, struct DC_motor motorR);
+            moveBack(&motorL, &motorR, 10);
+            RobotMovement(color_code, &motorL, &motorR);
             fullSpeedAhead(&motorL,&motorR);
         }
     }

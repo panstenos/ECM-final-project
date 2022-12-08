@@ -312,7 +312,7 @@ void increment_seconds()
 }
 
 // color 0-8 detecting color; state 0 -> moving forwards 1 -> not moving forwards; list -> add list elements etc.
-void RobotMovement(unsigned int color, struct DC_motor motorL, struct DC_motor motorR)
+void RobotMovement(unsigned int color, struct DC_motor *motorL, struct DC_motor *motorR)
 {
     //RED + R90     r   -1
     if(color == 0){
@@ -330,9 +330,9 @@ void RobotMovement(unsigned int color, struct DC_motor motorL, struct DC_motor m
     if(color == 2){
         int i;
         for (i=0;i<2;i++){
-        turnRight(&motorL, &motorR);
-        movement_list[index] = -1; // trace that step and add to the list 
-        index++;
+            turnRight(&motorL, &motorR);
+            movement_list[index] = -1; // trace that step and add to the list 
+            index++;
         }
     }
     //YEL + B1R90   -1 , r *
@@ -364,7 +364,8 @@ void RobotMovement(unsigned int color, struct DC_motor motorL, struct DC_motor m
         //  add l to the list
         movement_list[index] = -2;
         index += 1;
-        } 
+        }
+    }
     //PIN + B1L90   -1 , l *
     
     if(color == 4){
@@ -414,9 +415,11 @@ void RobotMovement(unsigned int color, struct DC_motor motorL, struct DC_motor m
         int i;
         for (i=0;i<2;i++){
         turnRight(&motorL, &motorR); // u-turn
+        }
     }
     
 }
+   
 
 void add_seconds_to_list(void)
 {

@@ -24272,7 +24272,7 @@ void fullSpeedAhead(DC_motor *mL, DC_motor *mR);
 void TimedfullSpeedAhead(DC_motor *mL, DC_motor *mR, unsigned int);
 void moveBack(DC_motor *mL, DC_motor *mR, unsigned int);
 void Calibrate(DC_motor *mL, DC_motor *mR);
-void RobotMovement(unsigned int, struct DC_motor motorL, struct DC_motor motorR);
+void RobotMovement(unsigned int, struct DC_motor *motorL, struct DC_motor *motorR);
 void increment_seconds(void);
 void add_seconds_to_list(void);
 # 3 "interrupts.c" 2

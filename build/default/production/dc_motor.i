@@ -24260,7 +24260,7 @@ void fullSpeedAhead(DC_motor *mL, DC_motor *mR);
 void TimedfullSpeedAhead(DC_motor *mL, DC_motor *mR, unsigned int);
 void moveBack(DC_motor *mL, DC_motor *mR, unsigned int);
 void Calibrate(DC_motor *mL, DC_motor *mR);
-void RobotMovement(unsigned int, struct DC_motor motorL, struct DC_motor motorR);
+void RobotMovement(unsigned int, struct DC_motor *motorL, struct DC_motor *motorR);
 void increment_seconds(void);
 void add_seconds_to_list(void);
 # 2 "dc_motor.c" 2
@@ -24531,7 +24531,7 @@ void increment_seconds()
 }
 
 
-void RobotMovement(unsigned int color, struct DC_motor motorL, struct DC_motor motorR)
+void RobotMovement(unsigned int color, struct DC_motor *motorL, struct DC_motor *motorR)
 {
 
     if(color == 0){
@@ -24549,9 +24549,9 @@ void RobotMovement(unsigned int color, struct DC_motor motorL, struct DC_motor m
     if(color == 2){
         int i;
         for (i=0;i<2;i++){
-        turnRight(&motorL, &motorR);
-        movement_list[index] = -1;
-        index++;
+            turnRight(&motorL, &motorR);
+            movement_list[index] = -1;
+            index++;
         }
     }
 
@@ -24584,6 +24584,7 @@ void RobotMovement(unsigned int color, struct DC_motor motorL, struct DC_motor m
         movement_list[index] = -2;
         index += 1;
         }
+    }
 
 
     if(color == 4){
@@ -24633,14 +24634,15 @@ void RobotMovement(unsigned int color, struct DC_motor motorL, struct DC_motor m
         int i;
         for (i=0;i<2;i++){
         turnRight(&motorL, &motorR);
+        }
     }
 
 }
 
+
 void add_seconds_to_list(void)
 {
     if (seconds > 20)
-
     {
         movement_list[index] = seconds - 10;
         index++;
