@@ -24259,7 +24259,6 @@ void turnRightLong(DC_motor *mL, DC_motor *mR);
 void fullSpeedAhead(DC_motor *mL, DC_motor *mR);
 void TimedfullSpeedAhead(DC_motor *mL, DC_motor *mR, unsigned int);
 void moveBack(DC_motor *mL, DC_motor *mR, unsigned int);
-void Calibrate(DC_motor *mL, DC_motor *mR);
 void RobotMovement(unsigned int, struct DC_motor *motorL, struct DC_motor *motorR);
 void increment_seconds(void);
 void add_seconds_to_list(void);
@@ -24268,9 +24267,9 @@ void return_back(struct DC_motor *motorL, struct DC_motor *motorR);
 
 
 int seconds = 0;
-int movement_list[50];
+int movement_list[100];
 int index = 0;
-
+int state = 0;
 
 void initDCmotorsPWM(int PWMperiod){
 
@@ -24492,8 +24491,8 @@ void TimedfullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned int 
 
         (*mL).direction=0;
         (*mR).direction=0;
-        (*mL).power=40;
-        (*mR).power=40;
+        (*mL).power=50;
+        (*mR).power=50;
         setMotorPWM(mL);
         setMotorPWM(mR);
         }
@@ -24514,30 +24513,6 @@ void moveBack(struct DC_motor *mL, struct DC_motor *mR, unsigned int time)
 
 }
 
-void Calibrate(struct DC_motor *mL, struct DC_motor *mR)
-{
-    seconds = 0;
-    while (seconds<10)
-    {
-        (*mL).direction=0;
-        (*mR).direction=0;
-        (*mL).power=100;
-        (*mR).power=100;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-    }
-
-    seconds = 0;
-    while (seconds<10)
-    {
-        (*mL).direction=0;
-        (*mR).direction=0;
-        (*mL).power=100-(seconds+1)*10;
-        (*mR).power=100-(seconds+1)*10;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-    }
-}
 void increment_seconds()
 {
     seconds += 1;
@@ -24574,10 +24549,10 @@ void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
         stop(motorL, motorR);
         turnRight(motorL, motorR);
 
-        if (movement_list[index-1] > 10)
+        if (movement_list[index-1] > 11)
         {
 
-            movement_list[index-1] -= 20;
+            movement_list[index-1] -= 22;
 
             movement_list[index] = -1;
             index += 1;
@@ -24595,7 +24570,7 @@ void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
                 movement_list[index-1] = -1;
             }
 
-        movement_list[index] = 20;
+        movement_list[index] = 22;
         index += 1;
 
         movement_list[index] = -2;
@@ -24610,10 +24585,10 @@ void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
         stop(motorL, motorR);
         turnLeft(motorL, motorR);
 
-        if (movement_list[index-1] > 10)
+        if (movement_list[index-1] > 11)
         {
 
-            movement_list[index-1] -= 20;
+            movement_list[index-1] -= 22;
 
             movement_list[index] = -2;
             index += 1;
@@ -24631,7 +24606,7 @@ void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
                 movement_list[index-1] = -1;
             }
 
-        movement_list[index] = 20;
+        movement_list[index] = 22;
         index += 1;
 
         movement_list[index] = -1;
@@ -24653,13 +24628,19 @@ void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
 
     if(color == 7){
         int i;
-        for (i=0;i<2;i++){
-        turnRight(motorL, motorR);
+        for (i=0;i<2;i++)
+        {
+            turnRight(motorL, motorR);
         }
 
-        return_back(motorL, motorR);
+        state = 1;
     }
 
+}
+
+int get_state(void)
+{
+    return state;
 }
 
 
@@ -24675,12 +24656,13 @@ void add_seconds_to_list(void)
 void return_back(struct DC_motor *motorL, struct DC_motor *motorR)
 {
     while (index > 0){
-        if (movement_list[index-1] == -1){turnLeft(&motorL, &motorR);}
-        else if (movement_list[index-1] == -2){turnRight(&motorL, &motorR);}
-        else if (movement_list[index-1] == -3){turnLeftLong(&motorL, &motorR);}
-        else if (movement_list[index-1] == -4){turnRightLong(&motorL, &motorR);}
-        else if (movement_list[index-1] > 0){TimedfullSpeedAhead(&motorL, &motorR, movement_list[index-1]);}
-        stop(&motorL,&motorR);
+        if (movement_list[index-1] == -1){turnLeft(motorL, motorR);}
+        else if (movement_list[index-1] == -2){turnRight(motorL, motorR);}
+        else if (movement_list[index-1] == -3){turnLeftLong(motorL, motorR);}
+        else if (movement_list[index-1] == -4){turnRightLong(motorL, motorR);}
+        else if (movement_list[index-1] > 0){TimedfullSpeedAhead(motorL, motorR, movement_list[index-1]);}
+        stop(motorL,motorR);
         index -= 1;
     }
+    if (index == 0){state = 2;}
 }

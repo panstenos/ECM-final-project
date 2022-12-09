@@ -42,16 +42,27 @@ void main(void){
     __delay_ms(1000); 
     fullSpeedAhead(&motorL,&motorR); //start by moving ahead
     while(1){
-        if(get_wall_presence() == 1){
+        int state = get_state();
+        if(get_wall_presence() == 1 && state == 0 ){
+            //int state = get_state();
             add_seconds_to_list(); // add seconds of moving ahead to the list
             stop(&motorL,&motorR); // stop and add seconds movement to the list
             unsigned int color_code = get_color_code(); // get the color code
+            TimedfullSpeedAhead(&motorL, &motorR, 5); // callibrate 
             moveBack(&motorL, &motorR, 11); // move back to the centre of the block 
             stop(&motorL,&motorR); //built in delay 1 s
             RobotMovement(color_code, &motorL, &motorR); // move according to the colour
-            stop(&motorL,&motorR); // stop and add seconds movement to the list
-            fullSpeedAhead(&motorL,&motorR); //move ahead
+            if (state == 0) // run only if the bot is on its way
+            {
+                stop(&motorL,&motorR); // stop and add seconds movement to the list
+                fullSpeedAhead(&motorL,&motorR); //move ahead            
+            }
+        }else if (state == 1){
+            return_back(&motorL, &motorR);
+        }else{
+        
         }
+        
     }    
 }
 
