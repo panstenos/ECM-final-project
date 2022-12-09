@@ -24668,7 +24668,13 @@ void return_back(struct DC_motor *motorL, struct DC_motor *motorR)
         else if (movement_list[index-1] == -2){turnRight(motorL, motorR);}
         else if (movement_list[index-1] == -3){turnLeftLong(motorL, motorR);}
         else if (movement_list[index-1] == -4){turnRightLong(motorL, motorR);}
-        else if (movement_list[index-1] > 0){TimedfullSpeedAhead(motorL, motorR, movement_list[index-1]);}
+        else if (movement_list[index-1] > 0)
+        {
+            TimedfullSpeedAhead(motorL, motorR, movement_list[index-1]);
+            _delay((unsigned long)((200)*(64000000/4000.0)));
+            TimedfullSpeedAhead(motorL, motorR, 11);
+            moveBack(motorL, motorR, 11);
+        }
         stop(motorL,motorR);
         index -= 1;
     }

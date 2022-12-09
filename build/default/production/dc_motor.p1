@@ -3524,39 +3524,54 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e $U 2105  ]
 "452
-[; ;dc_motor.c: 452:         else if (movement_list[index-1] > 0){TimedfullSpeedAhead(motorL, motorR, movement_list[index-1]);}
+[; ;dc_motor.c: 452:         else if (movement_list[index-1] > 0)
 [e :U 2104 ]
 [e $ ! > *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -> 0 `i 2106  ]
+"453
+[; ;dc_motor.c: 453:         {
 {
+"454
+[; ;dc_motor.c: 454:             TimedfullSpeedAhead(motorL, motorR, movement_list[index-1]);
 [e ( _TimedfullSpeedAhead (3 , , _motorL _motorR -> *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux `ui ]
+"455
+[; ;dc_motor.c: 455:             _delay((unsigned long)((200)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"456
+[; ;dc_motor.c: 456:             TimedfullSpeedAhead(motorL, motorR, 11);
+[e ( _TimedfullSpeedAhead (3 , , _motorL _motorR -> -> 11 `i `ui ]
+"457
+[; ;dc_motor.c: 457:             moveBack(motorL, motorR, 11);
+[e ( _moveBack (3 , , _motorL _motorR -> -> 11 `i `ui ]
+"458
+[; ;dc_motor.c: 458:         }
 }
 [e :U 2106 ]
 [e :U 2105 ]
 [e :U 2103 ]
 [e :U 2101 ]
 [e :U 2099 ]
-"453
-[; ;dc_motor.c: 453:         stop(motorL,motorR);
+"459
+[; ;dc_motor.c: 459:         stop(motorL,motorR);
 [e ( _stop (2 , _motorL _motorR ]
-"454
-[; ;dc_motor.c: 454:         index -= 1;
+"460
+[; ;dc_motor.c: 460:         index -= 1;
 [e =- _index -> 1 `i ]
-"455
-[; ;dc_motor.c: 455:     }
+"461
+[; ;dc_motor.c: 461:     }
 }
 [e :U 2095 ]
 "447
 [; ;dc_motor.c: 447:     while (index > 0){
 [e $ > _index -> 0 `i 2096  ]
 [e :U 2097 ]
-"456
-[; ;dc_motor.c: 456:     if (index == 0){state = 2;}
+"462
+[; ;dc_motor.c: 462:     if (index == 0){state = 2;}
 [e $ ! == _index -> 0 `i 2107  ]
 {
 [e = _state -> 2 `i ]
 }
 [e :U 2107 ]
-"457
-[; ;dc_motor.c: 457: }
+"463
+[; ;dc_motor.c: 463: }
 [e :UE 2094 ]
 }
