@@ -24329,6 +24329,7 @@ void main(void){
 
     ANSELFbits.ANSELF2 = 0;
     TRISFbits.TRISF2 = 1;
+
     DC_motor motorL, motorR;
     motorL.power=0;
     motorL.direction=1;
@@ -24344,21 +24345,10 @@ void main(void){
     motorR.negDutyHighByte=(unsigned char *)(&CCPR4H);
     motorR.PWMperiod=PWMcycle;
 
-    fullSpeedAhead(&motorL,&motorR);
+
     while(1){
-        if(get_wall_presence() == 1){
-            add_seconds_to_list();
-            stop(&motorL,&motorR);
-            unsigned int color_code = get_color_code();
-            moveBack(&motorL, &motorR, 10);
-            stop(&motorL,&motorR);
-
-
-
-            RobotMovement(color_code, &motorL, &motorR);
-            stop(&motorL,&motorR);
-            fullSpeedAhead(&motorL,&motorR);
-        }
-
+# 56 "main.c"
+        moveBack(&motorL, &motorR, 10);
+        stop(&motorL,&motorR);
     }
 }
