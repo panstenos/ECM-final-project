@@ -24369,7 +24369,7 @@ void turnLeft(DC_motor *mL, DC_motor *mR)
 {
 # 128 "dc_motor.c"
     int i;
-    for(i=23;i<38;i+=5){
+    for(i=27;i<42;i+=5){
     (*mL).direction=1;
     (*mR).direction=0;
     (*mL).power=i;
@@ -24378,7 +24378,7 @@ void turnLeft(DC_motor *mL, DC_motor *mR)
     setMotorPWM(mR);
     _delay((unsigned long)((104)*(64000000/4000.0)));
     }
-    for(i=28;i>13;i-=5){
+    for(i=32;i>17;i-=5){
     (*mL).direction=1;
     (*mR).direction=0;
     (*mL).power=i;
@@ -24394,7 +24394,7 @@ void turnRight(struct DC_motor *mL, struct DC_motor *mR)
 {
 # 176 "dc_motor.c"
     int i;
-    for(i=25;i<40;i+=5){
+    for(i=27;i<42;i+=5){
     (*mL).direction=0;
     (*mR).direction=1;
     (*mL).power=i;
@@ -24403,7 +24403,7 @@ void turnRight(struct DC_motor *mL, struct DC_motor *mR)
     setMotorPWM(mR);
     _delay((unsigned long)((107)*(64000000/4000.0)));
     }
-    for(i=30;i>15;i-=5){
+    for(i=32;i>17;i-=5){
     (*mL).direction=0;
     (*mR).direction=1;
     (*mL).power=i;
@@ -24498,8 +24498,8 @@ void moveBack(struct DC_motor *mL, struct DC_motor *mR, unsigned int time)
     {
         (*mL).direction=1;
         (*mR).direction=1;
-        (*mL).power=50;
-        (*mR).power=50;
+        (*mL).power=40;
+        (*mR).power=39;
         setMotorPWM(mL);
         setMotorPWM(mR);
     }
@@ -24563,7 +24563,7 @@ void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
 
     if(color == 3){
 
-        moveBack(motorL, motorR, 10);
+        moveBack(motorL, motorR, 33);
         stop(motorL, motorR);
         turnRight(motorL, motorR);
 
@@ -24599,7 +24599,7 @@ void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
 
     if(color == 4){
 
-        moveBack(motorL, motorR, 10);
+        moveBack(motorL, motorR, 33);
         stop(motorL, motorR);
         turnLeft(motorL, motorR);
 

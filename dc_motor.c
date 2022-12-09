@@ -126,7 +126,7 @@ void turnLeft(DC_motor *mL, DC_motor *mR)
     
     /* High surface roughness turning */
     int i;
-    for(i=23;i<38;i+=5){ //increase power from 20 to 30 in steps of 5
+    for(i=27;i<42;i+=5){ //increase power from 20 to 30 in steps of 5
     (*mL).direction=1;
     (*mR).direction=0;
     (*mL).power=i;   
@@ -135,7 +135,7 @@ void turnLeft(DC_motor *mL, DC_motor *mR)
     setMotorPWM(mR); 
     __delay_ms(104); //turn at the specified power for 135ms
     }
-    for(i=28;i>13;i-=5){ //decrease power from 25 to 10 in steps of 5
+    for(i=32;i>17;i-=5){ //decrease power from 25 to 10 in steps of 5
     (*mL).direction=1;
     (*mR).direction=0;
     (*mL).power=i;   
@@ -174,7 +174,7 @@ void turnRight(struct DC_motor *mL, struct DC_motor *mR)
     
     /*  High surface roughness turning */
     int i;
-    for(i=25;i<40;i+=5){ //increase power from 20 to 30 in steps of 5
+    for(i=27;i<42;i+=5){ //increase power from 20 to 30 in steps of 5
     (*mL).direction=0;
     (*mR).direction=1;
     (*mL).power=i;   
@@ -183,7 +183,7 @@ void turnRight(struct DC_motor *mL, struct DC_motor *mR)
     setMotorPWM(mR); 
     __delay_ms(107); //turn at the specified power for 135ms
     }
-    for(i=30;i>15;i-=5){ //decrease power from 25 to 10 in steps of 5
+    for(i=32;i>17;i-=5){ //decrease power from 25 to 10 in steps of 5
     (*mL).direction=0;
     (*mR).direction=1;
     (*mL).power=i;   
@@ -278,8 +278,8 @@ void moveBack(struct DC_motor *mL, struct DC_motor *mR, unsigned int time)
     {
         (*mL).direction=1;
         (*mR).direction=1;
-        (*mL).power=50;
-        (*mR).power=50;
+        (*mL).power=40;
+        (*mR).power=39;
         setMotorPWM(mL);
         setMotorPWM(mR);
     }
@@ -343,7 +343,7 @@ void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
     //YEL + B1R90   -1 , r *
     if(color == 3){
         //move back + turn right
-        moveBack(motorL, motorR, 10);
+        moveBack(motorL, motorR, 33); // move back a block
         stop(motorL, motorR);
         turnRight(motorL, motorR);
         //if the last element of the list is integer greater or equal to a block
@@ -379,7 +379,7 @@ void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
     
     if(color == 4){
         //move back + turn left
-        moveBack(motorL, motorR, 10);
+        moveBack(motorL, motorR, 33); // move back a block
         stop(motorL, motorR);
         turnLeft(motorL, motorR);        
         //if the last element of the list is integer greater or equal to a block

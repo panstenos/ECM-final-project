@@ -24348,7 +24348,7 @@ void main(void){
 
     while(1){
 # 56 "main.c"
-        moveBack(&motorL, &motorR, 10);
+        turnLeft(&motorL, &motorR);
         stop(&motorL,&motorR);
     }
 }

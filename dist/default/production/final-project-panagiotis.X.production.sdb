@@ -748,26 +748,28 @@
 {
 [s S1015 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
 "27
-[v main@motorR motorR `S1015  1 a 9 34 ]
-[v main@motorL motorL `S1015  1 a 9 25 ]
+[v main@motorR motorR `S1015  1 a 9 36 ]
+[v main@motorL motorL `S1015  1 a 9 27 ]
 "59
 } 0
-"92 C:\Users\PanSt\MPLABXProjects\final-project-panagiotis.X\dc_motor.c
+"102 C:\Users\PanSt\MPLABXProjects\final-project-panagiotis.X\dc_motor.c
+[v _turnLeft turnLeft `(v  1 e 1 0 ]
+{
+"128
+[v turnLeft@i i `i  1 a 2 25 ]
+[s S1015 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
+"102
+[v turnLeft@mL mL `*.39S1015  1 p 2 19 ]
+[v turnLeft@mR mR `*.39S1015  1 p 2 21 ]
+"148
+} 0
+"92
 [v _stop stop `(v  1 e 1 0 ]
 {
 [s S1015 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
 [v stop@mL mL `*.39S1015  1 p 2 19 ]
 [v stop@mR mR `*.39S1015  1 p 2 21 ]
 "99
-} 0
-"274
-[v _moveBack moveBack `(v  1 e 1 0 ]
-{
-[s S1015 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
-[v moveBack@mL mL `*.39S1015  1 p 2 19 ]
-[v moveBack@mR mR `*.39S1015  1 p 2 21 ]
-[v moveBack@time time `ui  1 p 2 23 ]
-"287
 } 0
 "69
 [v _setMotorPWM setMotorPWM `(v  1 e 1 0 ]

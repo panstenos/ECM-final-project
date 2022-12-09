@@ -2532,10 +2532,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;dc_motor.c: 128:     int i;
 [v _i `i ~T0 @X0 1 a ]
 "129
-[; ;dc_motor.c: 129:     for(i=23;i<38;i+=5){
+[; ;dc_motor.c: 129:     for(i=27;i<42;i+=5){
 {
-[e = _i -> 23 `i ]
-[e $ < _i -> 38 `i 2024  ]
+[e = _i -> 27 `i ]
+[e $ < _i -> 42 `i 2024  ]
 [e $U 2025  ]
 [e :U 2024 ]
 {
@@ -2564,14 +2564,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;dc_motor.c: 137:     }
 }
 [e =+ _i -> 5 `i ]
-[e $ < _i -> 38 `i 2024  ]
+[e $ < _i -> 42 `i 2024  ]
 [e :U 2025 ]
 }
 "138
-[; ;dc_motor.c: 138:     for(i=28;i>13;i-=5){
+[; ;dc_motor.c: 138:     for(i=32;i>17;i-=5){
 {
-[e = _i -> 28 `i ]
-[e $ > _i -> 13 `i 2027  ]
+[e = _i -> 32 `i ]
+[e $ > _i -> 17 `i 2027  ]
 [e $U 2028  ]
 [e :U 2027 ]
 {
@@ -2600,7 +2600,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;dc_motor.c: 147:     }
 }
 [e =- _i -> 5 `i ]
-[e $ > _i -> 13 `i 2027  ]
+[e $ > _i -> 17 `i 2027  ]
 [e :U 2028 ]
 }
 "148
@@ -2625,10 +2625,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;dc_motor.c: 176:     int i;
 [v _i `i ~T0 @X0 1 a ]
 "177
-[; ;dc_motor.c: 177:     for(i=25;i<40;i+=5){
+[; ;dc_motor.c: 177:     for(i=27;i<42;i+=5){
 {
-[e = _i -> 25 `i ]
-[e $ < _i -> 40 `i 2031  ]
+[e = _i -> 27 `i ]
+[e $ < _i -> 42 `i 2031  ]
 [e $U 2032  ]
 [e :U 2031 ]
 {
@@ -2657,14 +2657,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;dc_motor.c: 185:     }
 }
 [e =+ _i -> 5 `i ]
-[e $ < _i -> 40 `i 2031  ]
+[e $ < _i -> 42 `i 2031  ]
 [e :U 2032 ]
 }
 "186
-[; ;dc_motor.c: 186:     for(i=30;i>15;i-=5){
+[; ;dc_motor.c: 186:     for(i=32;i>17;i-=5){
 {
-[e = _i -> 30 `i ]
-[e $ > _i -> 15 `i 2034  ]
+[e = _i -> 32 `i ]
+[e $ > _i -> 17 `i 2034  ]
 [e $U 2035  ]
 [e :U 2034 ]
 {
@@ -2693,7 +2693,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;dc_motor.c: 195:     }
 }
 [e =- _i -> 5 `i ]
-[e $ > _i -> 15 `i 2034  ]
+[e $ > _i -> 17 `i 2034  ]
 [e :U 2035 ]
 }
 "196
@@ -3012,11 +3012,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;dc_motor.c: 280:         (*mR).direction=1;
 [e = . *U _mR 1 -> -> 1 `i `uc ]
 "281
-[; ;dc_motor.c: 281:         (*mL).power=50;
-[e = . *U _mL 0 -> -> 50 `i `uc ]
+[; ;dc_motor.c: 281:         (*mL).power=40;
+[e = . *U _mL 0 -> -> 40 `i `uc ]
 "282
-[; ;dc_motor.c: 282:         (*mR).power=50;
-[e = . *U _mR 0 -> -> 50 `i `uc ]
+[; ;dc_motor.c: 282:         (*mR).power=39;
+[e = . *U _mR 0 -> -> 39 `i `uc ]
 "283
 [; ;dc_motor.c: 283:         setMotorPWM(mL);
 [e ( _setMotorPWM (1 _mL ]
@@ -3229,8 +3229,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! == _color -> -> 3 `i `ui 2075  ]
 {
 "346
-[; ;dc_motor.c: 346:         moveBack(motorL, motorR, 10);
-[e ( _moveBack (3 , , _motorL _motorR -> -> 10 `i `ui ]
+[; ;dc_motor.c: 346:         moveBack(motorL, motorR, 33);
+[e ( _moveBack (3 , , _motorL _motorR -> -> 33 `i `ui ]
 "347
 [; ;dc_motor.c: 347:         stop(motorL, motorR);
 [e ( _stop (2 , _motorL _motorR ]
@@ -3309,8 +3309,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! == _color -> -> 4 `i `ui 2080  ]
 {
 "382
-[; ;dc_motor.c: 382:         moveBack(motorL, motorR, 10);
-[e ( _moveBack (3 , , _motorL _motorR -> -> 10 `i `ui ]
+[; ;dc_motor.c: 382:         moveBack(motorL, motorR, 33);
+[e ( _moveBack (3 , , _motorL _motorR -> -> 33 `i `ui ]
 "383
 [; ;dc_motor.c: 383:         stop(motorL, motorR);
 [e ( _stop (2 , _motorL _motorR ]

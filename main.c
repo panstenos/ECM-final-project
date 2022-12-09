@@ -46,14 +46,14 @@ void main(void){
             add_seconds_to_list(); // add seconds of moving ahead to the list
             stop(&motorL,&motorR); // stop and add seconds movement to the list
             unsigned int color_code = get_color_code(); // get the color code
-            moveBack(&motorL, &motorR, 2); // move back to the centre of the block 
+            moveBack(&motorL, &motorR, 11); // move back to the centre of the block 
             stop(&motorL,&motorR);
             RobotMovement(color_code, &motorL, &motorR); // move according to the colour
             stop(&motorL,&motorR); // stop and add seconds movement to the list
             fullSpeedAhead(&motorL,&motorR); //move ahead
         }
        */
-        moveBack(&motorL, &motorR, 10);
+        turnLeft(&motorL, &motorR);
         stop(&motorL,&motorR);
     }    
 }
