@@ -24345,10 +24345,18 @@ void main(void){
     motorR.negDutyHighByte=(unsigned char *)(&CCPR4H);
     motorR.PWMperiod=PWMcycle;
 
-
+    _delay((unsigned long)((1000)*(64000000/4000.0)));
+    fullSpeedAhead(&motorL,&motorR);
     while(1){
-# 56 "main.c"
-        turnLeft(&motorL, &motorR);
-        stop(&motorL,&motorR);
+        if(get_wall_presence() == 1){
+            add_seconds_to_list();
+            stop(&motorL,&motorR);
+            unsigned int color_code = get_color_code();
+            moveBack(&motorL, &motorR, 11);
+            stop(&motorL,&motorR);
+            RobotMovement(color_code, &motorL, &motorR);
+            stop(&motorL,&motorR);
+            fullSpeedAhead(&motorL,&motorR);
+        }
     }
 }

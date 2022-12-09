@@ -53,10 +53,14 @@
 [v _get_color_distance get_color_distance `(ui  1 e 2 0 ]
 "154
 [v _set_led_color set_led_color `(v  1 e 1 0 ]
+"176
+[v _get_color_code get_color_code `(ui  1 e 2 0 ]
 "209
 [v _calibrate_black calibrate_black `(v  1 e 1 0 ]
 "229
 [v _calibrate_white calibrate_white `(v  1 e 1 0 ]
+"242
+[v _get_wall_presence get_wall_presence `(ui  1 e 2 0 ]
 "9 C:\Users\PanSt\MPLABXProjects\final-project-panagiotis.X\dc_motor.c
 [v _initDCmotorsPWM initDCmotorsPWM `(v  1 e 1 0 ]
 "69
@@ -65,19 +69,25 @@
 [v _stop stop `(v  1 e 1 0 ]
 "102
 [v _turnLeft turnLeft `(v  1 e 1 0 ]
-"150
+"154
 [v _turnRight turnRight `(v  1 e 1 0 ]
-"198
+"206
 [v _turnLeftLong turnLeftLong `(v  1 e 1 0 ]
-"223
+"231
 [v _turnRightLong turnRightLong `(v  1 e 1 0 ]
-"259
+"256
+[v _fullSpeedAhead fullSpeedAhead `(v  1 e 1 0 ]
+"267
 [v _TimedfullSpeedAhead TimedfullSpeedAhead `(v  1 e 1 0 ]
-"274
+"282
 [v _moveBack moveBack `(v  1 e 1 0 ]
-"313
+"321
 [v _increment_seconds increment_seconds `(v  1 e 1 0 ]
-"448
+"327
+[v _RobotMovement RobotMovement `(v  1 e 1 0 ]
+"446
+[v _add_seconds_to_list add_seconds_to_list `(v  1 e 1 0 ]
+"455
 [v _return_back return_back `(v  1 e 1 0 ]
 "4 C:\Users\PanSt\MPLABXProjects\final-project-panagiotis.X\i2c.c
 [v _I2C_2_Master_Init I2C_2_Master_Init `(v  1 e 1 0 ]
@@ -105,7 +115,7 @@
 [v _SSP2CLKPPS SSP2CLKPPS `VEuc  1 e 1 @3612 ]
 "3862
 [v _SSP2DATPPS SSP2DATPPS `VEuc  1 e 1 @3613 ]
-[s S1540 . 1 `uc 1 INT0IE 1 0 :1:0 
+[s S1542 . 1 `uc 1 INT0IE 1 0 :1:0 
 `uc 1 INT1IE 1 0 :1:1 
 `uc 1 INT2IE 1 0 :1:2 
 `uc 1 INT3IE 1 0 :1:3 
@@ -113,9 +123,9 @@
 `uc 1 TMR0IE 1 0 :1:5 
 ]
 "4557
-[u S1547 . 1 `S1540 1 . 1 0 ]
-[v _PIE0bits PIE0bits `VES1547  1 e 1 @3625 ]
-[s S1557 . 1 `uc 1 C1IE 1 0 :1:0 
+[u S1549 . 1 `S1542 1 . 1 0 ]
+[v _PIE0bits PIE0bits `VES1549  1 e 1 @3625 ]
+[s S1559 . 1 `uc 1 C1IE 1 0 :1:0 
 `uc 1 C2IE 1 0 :1:1 
 `uc 1 C3IE 1 0 :1:2 
 `uc 1 . 1 0 :3:3 
@@ -123,12 +133,12 @@
 `uc 1 HLVDIE 1 0 :1:7 
 ]
 "4659
-[s S1564 . 1 `uc 1 . 1 0 :6:0 
+[s S1566 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 CMIE 1 0 :1:6 
 ]
-[u S1567 . 1 `S1557 1 . 1 0 `S1564 1 . 1 0 ]
-[v _PIE2bits PIE2bits `VES1567  1 e 1 @3627 ]
-[s S1581 . 1 `uc 1 INT0IF 1 0 :1:0 
+[u S1569 . 1 `S1559 1 . 1 0 `S1566 1 . 1 0 ]
+[v _PIE2bits PIE2bits `VES1569  1 e 1 @3627 ]
+[s S1583 . 1 `uc 1 INT0IF 1 0 :1:0 
 `uc 1 INT1IF 1 0 :1:1 
 `uc 1 INT2IF 1 0 :1:2 
 `uc 1 INT3IF 1 0 :1:3 
@@ -136,8 +146,8 @@
 `uc 1 TMR0IF 1 0 :1:5 
 ]
 "5102
-[u S1588 . 1 `S1581 1 . 1 0 ]
-[v _PIR0bits PIR0bits `VES1588  1 e 1 @3635 ]
+[u S1590 . 1 `S1583 1 . 1 0 ]
+[v _PIR0bits PIR0bits `VES1590  1 e 1 @3635 ]
 "8208
 [v _RC7PPS RC7PPS `VEuc  1 e 1 @3689 ]
 "8508
@@ -150,7 +160,7 @@
 [v _RE4PPS RE4PPS `VEuc  1 e 1 @3702 ]
 "9708
 [v _RG6PPS RG6PPS `VEuc  1 e 1 @3720 ]
-[s S1356 . 1 `uc 1 ANSELD0 1 0 :1:0 
+[s S1358 . 1 `uc 1 ANSELD0 1 0 :1:0 
 `uc 1 ANSELD1 1 0 :1:1 
 `uc 1 ANSELD2 1 0 :1:2 
 `uc 1 ANSELD3 1 0 :1:3 
@@ -160,8 +170,8 @@
 `uc 1 ANSELD7 1 0 :1:7 
 ]
 "11513
-[u S1365 . 1 `S1356 1 . 1 0 ]
-[v _ANSELDbits ANSELDbits `VES1365  1 e 1 @3751 ]
+[u S1367 . 1 `S1358 1 . 1 0 ]
+[v _ANSELDbits ANSELDbits `VES1367  1 e 1 @3751 ]
 [s S107 . 1 `uc 1 ANSELF0 1 0 :1:0 
 `uc 1 ANSELF1 1 0 :1:1 
 `uc 1 ANSELF2 1 0 :1:2 
@@ -180,19 +190,19 @@
 [v _SSP2ADD SSP2ADD `VEuc  1 e 1 @3798 ]
 "14406
 [v _SSP2STAT SSP2STAT `VEuc  1 e 1 @3800 ]
-[s S1289 . 1 `uc 1 SSPM 1 0 :4:0 
+[s S1291 . 1 `uc 1 SSPM 1 0 :4:0 
 `uc 1 CKP 1 0 :1:4 
 `uc 1 SSPEN 1 0 :1:5 
 `uc 1 SSPOV 1 0 :1:6 
 `uc 1 WCOL 1 0 :1:7 
 ]
 "14890
-[s S1295 . 1 `uc 1 SSPM0 1 0 :1:0 
+[s S1297 . 1 `uc 1 SSPM0 1 0 :1:0 
 `uc 1 SSPM1 1 0 :1:1 
 `uc 1 SSPM2 1 0 :1:2 
 `uc 1 SSPM3 1 0 :1:3 
 ]
-[s S1300 . 1 `uc 1 SSPM02 1 0 :1:0 
+[s S1302 . 1 `uc 1 SSPM02 1 0 :1:0 
 `uc 1 SSPM12 1 0 :1:1 
 `uc 1 SSPM22 1 0 :1:2 
 `uc 1 SSPM32 1 0 :1:3 
@@ -201,11 +211,11 @@
 `uc 1 SSPOV2 1 0 :1:6 
 `uc 1 WCOL2 1 0 :1:7 
 ]
-[u S1309 . 1 `S1289 1 . 1 0 `S1295 1 . 1 0 `S1300 1 . 1 0 ]
-[v _SSP2CON1bits SSP2CON1bits `VES1309  1 e 1 @3801 ]
+[u S1311 . 1 `S1291 1 . 1 0 `S1297 1 . 1 0 `S1302 1 . 1 0 ]
+[v _SSP2CON1bits SSP2CON1bits `VES1311  1 e 1 @3801 ]
 "14980
 [v _SSP2CON2 SSP2CON2 `VEuc  1 e 1 @3802 ]
-[s S1383 . 1 `uc 1 SEN 1 0 :1:0 
+[s S1385 . 1 `uc 1 SEN 1 0 :1:0 
 `uc 1 RSEN 1 0 :1:1 
 `uc 1 PEN 1 0 :1:2 
 `uc 1 RCEN 1 0 :1:3 
@@ -215,17 +225,17 @@
 `uc 1 GCEN 1 0 :1:7 
 ]
 "15027
-[s S1392 . 1 `uc 1 . 1 0 :1:0 
+[s S1394 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADMSK 1 0 :5:1 
 ]
-[s S1395 . 1 `uc 1 . 1 0 :1:0 
+[s S1397 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADMSK1 1 0 :1:1 
 `uc 1 ADMSK2 1 0 :1:2 
 `uc 1 ADMSK3 1 0 :1:3 
 `uc 1 ADMSK4 1 0 :1:4 
 `uc 1 ADMSK5 1 0 :1:5 
 ]
-[s S1402 . 1 `uc 1 SEN2 1 0 :1:0 
+[s S1404 . 1 `uc 1 SEN2 1 0 :1:0 
 `uc 1 ADMSK12 1 0 :1:1 
 `uc 1 ADMSK22 1 0 :1:2 
 `uc 1 ADMSK32 1 0 :1:3 
@@ -234,15 +244,15 @@
 `uc 1 ACKSTAT2 1 0 :1:6 
 `uc 1 GCEN2 1 0 :1:7 
 ]
-[s S1411 . 1 `uc 1 . 1 0 :1:0 
+[s S1413 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 RSEN2 1 0 :1:1 
 `uc 1 PEN2 1 0 :1:2 
 `uc 1 RCEN2 1 0 :1:3 
 `uc 1 ADMSK42 1 0 :1:4 
 `uc 1 ADMSK52 1 0 :1:5 
 ]
-[u S1418 . 1 `S1383 1 . 1 0 `S1392 1 . 1 0 `S1395 1 . 1 0 `S1402 1 . 1 0 `S1411 1 . 1 0 ]
-[v _SSP2CON2bits SSP2CON2bits `VES1418  1 e 1 @3802 ]
+[u S1420 . 1 `S1385 1 . 1 0 `S1394 1 . 1 0 `S1397 1 . 1 0 `S1404 1 . 1 0 `S1413 1 . 1 0 ]
+[v _SSP2CON2bits SSP2CON2bits `VES1420  1 e 1 @3802 ]
 "21098
 [v _CCPR4H CCPR4H `VEuc  1 e 1 @3873 ]
 [s S915 . 1 `uc 1 MODE 1 0 :4:0 
@@ -412,7 +422,7 @@
 "29595
 [u S504 . 1 `S495 1 . 1 0 ]
 [v _TRISCbits TRISCbits `VES504  1 e 1 @3971 ]
-[s S1335 . 1 `uc 1 TRISD0 1 0 :1:0 
+[s S1337 . 1 `uc 1 TRISD0 1 0 :1:0 
 `uc 1 TRISD1 1 0 :1:1 
 `uc 1 TRISD2 1 0 :1:2 
 `uc 1 TRISD3 1 0 :1:3 
@@ -422,8 +432,8 @@
 `uc 1 TRISD7 1 0 :1:7 
 ]
 "29717
-[u S1344 . 1 `S1335 1 . 1 0 ]
-[v _TRISDbits TRISDbits `VES1344  1 e 1 @3972 ]
+[u S1346 . 1 `S1337 1 . 1 0 ]
+[v _TRISDbits TRISDbits `VES1346  1 e 1 @3972 ]
 [s S474 . 1 `uc 1 TRISE0 1 0 :1:0 
 `uc 1 TRISE1 1 0 :1:1 
 `uc 1 TRISE2 1 0 :1:2 
@@ -639,29 +649,29 @@
 [v _TMR0L TMR0L `VEuc  1 e 1 @4051 ]
 "39326
 [v _TMR0H TMR0H `VEuc  1 e 1 @4052 ]
-[s S1744 . 1 `uc 1 T0OUTPS 1 0 :4:0 
+[s S1759 . 1 `uc 1 T0OUTPS 1 0 :4:0 
 `uc 1 T016BIT 1 0 :1:4 
 `uc 1 T0OUT 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 `uc 1 T0EN 1 0 :1:7 
 ]
 "39600
-[s S1750 . 1 `uc 1 T0OUTPS0 1 0 :1:0 
+[s S1765 . 1 `uc 1 T0OUTPS0 1 0 :1:0 
 `uc 1 T0OUTPS1 1 0 :1:1 
 `uc 1 T0OUTPS2 1 0 :1:2 
 `uc 1 T0OUTPS3 1 0 :1:3 
 ]
 "39600
-[u S1755 . 1 `S1744 1 . 1 0 `S1750 1 . 1 0 ]
+[u S1770 . 1 `S1759 1 . 1 0 `S1765 1 . 1 0 ]
 "39600
 "39600
-[v _T0CON0bits T0CON0bits `VES1755  1 e 1 @4053 ]
-[s S1696 . 1 `uc 1 T0CKPS 1 0 :4:0 
+[v _T0CON0bits T0CON0bits `VES1770  1 e 1 @4053 ]
+[s S1711 . 1 `uc 1 T0CKPS 1 0 :4:0 
 `uc 1 T0ASYNC 1 0 :1:4 
 `uc 1 T0CS 1 0 :3:5 
 ]
 "39676
-[s S1700 . 1 `uc 1 T0CKPS0 1 0 :1:0 
+[s S1715 . 1 `uc 1 T0CKPS0 1 0 :1:0 
 `uc 1 T0CKPS1 1 0 :1:1 
 `uc 1 T0CKPS2 1 0 :1:2 
 `uc 1 T0CKPS3 1 0 :1:3 
@@ -671,20 +681,20 @@
 `uc 1 T0CS2 1 0 :1:7 
 ]
 "39676
-[s S1709 . 1 `uc 1 T0PS0 1 0 :1:0 
+[s S1724 . 1 `uc 1 T0PS0 1 0 :1:0 
 `uc 1 T0PS1 1 0 :1:1 
 `uc 1 T0PS2 1 0 :1:2 
 `uc 1 T0PS3 1 0 :1:3 
 ]
 "39676
-[s S1714 . 1 `uc 1 T0PS 1 0 :4:0 
+[s S1729 . 1 `uc 1 T0PS 1 0 :4:0 
 ]
 "39676
-[u S1716 . 1 `S1696 1 . 1 0 `S1700 1 . 1 0 `S1709 1 . 1 0 `S1714 1 . 1 0 ]
+[u S1731 . 1 `S1711 1 . 1 0 `S1715 1 . 1 0 `S1724 1 . 1 0 `S1729 1 . 1 0 ]
 "39676
 "39676
-[v _T0CON1bits T0CON1bits `VES1716  1 e 1 @4054 ]
-[s S1501 . 1 `uc 1 INT0EDG 1 0 :1:0 
+[v _T0CON1bits T0CON1bits `VES1731  1 e 1 @4054 ]
+[s S1503 . 1 `uc 1 INT0EDG 1 0 :1:0 
 `uc 1 INT1EDG 1 0 :1:1 
 `uc 1 INT2EDG 1 0 :1:2 
 `uc 1 INT3EDG 1 0 :1:3 
@@ -694,20 +704,20 @@
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
 "40499
-[s S1510 . 1 `uc 1 . 1 0 :6:0 
+[s S1512 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
 "40499
-[s S1514 . 1 `uc 1 . 1 0 :6:0 
+[s S1516 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
 "40499
-[u S1518 . 1 `S1501 1 . 1 0 `S1510 1 . 1 0 `S1514 1 . 1 0 ]
+[u S1520 . 1 `S1503 1 . 1 0 `S1512 1 . 1 0 `S1516 1 . 1 0 ]
 "40499
 "40499
-[v _INTCONbits INTCONbits `VES1518  1 e 1 @4082 ]
+[v _INTCONbits INTCONbits `VES1520  1 e 1 @4082 ]
 [s S24 RGB_val 12 `ul 1 R 4 0 `ul 1 G 4 4 `ul 1 B 4 8 ]
 "12 C:\Users\PanSt\MPLABXProjects\final-project-panagiotis.X\color.c
 [v _RGB RGB `S24  1 e 12 0 ]
@@ -746,57 +756,89 @@
 "17 C:\Users\PanSt\MPLABXProjects\final-project-panagiotis.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
+"48
+[v main@color_code color_code `ui  1 a 2 58 ]
 [s S1015 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
 "27
-[v main@motorR motorR `S1015  1 a 9 36 ]
-[v main@motorL motorL `S1015  1 a 9 27 ]
-"59
-} 0
-"102 C:\Users\PanSt\MPLABXProjects\final-project-panagiotis.X\dc_motor.c
-[v _turnLeft turnLeft `(v  1 e 1 0 ]
-{
-"128
-[v turnLeft@i i `i  1 a 2 25 ]
-[s S1015 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
-"102
-[v turnLeft@mL mL `*.39S1015  1 p 2 19 ]
-[v turnLeft@mR mR `*.39S1015  1 p 2 21 ]
-"148
-} 0
-"92
-[v _stop stop `(v  1 e 1 0 ]
-{
-[s S1015 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
-[v stop@mL mL `*.39S1015  1 p 2 19 ]
-[v stop@mR mR `*.39S1015  1 p 2 21 ]
-"99
-} 0
-"69
-[v _setMotorPWM setMotorPWM `(v  1 e 1 0 ]
-{
-"71
-[v setMotorPWM@negDuty negDuty `uc  1 a 1 18 ]
-[v setMotorPWM@posDuty posDuty `uc  1 a 1 17 ]
-[s S1015 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
-"69
-[v setMotorPWM@m m `*.39S1015  1 p 2 13 ]
-"89
-} 0
-"15 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\Umul16.c
-[v ___wmul __wmul `(ui  1 e 2 0 ]
-{
-"17
-[v ___wmul@product product `ui  1 a 2 4 ]
-"15
-[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
-[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
-"53
+[v main@motorR motorR `S1015  1 a 9 69 ]
+[v main@motorL motorL `S1015  1 a 9 60 ]
+"56
 } 0
 "9 C:\Users\PanSt\MPLABXProjects\final-project-panagiotis.X\dc_motor.c
 [v _initDCmotorsPWM initDCmotorsPWM `(v  1 e 1 0 ]
 {
 [v initDCmotorsPWM@PWMperiod PWMperiod `i  1 p 2 0 ]
 "66
+} 0
+"242 C:\Users\PanSt\MPLABXProjects\final-project-panagiotis.X\color.c
+[v _get_wall_presence get_wall_presence `(ui  1 e 2 0 ]
+{
+"248
+[v get_wall_presence@clear2 clear2 `ui  1 a 2 17 ]
+"245
+[v get_wall_presence@clear1 clear1 `ui  1 a 2 15 ]
+"251
+} 0
+"176
+[v _get_color_code get_color_code `(ui  1 e 2 0 ]
+{
+"198
+[v get_color_code@value value `ui  1 a 2 28 ]
+"197
+[v get_color_code@i i `ui  1 a 2 30 ]
+[s S24 RGB_val 12 `ul 1 R 4 0 `ul 1 G 4 4 `ul 1 B 4 8 ]
+"190
+[v get_color_code@NormalizedRGB NormalizedRGB `S24  1 a 12 32 ]
+"196
+[v get_color_code@min_index min_index `ui  1 a 2 26 ]
+"195
+[v get_color_code@min_value min_value `ui  1 a 2 24 ]
+"207
+} 0
+"146
+[v _get_color_distance get_color_distance `(ui  1 e 2 0 ]
+{
+"149
+[v get_color_distance@B_offset B_offset `ui  1 a 2 50 ]
+"148
+[v get_color_distance@G_offset G_offset `ui  1 a 2 48 ]
+"147
+[v get_color_distance@R_offset R_offset `ui  1 a 2 46 ]
+[s S24 RGB_val 12 `ul 1 R 4 0 `ul 1 G 4 4 `ul 1 B 4 8 ]
+"146
+[v get_color_distance@color1 color1 `S24  1 p 12 6 ]
+[v get_color_distance@color2 color2 `S24  1 p 12 18 ]
+"152
+} 0
+"15 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+{
+"17
+[v ___lmul@product product `ul  1 a 4 8 ]
+"15
+[v ___lmul@multiplier multiplier `ul  1 p 4 0 ]
+[v ___lmul@multiplicand multiplicand `ul  1 p 4 4 ]
+"129
+} 0
+"7 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\__lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+{
+"10
+[v ___lldiv@quotient quotient `ul  1 a 4 20 ]
+"11
+[v ___lldiv@counter counter `uc  1 a 1 24 ]
+"7
+[v ___lldiv@dividend dividend `ul  1 p 4 12 ]
+[v ___lldiv@divisor divisor `ul  1 p 4 16 ]
+"30
+} 0
+"256 C:\Users\PanSt\MPLABXProjects\final-project-panagiotis.X\dc_motor.c
+[v _fullSpeedAhead fullSpeedAhead `(v  1 e 1 0 ]
+{
+[s S1015 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
+[v fullSpeedAhead@mL mL `*.39S1015  1 p 2 19 ]
+[v fullSpeedAhead@mR mR `*.39S1015  1 p 2 21 ]
+"265
 } 0
 "30 C:\Users\PanSt\MPLABXProjects\final-project-panagiotis.X\color.c
 [v _color_click_init color_click_init `(v  1 e 1 0 ]
@@ -901,6 +943,138 @@
 {
 "25
 } 0
+"4
+[v _I2C_2_Master_Init I2C_2_Master_Init `(v  1 e 1 0 ]
+{
+"20
+} 0
+"446 C:\Users\PanSt\MPLABXProjects\final-project-panagiotis.X\dc_motor.c
+[v _add_seconds_to_list add_seconds_to_list `(v  1 e 1 0 ]
+{
+"453
+} 0
+"7 C:\Users\PanSt\MPLABXProjects\final-project-panagiotis.X\timers.c
+[v _Timer0_init Timer0_init `(v  1 e 1 0 ]
+{
+"19
+} 0
+"327 C:\Users\PanSt\MPLABXProjects\final-project-panagiotis.X\dc_motor.c
+[v _RobotMovement RobotMovement `(v  1 e 1 0 ]
+{
+"435
+[v RobotMovement@i_1285 i `i  1 a 2 45 ]
+"343
+[v RobotMovement@i i `i  1 a 2 43 ]
+"327
+[v RobotMovement@color color `ui  1 p 2 35 ]
+[s S1015 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
+[v RobotMovement@motorL motorL `*.39S1015  1 p 2 37 ]
+[v RobotMovement@motorR motorR `*.39S1015  1 p 2 39 ]
+"443
+} 0
+"455
+[v _return_back return_back `(v  1 e 1 0 ]
+{
+[s S1015 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
+[v return_back@motorL motorL `*.39S1015  1 p 2 29 ]
+[v return_back@motorR motorR `*.39S1015  1 p 2 31 ]
+"466
+} 0
+"231
+[v _turnRightLong turnRightLong `(v  1 e 1 0 ]
+{
+"234
+[v turnRightLong@i i `i  1 a 2 25 ]
+[s S1015 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
+"231
+[v turnRightLong@mL mL `*.39S1015  1 p 2 19 ]
+[v turnRightLong@mR mR `*.39S1015  1 p 2 21 ]
+"254
+} 0
+"154
+[v _turnRight turnRight `(v  1 e 1 0 ]
+{
+"183
+[v turnRight@i i `i  1 a 2 27 ]
+"180
+[v turnRight@k k `i  1 a 2 25 ]
+[s S1015 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
+"154
+[v turnRight@mL mL `*.39S1015  1 p 2 19 ]
+[v turnRight@mR mR `*.39S1015  1 p 2 21 ]
+"204
+} 0
+"206
+[v _turnLeftLong turnLeftLong `(v  1 e 1 0 ]
+{
+"209
+[v turnLeftLong@i i `i  1 a 2 25 ]
+[s S1015 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
+"206
+[v turnLeftLong@mL mL `*.39S1015  1 p 2 19 ]
+[v turnLeftLong@mR mR `*.39S1015  1 p 2 21 ]
+"229
+} 0
+"102
+[v _turnLeft turnLeft `(v  1 e 1 0 ]
+{
+"131
+[v turnLeft@i i `i  1 a 2 27 ]
+"128
+[v turnLeft@k k `i  1 a 2 25 ]
+[s S1015 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
+"102
+[v turnLeft@mL mL `*.39S1015  1 p 2 19 ]
+[v turnLeft@mR mR `*.39S1015  1 p 2 21 ]
+"152
+} 0
+"92
+[v _stop stop `(v  1 e 1 0 ]
+{
+[s S1015 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
+[v stop@mL mL `*.39S1015  1 p 2 19 ]
+[v stop@mR mR `*.39S1015  1 p 2 21 ]
+"99
+} 0
+"267
+[v _TimedfullSpeedAhead TimedfullSpeedAhead `(v  1 e 1 0 ]
+{
+[s S1015 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
+[v TimedfullSpeedAhead@mL mL `*.39S1015  1 p 2 19 ]
+[v TimedfullSpeedAhead@mR mR `*.39S1015  1 p 2 21 ]
+[v TimedfullSpeedAhead@time time `ui  1 p 2 23 ]
+"280
+} 0
+"282
+[v _moveBack moveBack `(v  1 e 1 0 ]
+{
+[s S1015 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
+[v moveBack@mL mL `*.39S1015  1 p 2 19 ]
+[v moveBack@mR mR `*.39S1015  1 p 2 21 ]
+[v moveBack@time time `ui  1 p 2 23 ]
+"295
+} 0
+"69
+[v _setMotorPWM setMotorPWM `(v  1 e 1 0 ]
+{
+"71
+[v setMotorPWM@negDuty negDuty `uc  1 a 1 18 ]
+[v setMotorPWM@posDuty posDuty `uc  1 a 1 17 ]
+[s S1015 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
+"69
+[v setMotorPWM@m m `*.39S1015  1 p 2 13 ]
+"89
+} 0
+"15 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 4 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
+} 0
 "7 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
 {
@@ -913,16 +1087,6 @@
 [v ___lwdiv@divisor divisor `ui  1 p 2 8 ]
 "30
 } 0
-"4 C:\Users\PanSt\MPLABXProjects\final-project-panagiotis.X\i2c.c
-[v _I2C_2_Master_Init I2C_2_Master_Init `(v  1 e 1 0 ]
-{
-"20
-} 0
-"7 C:\Users\PanSt\MPLABXProjects\final-project-panagiotis.X\timers.c
-[v _Timer0_init Timer0_init `(v  1 e 1 0 ]
-{
-"19
-} 0
 "10 C:\Users\PanSt\MPLABXProjects\final-project-panagiotis.X\interrupts.c
 [v _Interrupts_init Interrupts_init `(v  1 e 1 0 ]
 {
@@ -933,8 +1097,8 @@
 {
 "32
 } 0
-"313 C:\Users\PanSt\MPLABXProjects\final-project-panagiotis.X\dc_motor.c
+"321 C:\Users\PanSt\MPLABXProjects\final-project-panagiotis.X\dc_motor.c
 [v _increment_seconds increment_seconds `(v  1 e 1 0 ]
 {
-"316
+"324
 } 0

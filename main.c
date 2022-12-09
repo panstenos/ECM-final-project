@@ -39,22 +39,19 @@ void main(void){
     motorR.negDutyHighByte=(unsigned char *)(&CCPR4H); //store address of CCP2 duty high byte
     motorR.PWMperiod=PWMcycle; //store PWMperiod for motor (value of T2PR in this case)
     
-    //fullSpeedAhead(&motorL,&motorR); //start by moving ahead
+    __delay_ms(1000); 
+    fullSpeedAhead(&motorL,&motorR); //start by moving ahead
     while(1){
-        /*
         if(get_wall_presence() == 1){
             add_seconds_to_list(); // add seconds of moving ahead to the list
             stop(&motorL,&motorR); // stop and add seconds movement to the list
             unsigned int color_code = get_color_code(); // get the color code
             moveBack(&motorL, &motorR, 11); // move back to the centre of the block 
-            stop(&motorL,&motorR);
+            stop(&motorL,&motorR); //built in delay 1 s
             RobotMovement(color_code, &motorL, &motorR); // move according to the colour
             stop(&motorL,&motorR); // stop and add seconds movement to the list
             fullSpeedAhead(&motorL,&motorR); //move ahead
         }
-       */
-        turnLeft(&motorL, &motorR);
-        stop(&motorL,&motorR);
     }    
 }
 

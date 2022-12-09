@@ -24368,50 +24368,58 @@ void stop(struct DC_motor *mL, struct DC_motor *mR)
 void turnLeft(DC_motor *mL, DC_motor *mR)
 {
 # 128 "dc_motor.c"
-    int i;
-    for(i=27;i<42;i+=5){
-    (*mL).direction=1;
-    (*mR).direction=0;
-    (*mL).power=i;
-    (*mR).power=i;
-    setMotorPWM(mL);
-    setMotorPWM(mR);
-    _delay((unsigned long)((104)*(64000000/4000.0)));
-    }
-    for(i=32;i>17;i-=5){
-    (*mL).direction=1;
-    (*mR).direction=0;
-    (*mL).power=i;
-    (*mR).power=i;
-    setMotorPWM(mL);
-    setMotorPWM(mR);
-    _delay((unsigned long)((100)*(64000000/4000.0)));
+    int k = 0;
+    for (k=0;k<2;k++)
+    {
+        int i;
+        for(i=47;i<62;i+=5){
+        (*mL).direction=1;
+        (*mR).direction=0;
+        (*mL).power=i;
+        (*mR).power=i;
+        setMotorPWM(mL);
+        setMotorPWM(mR);
+        _delay((unsigned long)((58)*(64000000/4000.0)));
+        }
+        for(i=52;i>37;i-=5){
+        (*mL).direction=1;
+        (*mR).direction=0;
+        (*mL).power=i;
+        (*mR).power=i;
+        setMotorPWM(mL);
+        setMotorPWM(mR);
+        _delay((unsigned long)((57)*(64000000/4000.0)));
 
+        }
     }
 }
 
 void turnRight(struct DC_motor *mL, struct DC_motor *mR)
 {
-# 176 "dc_motor.c"
-    int i;
-    for(i=27;i<42;i+=5){
-    (*mL).direction=0;
-    (*mR).direction=1;
-    (*mL).power=i;
-    (*mR).power=i;
-    setMotorPWM(mL);
-    setMotorPWM(mR);
-    _delay((unsigned long)((107)*(64000000/4000.0)));
-    }
-    for(i=32;i>17;i-=5){
-    (*mL).direction=0;
-    (*mR).direction=1;
-    (*mL).power=i;
-    (*mR).power=i;
-    setMotorPWM(mL);
-    setMotorPWM(mR);
-    _delay((unsigned long)((105)*(64000000/4000.0)));
+# 180 "dc_motor.c"
+    int k;
+    for (k=0;k<2;k++)
+    {
+        int i;
+        for(i=27;i<42;i+=5){
+        (*mL).direction=0;
+        (*mR).direction=1;
+        (*mL).power=i;
+        (*mR).power=i;
+        setMotorPWM(mL);
+        setMotorPWM(mR);
+        _delay((unsigned long)((107)*(64000000/4000.0)));
+        }
+        for(i=32;i>17;i-=5){
+        (*mL).direction=0;
+        (*mR).direction=1;
+        (*mL).power=i;
+        (*mR).power=i;
+        setMotorPWM(mL);
+        setMotorPWM(mR);
+        _delay((unsigned long)((105)*(64000000/4000.0)));
 
+        }
     }
 }
 
@@ -24470,8 +24478,8 @@ void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR)
     seconds = 0;
     (*mL).direction=0;
     (*mR).direction=0;
-    (*mL).power=40;
-    (*mR).power=38;
+    (*mL).power=50;
+    (*mR).power=50;
     setMotorPWM(mL);
     setMotorPWM(mR);
 }
@@ -24538,7 +24546,6 @@ void increment_seconds()
 
 void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
 {
-
 
     if(color == 0){
         turnRight(motorL, motorR);
@@ -24658,9 +24665,9 @@ void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
 
 void add_seconds_to_list(void)
 {
-    if (seconds > 20)
+    if (seconds > 22)
     {
-        movement_list[index] = seconds - 10;
+        movement_list[index] = seconds - 11;
         index++;
     }
 }

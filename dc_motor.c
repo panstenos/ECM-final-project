@@ -125,25 +125,29 @@ void turnLeft(DC_motor *mL, DC_motor *mR)
     */
     
     /* High surface roughness turning */
-    int i;
-    for(i=27;i<42;i+=5){ //increase power from 20 to 30 in steps of 5
-    (*mL).direction=1;
-    (*mR).direction=0;
-    (*mL).power=i;   
-    (*mR).power=i;
-    setMotorPWM(mL);
-    setMotorPWM(mR); 
-    __delay_ms(104); //turn at the specified power for 135ms
-    }
-    for(i=32;i>17;i-=5){ //decrease power from 25 to 10 in steps of 5
-    (*mL).direction=1;
-    (*mR).direction=0;
-    (*mL).power=i;   
-    (*mR).power=i;
-    setMotorPWM(mL);
-    setMotorPWM(mR); 
-    __delay_ms(100); //turn at the specified power for 160ms
-    //if(i==10){__delay_ms(150);} //turn with 10 power for another 120ms
+    int k = 0;
+    for (k=0;k<2;k++)
+    {
+        int i;
+        for(i=47;i<62;i+=5){ //increase power from 20 to 30 in steps of 5
+        (*mL).direction=1;
+        (*mR).direction=0;
+        (*mL).power=i;   
+        (*mR).power=i;
+        setMotorPWM(mL);
+        setMotorPWM(mR); 
+        __delay_ms(58); //turn at the specified power for 135ms
+        }
+        for(i=52;i>37;i-=5){ //decrease power from 25 to 10 in steps of 5
+        (*mL).direction=1;
+        (*mR).direction=0;
+        (*mL).power=i;   
+        (*mR).power=i;
+        setMotorPWM(mL);
+        setMotorPWM(mR); 
+        __delay_ms(57); //turn at the specified power for 160ms
+        //if(i==10){__delay_ms(150);} //turn with 10 power for another 120ms
+        }
     }
 }
 //function to make the robot turn right 
@@ -173,25 +177,29 @@ void turnRight(struct DC_motor *mL, struct DC_motor *mR)
     */
     
     /*  High surface roughness turning */
-    int i;
-    for(i=27;i<42;i+=5){ //increase power from 20 to 30 in steps of 5
-    (*mL).direction=0;
-    (*mR).direction=1;
-    (*mL).power=i;   
-    (*mR).power=i;
-    setMotorPWM(mL);
-    setMotorPWM(mR); 
-    __delay_ms(107); //turn at the specified power for 135ms
-    }
-    for(i=32;i>17;i-=5){ //decrease power from 25 to 10 in steps of 5
-    (*mL).direction=0;
-    (*mR).direction=1;
-    (*mL).power=i;   
-    (*mR).power=i;
-    setMotorPWM(mL);
-    setMotorPWM(mR); 
-    __delay_ms(105); //turn at the specified power for 160ms
-    //if(i==10){__delay_ms(150);} //turn with 10 power for another 120ms
+    int k;
+    for (k=0;k<2;k++)
+    {
+        int i;
+        for(i=27;i<42;i+=5){ //increase power from 20 to 30 in steps of 5
+        (*mL).direction=0;
+        (*mR).direction=1;
+        (*mL).power=i;   
+        (*mR).power=i;
+        setMotorPWM(mL);
+        setMotorPWM(mR); 
+        __delay_ms(107); //turn at the specified power for 135ms
+        }
+        for(i=32;i>17;i-=5){ //decrease power from 25 to 10 in steps of 5
+        (*mL).direction=0;
+        (*mR).direction=1;
+        (*mL).power=i;   
+        (*mR).power=i;
+        setMotorPWM(mL);
+        setMotorPWM(mR); 
+        __delay_ms(105); //turn at the specified power for 160ms
+        //if(i==10){__delay_ms(150);} //turn with 10 power for another 120ms
+        }
     }
 }
 
@@ -250,8 +258,8 @@ void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR)
     seconds = 0; // reset the timer
     (*mL).direction=0;
     (*mR).direction=0;
-    (*mL).power=40;
-    (*mR).power=38;
+    (*mL).power=50;
+    (*mR).power=50;
     setMotorPWM(mL);
     setMotorPWM(mR);
 }
@@ -318,7 +326,6 @@ void increment_seconds()
 // color 0-8 detecting color; state 0 -> moving forwards 1 -> not moving forwards; list -> add list elements etc.
 void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
 {
-    
     //RED + R90     r   -1
     if(color == 0){
         turnRight(motorL, motorR);
@@ -438,9 +445,9 @@ void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
 
 void add_seconds_to_list(void)
 {
-    if (seconds > 20) // set some threshold here for what is considered to be a block 
+    if (seconds > 22) // set some threshold here for what is considered to be a block 
     {
-        movement_list[index] = seconds - 10; //import the seconds to the list remove half block and add to the list 
+        movement_list[index] = seconds - 11; //import the seconds to the list remove half block and add to the list 
         index++; // increase the index value for the next value
     }
 }
