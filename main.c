@@ -48,9 +48,7 @@ void main(void){
             add_seconds_to_list(); // add seconds of moving ahead to the list
             stop(&motorL,&motorR); // stop and add seconds movement to the list
             unsigned int color_code = get_color_code(); // get the color code
-            TimedfullSpeedAhead(&motorL, &motorR, 5); // callibrate 
-            moveBack(&motorL, &motorR, 11); // move back to the centre of the block 
-            stop(&motorL,&motorR); //built in delay 1 s
+            TimedfullSpeedAhead(&motorL, &motorR, 5); // callibrate
             RobotMovement(color_code, &motorL, &motorR); // move according to the colour
             if (state == 0) // run only if the bot is on its way
             {

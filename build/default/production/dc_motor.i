@@ -24521,6 +24521,9 @@ void increment_seconds()
 
 void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
 {
+    moveBack(motorL, motorR, 11);
+    stop(motorL,motorR);
+
 
     if(color == 0){
         turnRight(motorL, motorR);
@@ -24634,6 +24637,11 @@ void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
         }
 
         state = 1;
+    }
+
+    if (color > 7)
+    {
+        TimedfullSpeedAhead(motorL, motorR, 11);
     }
 
 }

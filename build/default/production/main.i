@@ -24354,8 +24354,6 @@ void main(void){
             stop(&motorL,&motorR);
             unsigned int color_code = get_color_code();
             TimedfullSpeedAhead(&motorL, &motorR, 5);
-            moveBack(&motorL, &motorR, 11);
-            stop(&motorL,&motorR);
             RobotMovement(color_code, &motorL, &motorR);
             if (state == 0)
             {

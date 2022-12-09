@@ -302,6 +302,9 @@ void increment_seconds()
 // color 0-8 detecting color; state 0 -> moving forwards 1 -> not moving forwards; list -> add list elements etc.
 void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
 {
+    moveBack(motorL, motorR, 11); // move back to the centre of the block 
+    stop(motorL,motorR); //built in delay 1 s
+    
     //RED + R90     r   -1
     if(color == 0){
         turnRight(motorL, motorR);
@@ -415,6 +418,11 @@ void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
         }
         // change the state to 1
         state = 1;
+    }
+    // BLACK OR NO COLOR
+    if (color > 7)
+    {
+        TimedfullSpeedAhead(motorL, motorR, 11); // move ahead to get a better look at the color
     }
     
 }
