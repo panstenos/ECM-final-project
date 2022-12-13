@@ -43,7 +43,7 @@ void main(void){
     fullSpeedAhead(&motorL,&motorR); //start by moving ahead
     while(1){
         int state = get_state();
-        if(get_wall_presence() == 1 && state == 0 ){
+        if(get_wall_detection() == 1 && state == 0 ){
             //int state = get_state();
             add_seconds_to_list(); // add seconds of moving ahead to the list
             stop(&motorL,&motorR); // stop and add seconds movement to the list

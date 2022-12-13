@@ -3,3 +3,6 @@
 *.i
 build/default/debug/timers.p1
 *.i
+nbproject/Makefile-genesis.properties
+*.mk
+*.i

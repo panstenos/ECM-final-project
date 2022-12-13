@@ -26,6 +26,9 @@ struct RGB_val White_setup = {10492,6997,1904};
 struct RGB_val Black_setup = {1028,587,161};
 unsigned int wall_coef = 15;
 
+unsigned int clear1 = 0;
+unsigned int clear2 = 0;
+
 
 void color_click_init(void)
 {   
@@ -172,6 +175,10 @@ void set_led_color(unsigned int color){
     }
 }
 
+unsigned int get_led_color(){
+    return LATFbits.LATF7 + (LATAbits.LATA4 << 1) + (LATGbits.LATG1 << 2);
+}
+
 unsigned int wait_time = 220;
 unsigned int get_color_code(){ 
     // Returns an int representing the detected color
@@ -185,6 +192,8 @@ unsigned int get_color_code(){
     set_led_color(0b001);
     __delay_ms(wait_time);
     RGB.B = color_read_Blue();
+    clear1 = 0; // Reset the wall detection measurement si it doesn't trigger directly
+    clear2 = 0;
     set_led_color(0b000);
     
     struct RGB_val NormalizedRGB;
@@ -239,13 +248,20 @@ void calibrate_white(){
     set_led_color(0b000);
 }
 
-unsigned int get_wall_presence(){
-    set_led_color(0b000);
-    __delay_ms(wait_time);
-    unsigned int clear1 = color_read_Clear(); //Clear value with led turned off
-    set_led_color(0b111);
-    __delay_ms(wait_time);
-    unsigned int clear2 = color_read_Clear(); //Clear value with led turned on
-    set_led_color(0b000);
+
+
+unsigned int get_wall_detection(){
+    if(clear1 == 0 || clear2 == 0){return 0;}
     return clear2 >= clear1*wall_coef;
 }
+
+void set_wall_detection(unsigned int mode){
+    if(mode == 0 && get_led_color == 0b000){
+        clear1 = color_read_Clear(); //Clear value with led turned off
+        set_led_color(0b111);
+    }else if(mode == 1 && get_led_color == 0b111){
+        clear2 = color_read_Clear(); //Clear value with led turned on
+        set_led_color(0b000);
+    }
+    set_led_color(0b000);   
+} 
