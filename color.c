@@ -2,6 +2,7 @@
 #include "color.h"
 #include "i2c.h"
 
+unsigned int wall_detection_mode = 0; // 0 : WallDetection; 1 : no Wall detection
 //definition of RGB structure
 struct RGB_val { 
 	unsigned long R;
@@ -26,6 +27,14 @@ struct RGB_val White_setup = {10492,6997,1904};
 struct RGB_val Black_setup = {1028,587,161};
 unsigned int wall_coef = 15;
 
+unsigned int clear1 = 0;
+unsigned int clear2 = 0;
+
+void set_wall_detection_mode(unsigned int mode){
+    wall_detection_mode = mode;
+    clear1 = 0;
+    clear2 = 0;
+}
 
 void color_click_init(void)
 {   
@@ -172,10 +181,15 @@ void set_led_color(unsigned int color){
     }
 }
 
+unsigned int get_led_color(){
+    return LATFbits.LATF7 + (LATAbits.LATA4 << 1) + (LATGbits.LATG1 << 2);
+}
+
 unsigned int wait_time = 220;
 unsigned int get_color_code(){ 
     // Returns an int representing the detected color
     //Red -> 0 | Green -> 1 | Blue -> 2 | Yellow -> 3 | Pink -> 4 | Orange -> 5 | Lightblue -> 6 | White -> 7 | Black -> 8
+    
     set_led_color(0b100);
     __delay_ms(wait_time);
     RGB.R = color_read_Red();
@@ -239,13 +253,22 @@ void calibrate_white(){
     set_led_color(0b000);
 }
 
-unsigned int get_wall_presence(){
-    set_led_color(0b000);
-    __delay_ms(wait_time);
-    unsigned int clear1 = color_read_Clear(); //Clear value with led turned off
-    set_led_color(0b111);
-    __delay_ms(wait_time);
-    unsigned int clear2 = color_read_Clear(); //Clear value with led turned on
-    set_led_color(0b000);
+
+
+unsigned int get_wall_detection(){
+    if(clear1 == 0 || clear2 == 0){return 0;}
     return clear2 >= clear1*wall_coef;
 }
+
+void set_wall_detection(unsigned int mode){
+    if(wall_detection_mode == 0){
+        return;
+    }
+    if(mode == 0){
+        clear1 = color_read_Clear(); //Clear value with led turned off
+        set_led_color(0b111);
+    }else if(mode == 1){
+        clear2 = color_read_Clear(); //Clear value with led turned on
+        set_led_color(0b000);
+    }
+} 

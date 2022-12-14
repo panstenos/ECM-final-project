@@ -24585,6 +24585,18 @@ void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
                 movement_list[index-1] = -1;
             }
 
+            else if (movement_list[index-1] == -3)
+            {
+
+                movement_list[index-1] = -4;
+            }
+
+            else if (movement_list[index-1] == -4)
+            {
+
+                movement_list[index-1] = -3;
+            }
+
             movement_list[index] = 16;
             index += 1;
 
@@ -24619,6 +24631,18 @@ void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
             {
 
                 movement_list[index-1] = -1;
+            }
+
+            else if (movement_list[index-1] == -3)
+            {
+
+                movement_list[index-1] = -4;
+            }
+
+            else if (movement_list[index-1] == -4)
+            {
+
+                movement_list[index-1] = -3;
             }
 
         movement_list[index] = 16;

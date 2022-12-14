@@ -60,6 +60,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "29 ./dc_motor.h
 [; ;./dc_motor.h: 29: void increment_seconds(void);
 [v _increment_seconds `(v ~T0 @X0 0 ef ]
+"23 ./color.h
+[; ;./color.h: 23: void set_wall_detection(unsigned int);
+[v _set_wall_detection `(v ~T0 @X0 0 ef1`ui ]
 "39326 C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18F-K_DFP/1.7.134/xc8\pic\include\proc\pic18f67k40.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18F-K_DFP/1.7.134/xc8\pic\include\proc\pic18f67k40.h: 39326: extern volatile unsigned char TMR0H __attribute__((address(0xFD4)));
 [v _TMR0H `Vuc ~T0 @X0 0 e@4052 ]
@@ -2040,60 +2043,116 @@ Version 4.0 HI-TECH Software Intermediate Code
 "40927
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18F-K_DFP/1.7.134/xc8\pic\include\proc\pic18f67k40.h: 40927: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"10 interrupts.c
-[; ;interrupts.c: 10: void Interrupts_init(void)
+"11 interrupts.c
+[; ;interrupts.c: 11: void Interrupts_init(void)
 [v _Interrupts_init `(v ~T0 @X0 1 ef ]
-"11
-[; ;interrupts.c: 11: {
+"12
+[; ;interrupts.c: 12: {
 {
 [e :U _Interrupts_init ]
 [f ]
-"12
-[; ;interrupts.c: 12:     INTCONbits.PEIE = 1;
-[e = . . _INTCONbits 1 1 -> -> 1 `i `uc ]
 "13
-[; ;interrupts.c: 13:     PIE0bits.TMR0IE = 1;
-[e = . . _PIE0bits 0 5 -> -> 1 `i `uc ]
+[; ;interrupts.c: 13:     INTCONbits.PEIE = 1;
+[e = . . _INTCONbits 1 1 -> -> 1 `i `uc ]
 "14
-[; ;interrupts.c: 14:     PIE2bits.C1IE = 1;
-[e = . . _PIE2bits 0 0 -> -> 1 `i `uc ]
+[; ;interrupts.c: 14:     PIE0bits.TMR0IE = 1;
+[e = . . _PIE0bits 0 5 -> -> 1 `i `uc ]
 "15
-[; ;interrupts.c: 15:     INTCONbits.GIE = 1;
-[e = . . _INTCONbits 1 2 -> -> 1 `i `uc ]
+[; ;interrupts.c: 15:     PIE2bits.C1IE = 1;
+[e = . . _PIE2bits 0 0 -> -> 1 `i `uc ]
 "16
-[; ;interrupts.c: 16: }
+[; ;interrupts.c: 16:     INTCONbits.GIE = 1;
+[e = . . _INTCONbits 1 2 -> -> 1 `i `uc ]
+"17
+[; ;interrupts.c: 17: }
 [e :UE 2016 ]
 }
-[v $root$_HighISR `(v ~T0 @X0 0 e ]
-"22
-[; ;interrupts.c: 22: void __attribute__((picinterrupt(("high_priority")))) HighISR()
-[v _HighISR `(v ~T2 @X0 1 ef ]
 "23
-[; ;interrupts.c: 23: {
+[; ;interrupts.c: 23: unsigned int incr_sec_counter = 0;
+[v _incr_sec_counter `ui ~T0 @X0 1 e ]
+[i _incr_sec_counter
+-> -> 0 `i `ui
+]
+"24
+[; ;interrupts.c: 24: unsigned int wall_detection_counter = 20;
+[v _wall_detection_counter `ui ~T0 @X0 1 e ]
+[i _wall_detection_counter
+-> -> 20 `i `ui
+]
+[v $root$_HighISR `(v ~T0 @X0 0 e ]
+"25
+[; ;interrupts.c: 25: void __attribute__((picinterrupt(("high_priority")))) HighISR()
+[v _HighISR `(v ~T2 @X0 1 ef ]
+"26
+[; ;interrupts.c: 26: {
 {
 [e :U _HighISR ]
 [f ]
-"24
-[; ;interrupts.c: 24:     if(PIR0bits.TMR0IF == 1){
+"27
+[; ;interrupts.c: 27:     if(PIR0bits.TMR0IF == 1){
 [e $ ! == -> . . _PIR0bits 0 5 `i -> 1 `i 2018  ]
 {
-"25
-[; ;interrupts.c: 25:     increment_seconds();
-[e ( _increment_seconds ..  ]
-"27
-[; ;interrupts.c: 27:     TMR0H=0b11100111;
-[e = _TMR0H -> -> 231 `i `uc ]
 "28
-[; ;interrupts.c: 28:     TMR0L=0b10010101;
-[e = _TMR0L -> -> 149 `i `uc ]
-"30
-[; ;interrupts.c: 30:     PIR0bits.TMR0IF = 0;
-[e = . . _PIR0bits 0 5 -> -> 0 `i `uc ]
+[; ;interrupts.c: 28:         incr_sec_counter += 1;
+[e =+ _incr_sec_counter -> -> 1 `i `ui ]
+"29
+[; ;interrupts.c: 29:         wall_detection_counter += 1;
+[e =+ _wall_detection_counter -> -> 1 `i `ui ]
 "31
-[; ;interrupts.c: 31:  }
+[; ;interrupts.c: 31:         if(incr_sec_counter == 10){
+[e $ ! == _incr_sec_counter -> -> 10 `i `ui 2019  ]
+{
+"32
+[; ;interrupts.c: 32:             increment_seconds();
+[e ( _increment_seconds ..  ]
+"33
+[; ;interrupts.c: 33:             incr_sec_counter = 0;
+[e = _incr_sec_counter -> -> 0 `i `ui ]
+"34
+[; ;interrupts.c: 34:         }
+}
+[e :U 2019 ]
+"36
+[; ;interrupts.c: 36:         if(wall_detection_counter == 22){
+[e $ ! == _wall_detection_counter -> -> 22 `i `ui 2020  ]
+{
+"37
+[; ;interrupts.c: 37:             set_wall_detection(0);
+[e ( _set_wall_detection (1 -> -> 0 `i `ui ]
+"38
+[; ;interrupts.c: 38:         }
+}
+[e $U 2021  ]
+"39
+[; ;interrupts.c: 39:         else if(wall_detection_counter == 44){
+[e :U 2020 ]
+[e $ ! == _wall_detection_counter -> -> 44 `i `ui 2022  ]
+{
+"40
+[; ;interrupts.c: 40:             set_wall_detection(1);
+[e ( _set_wall_detection (1 -> -> 1 `i `ui ]
+"41
+[; ;interrupts.c: 41:             wall_detection_counter = 0;
+[e = _wall_detection_counter -> -> 0 `i `ui ]
+"42
+[; ;interrupts.c: 42:         }
+}
+[e :U 2022 ]
+[e :U 2021 ]
+"44
+[; ;interrupts.c: 44:         TMR0H=0b11111101;
+[e = _TMR0H -> -> 253 `i `uc ]
+"45
+[; ;interrupts.c: 45:         TMR0L=0b10010000;
+[e = _TMR0L -> -> 144 `i `uc ]
+"47
+[; ;interrupts.c: 47:         PIR0bits.TMR0IF = 0;
+[e = . . _PIR0bits 0 5 -> -> 0 `i `uc ]
+"48
+[; ;interrupts.c: 48:  }
 }
 [e :U 2018 ]
-"32
-[; ;interrupts.c: 32: }
+"49
+[; ;interrupts.c: 49: }
 [e :UE 2017 ]
 }

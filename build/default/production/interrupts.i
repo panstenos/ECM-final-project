@@ -24277,6 +24277,27 @@ void add_seconds_to_list(void);
 void return_back(struct DC_motor *motorL, struct DC_motor *motorR);
 # 3 "interrupts.c" 2
 
+# 1 "./color.h" 1
+# 12 "./color.h"
+void color_click_init(void);
+
+
+
+
+
+
+void color_writetoaddr(char address, char value);
+
+unsigned int get_color_code(void);
+unsigned int get_wall_detection(void);
+void set_wall_detection(unsigned int);
+void set_wall_detection_mode(unsigned int);
+
+void set_led_color(unsigned int);
+void calibrate_white(void);
+void calibrate_black(void);
+# 4 "interrupts.c" 2
+
 
 
 
@@ -24295,14 +24316,30 @@ void Interrupts_init(void)
 
 
 
+unsigned int incr_sec_counter = 0;
+unsigned int wall_detection_counter = 20;
 void __attribute__((picinterrupt(("high_priority")))) HighISR()
 {
     if(PIR0bits.TMR0IF == 1){
-    increment_seconds();
+        incr_sec_counter += 1;
+        wall_detection_counter += 1;
 
-    TMR0H=0b11100111;
-    TMR0L=0b10010101;
+        if(incr_sec_counter == 10){
+            increment_seconds();
+            incr_sec_counter = 0;
+        }
 
-    PIR0bits.TMR0IF = 0;
+        if(wall_detection_counter == 22){
+            set_wall_detection(0);
+        }
+        else if(wall_detection_counter == 44){
+            set_wall_detection(1);
+            wall_detection_counter = 0;
+        }
+
+        TMR0H=0b11111101;
+        TMR0L=0b10010000;
+
+        PIR0bits.TMR0IF = 0;
  }
 }

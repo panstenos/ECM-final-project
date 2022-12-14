@@ -1,5 +1,8 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
+"12 ./color.h
+[; ;./color.h: 12: void color_click_init(void);
+[v _color_click_init `(v ~T0 @X0 0 ef ]
 "8 ./timers.h
 [; ;./timers.h: 8: void Timer0_init(void);
 [v _Timer0_init `(v ~T0 @X0 0 ef ]
@@ -9,9 +12,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "18 ./dc_motor.h
 [; ;./dc_motor.h: 18: void initDCmotorsPWM(int PWMperiod);
 [v _initDCmotorsPWM `(v ~T0 @X0 0 ef1`i ]
-"12 ./color.h
-[; ;./color.h: 12: void color_click_init(void);
-[v _color_click_init `(v ~T0 @X0 0 ef ]
 "12308 C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18F-K_DFP/1.7.134/xc8\pic\include\proc\pic18f67k40.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18F-K_DFP/1.7.134/xc8\pic\include\proc\pic18f67k40.h: 12308:     struct {
 [s S568 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -57,12 +57,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 "25 ./dc_motor.h
 [; ;./dc_motor.h: 25: void fullSpeedAhead(DC_motor *mL, DC_motor *mR);
 [v _fullSpeedAhead `(v ~T0 @X0 0 ef2`*S2015`*S2015 ]
-"45 main.c
-[; ;main.c: 45:         int state = get_state();
+"24 ./color.h
+[; ;./color.h: 24: void set_wall_detection_mode(unsigned int);
+[v _set_wall_detection_mode `(v ~T0 @X0 0 ef1`ui ]
+"48 main.c
+[; ;main.c: 48:         int state = get_state();
 [v _get_state `(i ~T0 @X0 0 e? ]
 "22 ./color.h
-[; ;./color.h: 22: unsigned int get_wall_presence(void);
-[v _get_wall_presence `(ui ~T0 @X0 0 ef ]
+[; ;./color.h: 22: unsigned int get_wall_detection(void);
+[v _get_wall_detection `(ui ~T0 @X0 0 ef ]
 "30 ./dc_motor.h
 [; ;./dc_motor.h: 30: void add_seconds_to_list(void);
 [v _add_seconds_to_list `(v ~T0 @X0 0 ef ]
@@ -2070,146 +2073,152 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _main ]
 [f ]
-"18
-[; ;main.c: 18:     Timer0_init();
-[e ( _Timer0_init ..  ]
 "19
-[; ;main.c: 19:     Interrupts_init();
-[e ( _Interrupts_init ..  ]
+[; ;main.c: 19:     color_click_init();
+[e ( _color_click_init ..  ]
 "20
-[; ;main.c: 20:     initDCmotorsPWM(99);
-[e ( _initDCmotorsPWM (1 -> 99 `i ]
+[; ;main.c: 20:     Timer0_init();
+[e ( _Timer0_init ..  ]
 "21
-[; ;main.c: 21:     unsigned int PWMcycle = 99;
+[; ;main.c: 21:     Interrupts_init();
+[e ( _Interrupts_init ..  ]
+"22
+[; ;main.c: 22:     initDCmotorsPWM(99);
+[e ( _initDCmotorsPWM (1 -> 99 `i ]
+"23
+[; ;main.c: 23:     unsigned int PWMcycle = 99;
 [v _PWMcycle `ui ~T0 @X0 1 a ]
 [e = _PWMcycle -> -> 99 `i `ui ]
-"22
-[; ;main.c: 22:     color_click_init();
-[e ( _color_click_init ..  ]
-"24
-[; ;main.c: 24:     ANSELFbits.ANSELF2 = 0;
+"26
+[; ;main.c: 26:     ANSELFbits.ANSELF2 = 0;
 [e = . . _ANSELFbits 0 2 -> -> 0 `i `uc ]
-"25
-[; ;main.c: 25:     TRISFbits.TRISF2 = 1;
-[e = . . _TRISFbits 0 2 -> -> 1 `i `uc ]
 "27
-[; ;main.c: 27:     DC_motor motorL, motorR;
+[; ;main.c: 27:     TRISFbits.TRISF2 = 1;
+[e = . . _TRISFbits 0 2 -> -> 1 `i `uc ]
+"29
+[; ;main.c: 29:     DC_motor motorL, motorR;
 [v _motorL `S2015 ~T0 @X0 1 a ]
 [v _motorR `S2015 ~T0 @X0 1 a ]
-"28
-[; ;main.c: 28:     motorL.power=0;
-[e = . _motorL 0 -> -> 0 `i `uc ]
-"29
-[; ;main.c: 29:     motorL.direction=1;
-[e = . _motorL 1 -> -> 1 `i `uc ]
 "30
-[; ;main.c: 30:     motorL.brakemode=1;
-[e = . _motorL 2 -> -> 1 `i `uc ]
+[; ;main.c: 30:     motorL.power=0;
+[e = . _motorL 0 -> -> 0 `i `uc ]
 "31
-[; ;main.c: 31:     motorL.posDutyHighByte=(unsigned char *)(&CCPR1H);
-[e = . _motorL 4 -> &U _CCPR1H `*uc ]
+[; ;main.c: 31:     motorL.direction=1;
+[e = . _motorL 1 -> -> 1 `i `uc ]
 "32
-[; ;main.c: 32:     motorL.negDutyHighByte=(unsigned char *)(&CCPR2H);
-[e = . _motorL 5 -> &U _CCPR2H `*uc ]
+[; ;main.c: 32:     motorL.brakemode=1;
+[e = . _motorL 2 -> -> 1 `i `uc ]
 "33
-[; ;main.c: 33:     motorL.PWMperiod=PWMcycle;
-[e = . _motorL 3 _PWMcycle ]
+[; ;main.c: 33:     motorL.posDutyHighByte=(unsigned char *)(&CCPR1H);
+[e = . _motorL 4 -> &U _CCPR1H `*uc ]
+"34
+[; ;main.c: 34:     motorL.negDutyHighByte=(unsigned char *)(&CCPR2H);
+[e = . _motorL 5 -> &U _CCPR2H `*uc ]
 "35
-[; ;main.c: 35:     motorR.power=0;
-[e = . _motorR 0 -> -> 0 `i `uc ]
-"36
-[; ;main.c: 36:     motorR.direction=1;
-[e = . _motorR 1 -> -> 1 `i `uc ]
+[; ;main.c: 35:     motorL.PWMperiod=PWMcycle;
+[e = . _motorL 3 _PWMcycle ]
 "37
-[; ;main.c: 37:     motorR.brakemode=1;
-[e = . _motorR 2 -> -> 1 `i `uc ]
+[; ;main.c: 37:     motorR.power=0;
+[e = . _motorR 0 -> -> 0 `i `uc ]
 "38
-[; ;main.c: 38:     motorR.posDutyHighByte=(unsigned char *)(&CCPR3H);
-[e = . _motorR 4 -> &U _CCPR3H `*uc ]
+[; ;main.c: 38:     motorR.direction=1;
+[e = . _motorR 1 -> -> 1 `i `uc ]
 "39
-[; ;main.c: 39:     motorR.negDutyHighByte=(unsigned char *)(&CCPR4H);
-[e = . _motorR 5 -> &U _CCPR4H `*uc ]
+[; ;main.c: 39:     motorR.brakemode=1;
+[e = . _motorR 2 -> -> 1 `i `uc ]
 "40
-[; ;main.c: 40:     motorR.PWMperiod=PWMcycle;
-[e = . _motorR 3 _PWMcycle ]
+[; ;main.c: 40:     motorR.posDutyHighByte=(unsigned char *)(&CCPR3H);
+[e = . _motorR 4 -> &U _CCPR3H `*uc ]
+"41
+[; ;main.c: 41:     motorR.negDutyHighByte=(unsigned char *)(&CCPR4H);
+[e = . _motorR 5 -> &U _CCPR4H `*uc ]
 "42
-[; ;main.c: 42:     _delay((unsigned long)((1000)*(64000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-"43
-[; ;main.c: 43:     fullSpeedAhead(&motorL,&motorR);
-[e ( _fullSpeedAhead (2 , &U _motorL &U _motorR ]
+[; ;main.c: 42:     motorR.PWMperiod=PWMcycle;
+[e = . _motorR 3 _PWMcycle ]
 "44
-[; ;main.c: 44:     while(1){
+[; ;main.c: 44:     _delay((unsigned long)((1000)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"45
+[; ;main.c: 45:     fullSpeedAhead(&motorL,&motorR);
+[e ( _fullSpeedAhead (2 , &U _motorL &U _motorR ]
+"46
+[; ;main.c: 46:     set_wall_detection_mode(1);
+[e ( _set_wall_detection_mode (1 -> -> 1 `i `ui ]
+"47
+[; ;main.c: 47:     while(1){
 [e :U 2018 ]
 {
-"45
-[; ;main.c: 45:         int state = get_state();
+"48
+[; ;main.c: 48:         int state = get_state();
 [v _state `i ~T0 @X0 1 a ]
 [e = _state ( _get_state ..  ]
-"46
-[; ;main.c: 46:         if(get_wall_presence() == 1 && state == 0 ){
-[e $ ! && == ( _get_wall_presence ..  -> -> 1 `i `ui == _state -> 0 `i 2020  ]
-{
-"48
-[; ;main.c: 48:             add_seconds_to_list();
-[e ( _add_seconds_to_list ..  ]
 "49
-[; ;main.c: 49:             stop(&motorL,&motorR);
-[e ( _stop (2 , &U _motorL &U _motorR ]
+[; ;main.c: 49:         if(get_wall_detection() == 1 && state == 0 ){
+[e $ ! && == ( _get_wall_detection ..  -> -> 1 `i `ui == _state -> 0 `i 2020  ]
+{
 "50
-[; ;main.c: 50:             unsigned int color_code = get_color_code();
+[; ;main.c: 50:             set_wall_detection_mode(0);
+[e ( _set_wall_detection_mode (1 -> -> 0 `i `ui ]
+"52
+[; ;main.c: 52:             add_seconds_to_list();
+[e ( _add_seconds_to_list ..  ]
+"53
+[; ;main.c: 53:             stop(&motorL,&motorR);
+[e ( _stop (2 , &U _motorL &U _motorR ]
+"54
+[; ;main.c: 54:             unsigned int color_code = get_color_code();
 [v _color_code `ui ~T0 @X0 1 a ]
 [e = _color_code ( _get_color_code ..  ]
-"51
-[; ;main.c: 51:             TimedfullSpeedAhead(&motorL, &motorR, 5);
-[e ( _TimedfullSpeedAhead (3 , , &U _motorL &U _motorR -> -> 5 `i `ui ]
-"52
-[; ;main.c: 52:             RobotMovement(color_code, &motorL, &motorR);
-[e ( _RobotMovement (3 , , _color_code &U _motorL &U _motorR ]
-"53
-[; ;main.c: 53:             if (state == 0)
-[e $ ! == _state -> 0 `i 2021  ]
-"54
-[; ;main.c: 54:             {
-{
 "55
-[; ;main.c: 55:                 stop(&motorL,&motorR);
-[e ( _stop (2 , &U _motorL &U _motorR ]
+[; ;main.c: 55:             TimedfullSpeedAhead(&motorL, &motorR, 5);
+[e ( _TimedfullSpeedAhead (3 , , &U _motorL &U _motorR -> -> 5 `i `ui ]
 "56
-[; ;main.c: 56:                 fullSpeedAhead(&motorL,&motorR);
-[e ( _fullSpeedAhead (2 , &U _motorL &U _motorR ]
+[; ;main.c: 56:             RobotMovement(color_code, &motorL, &motorR);
+[e ( _RobotMovement (3 , , _color_code &U _motorL &U _motorR ]
 "57
-[; ;main.c: 57:             }
+[; ;main.c: 57:             if (state == 0)
+[e $ ! == _state -> 0 `i 2021  ]
+"58
+[; ;main.c: 58:             {
+{
+"59
+[; ;main.c: 59:                 stop(&motorL,&motorR);
+[e ( _stop (2 , &U _motorL &U _motorR ]
+"60
+[; ;main.c: 60:                 fullSpeedAhead(&motorL,&motorR);
+[e ( _fullSpeedAhead (2 , &U _motorL &U _motorR ]
+"61
+[; ;main.c: 61:             }
 }
 [e :U 2021 ]
-"58
-[; ;main.c: 58:         }else if (state == 1){
+"62
+[; ;main.c: 62:             set_wall_detection_mode(1);
+[e ( _set_wall_detection_mode (1 -> -> 1 `i `ui ]
+"64
+[; ;main.c: 64:         }else if (state == 1){
 }
 [e $U 2022  ]
 [e :U 2020 ]
 [e $ ! == _state -> 1 `i 2023  ]
 {
-"59
-[; ;main.c: 59:             return_back(&motorL, &motorR);
+"65
+[; ;main.c: 65:             set_wall_detection_mode(0);
+[e ( _set_wall_detection_mode (1 -> -> 0 `i `ui ]
+"66
+[; ;main.c: 66:             return_back(&motorL, &motorR);
 [e ( _return_back (2 , &U _motorL &U _motorR ]
-"60
-[; ;main.c: 60:         }else{
+"67
+[; ;main.c: 67:         }
 }
-[e $U 2024  ]
 [e :U 2023 ]
-{
-"62
-[; ;main.c: 62:         }
-}
-[e :U 2024 ]
 [e :U 2022 ]
-"63
-[; ;main.c: 63:     }
+"69
+[; ;main.c: 69:     }
 }
 [e :U 2017 ]
 [e $U 2018  ]
 [e :U 2019 ]
-"64
-[; ;main.c: 64: }
+"70
+[; ;main.c: 70: }
 [e :UE 2016 ]
 }

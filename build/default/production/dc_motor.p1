@@ -3309,338 +3309,398 @@ Version 4.0 HI-TECH Software Intermediate Code
 "367
 [; ;dc_motor.c: 367:             }
 }
-[e :U 2085 ]
-[e :U 2084 ]
+[e $U 2086  ]
 "369
-[; ;dc_motor.c: 369:             movement_list[index] = 16;
-[e = *U + &U _movement_list * -> -> _index `ui `ux -> -> # *U &U _movement_list `ui `ux -> 16 `i ]
+[; ;dc_motor.c: 369:             else if (movement_list[index-1] == -3)
+[e :U 2085 ]
+[e $ ! == *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 3 `i 2087  ]
 "370
-[; ;dc_motor.c: 370:             index += 1;
-[e =+ _index -> 1 `i ]
+[; ;dc_motor.c: 370:             {
+{
 "372
-[; ;dc_motor.c: 372:             movement_list[index] = -2;
-[e = *U + &U _movement_list * -> -> _index `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 2 `i ]
+[; ;dc_motor.c: 372:                 movement_list[index-1] = -4;
+[e = *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 4 `i ]
 "373
-[; ;dc_motor.c: 373:             index += 1;
-[e =+ _index -> 1 `i ]
-"374
-[; ;dc_motor.c: 374:         }
-}
-[e :U 2082 ]
-"375
-[; ;dc_motor.c: 375:     }
-}
-[e :U 2080 ]
-"378
-[; ;dc_motor.c: 378:     if(color == 4){
-[e $ ! == _color -> -> 4 `i `ui 2086  ]
-{
-"380
-[; ;dc_motor.c: 380:         moveBack(motorL, motorR, 16);
-[e ( _moveBack (3 , , _motorL _motorR -> -> 16 `i `ui ]
-"381
-[; ;dc_motor.c: 381:         stop(motorL, motorR);
-[e ( _stop (2 , _motorL _motorR ]
-"382
-[; ;dc_motor.c: 382:         turnLeft(motorL, motorR);
-[e ( _turnLeft (2 , _motorL _motorR ]
-"384
-[; ;dc_motor.c: 384:         if (movement_list[index-1] > 5)
-[e $ ! > *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -> 5 `i 2087  ]
-"385
-[; ;dc_motor.c: 385:         {
-{
-"387
-[; ;dc_motor.c: 387:             movement_list[index-1] -= 11;
-[e =- *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -> 11 `i ]
-"389
-[; ;dc_motor.c: 389:             movement_list[index] = -2;
-[e = *U + &U _movement_list * -> -> _index `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 2 `i ]
-"390
-[; ;dc_motor.c: 390:             index += 1;
-[e =+ _index -> 1 `i ]
-"391
-[; ;dc_motor.c: 391:         }else{
+[; ;dc_motor.c: 373:             }
 }
 [e $U 2088  ]
+"375
+[; ;dc_motor.c: 375:             else if (movement_list[index-1] == -4)
 [e :U 2087 ]
+[e $ ! == *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 4 `i 2089  ]
+"376
+[; ;dc_motor.c: 376:             {
 {
-"393
-[; ;dc_motor.c: 393:             if (movement_list[index-1] == -1)
-[e $ ! == *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 1 `i 2089  ]
-"394
-[; ;dc_motor.c: 394:             {
-{
-"396
-[; ;dc_motor.c: 396:                 movement_list[index-1] = -2;
-[e = *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 2 `i ]
-"397
-[; ;dc_motor.c: 397:             }
+"378
+[; ;dc_motor.c: 378:                 movement_list[index-1] = -3;
+[e = *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 3 `i ]
+"379
+[; ;dc_motor.c: 379:             }
 }
-[e $U 2090  ]
-"399
-[; ;dc_motor.c: 399:             else if (movement_list[index-1] == -2)
 [e :U 2089 ]
-[e $ ! == *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 2 `i 2091  ]
-"400
-[; ;dc_motor.c: 400:             {
-{
-"402
-[; ;dc_motor.c: 402:                 movement_list[index-1] = -1;
-[e = *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 1 `i ]
-"403
-[; ;dc_motor.c: 403:             }
-}
-[e :U 2091 ]
-[e :U 2090 ]
-"405
-[; ;dc_motor.c: 405:         movement_list[index] = 16;
-[e = *U + &U _movement_list * -> -> _index `ui `ux -> -> # *U &U _movement_list `ui `ux -> 16 `i ]
-"406
-[; ;dc_motor.c: 406:         index += 1;
-[e =+ _index -> 1 `i ]
-"408
-[; ;dc_motor.c: 408:         movement_list[index] = -1;
-[e = *U + &U _movement_list * -> -> _index `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 1 `i ]
-"409
-[; ;dc_motor.c: 409:         index += 1;
-[e =+ _index -> 1 `i ]
-"410
-[; ;dc_motor.c: 410:         }
-}
 [e :U 2088 ]
-"411
-[; ;dc_motor.c: 411:     }
-}
 [e :U 2086 ]
-"413
-[; ;dc_motor.c: 413:     if(color == 5){
-[e $ ! == _color -> -> 5 `i `ui 2092  ]
+[e :U 2084 ]
+"381
+[; ;dc_motor.c: 381:             movement_list[index] = 16;
+[e = *U + &U _movement_list * -> -> _index `ui `ux -> -> # *U &U _movement_list `ui `ux -> 16 `i ]
+"382
+[; ;dc_motor.c: 382:             index += 1;
+[e =+ _index -> 1 `i ]
+"384
+[; ;dc_motor.c: 384:             movement_list[index] = -2;
+[e = *U + &U _movement_list * -> -> _index `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 2 `i ]
+"385
+[; ;dc_motor.c: 385:             index += 1;
+[e =+ _index -> 1 `i ]
+"386
+[; ;dc_motor.c: 386:         }
+}
+[e :U 2082 ]
+"387
+[; ;dc_motor.c: 387:     }
+}
+[e :U 2080 ]
+"390
+[; ;dc_motor.c: 390:     if(color == 4){
+[e $ ! == _color -> -> 4 `i `ui 2090  ]
+{
+"392
+[; ;dc_motor.c: 392:         moveBack(motorL, motorR, 16);
+[e ( _moveBack (3 , , _motorL _motorR -> -> 16 `i `ui ]
+"393
+[; ;dc_motor.c: 393:         stop(motorL, motorR);
+[e ( _stop (2 , _motorL _motorR ]
+"394
+[; ;dc_motor.c: 394:         turnLeft(motorL, motorR);
+[e ( _turnLeft (2 , _motorL _motorR ]
+"396
+[; ;dc_motor.c: 396:         if (movement_list[index-1] > 5)
+[e $ ! > *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -> 5 `i 2091  ]
+"397
+[; ;dc_motor.c: 397:         {
+{
+"399
+[; ;dc_motor.c: 399:             movement_list[index-1] -= 11;
+[e =- *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -> 11 `i ]
+"401
+[; ;dc_motor.c: 401:             movement_list[index] = -2;
+[e = *U + &U _movement_list * -> -> _index `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 2 `i ]
+"402
+[; ;dc_motor.c: 402:             index += 1;
+[e =+ _index -> 1 `i ]
+"403
+[; ;dc_motor.c: 403:         }else{
+}
+[e $U 2092  ]
+[e :U 2091 ]
+{
+"405
+[; ;dc_motor.c: 405:             if (movement_list[index-1] == -1)
+[e $ ! == *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 1 `i 2093  ]
+"406
+[; ;dc_motor.c: 406:             {
+{
+"408
+[; ;dc_motor.c: 408:                 movement_list[index-1] = -2;
+[e = *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 2 `i ]
+"409
+[; ;dc_motor.c: 409:             }
+}
+[e $U 2094  ]
+"411
+[; ;dc_motor.c: 411:             else if (movement_list[index-1] == -2)
+[e :U 2093 ]
+[e $ ! == *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 2 `i 2095  ]
+"412
+[; ;dc_motor.c: 412:             {
 {
 "414
-[; ;dc_motor.c: 414:         turnRightLong(motorL, motorR);
-[e ( _turnRightLong (2 , _motorL _motorR ]
+[; ;dc_motor.c: 414:                 movement_list[index-1] = -1;
+[e = *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 1 `i ]
 "415
-[; ;dc_motor.c: 415:         movement_list[index] = -3;
-[e = *U + &U _movement_list * -> -> _index `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 3 `i ]
-"416
-[; ;dc_motor.c: 416:         index += 1;
-[e =+ _index -> 1 `i ]
-"417
-[; ;dc_motor.c: 417:     }
+[; ;dc_motor.c: 415:             }
 }
-[e :U 2092 ]
-"419
-[; ;dc_motor.c: 419:     if(color == 6){
-[e $ ! == _color -> -> 6 `i `ui 2093  ]
+[e $U 2096  ]
+"417
+[; ;dc_motor.c: 417:             else if (movement_list[index-1] == -3)
+[e :U 2095 ]
+[e $ ! == *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 3 `i 2097  ]
+"418
+[; ;dc_motor.c: 418:             {
 {
 "420
-[; ;dc_motor.c: 420:         turnLeftLong(motorL, motorR);
-[e ( _turnLeftLong (2 , _motorL _motorR ]
+[; ;dc_motor.c: 420:                 movement_list[index-1] = -4;
+[e = *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 4 `i ]
 "421
-[; ;dc_motor.c: 421:         movement_list[index] = -4;
-[e = *U + &U _movement_list * -> -> _index `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 4 `i ]
-"422
-[; ;dc_motor.c: 422:         index += 1;
-[e =+ _index -> 1 `i ]
-"423
-[; ;dc_motor.c: 423:     }
+[; ;dc_motor.c: 421:             }
 }
-[e :U 2093 ]
-"425
-[; ;dc_motor.c: 425:     if(color == 7){
-[e $ ! == _color -> -> 7 `i `ui 2094  ]
+[e $U 2098  ]
+"423
+[; ;dc_motor.c: 423:             else if (movement_list[index-1] == -4)
+[e :U 2097 ]
+[e $ ! == *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 4 `i 2099  ]
+"424
+[; ;dc_motor.c: 424:             {
 {
 "426
-[; ;dc_motor.c: 426:         int i;
-[v _i `i ~T0 @X0 1 a ]
+[; ;dc_motor.c: 426:                 movement_list[index-1] = -3;
+[e = *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 3 `i ]
 "427
-[; ;dc_motor.c: 427:         for (i=0;i<2;i++)
+[; ;dc_motor.c: 427:             }
+}
+[e :U 2099 ]
+[e :U 2098 ]
+[e :U 2096 ]
+[e :U 2094 ]
+"429
+[; ;dc_motor.c: 429:         movement_list[index] = 16;
+[e = *U + &U _movement_list * -> -> _index `ui `ux -> -> # *U &U _movement_list `ui `ux -> 16 `i ]
+"430
+[; ;dc_motor.c: 430:         index += 1;
+[e =+ _index -> 1 `i ]
+"432
+[; ;dc_motor.c: 432:         movement_list[index] = -1;
+[e = *U + &U _movement_list * -> -> _index `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 1 `i ]
+"433
+[; ;dc_motor.c: 433:         index += 1;
+[e =+ _index -> 1 `i ]
+"434
+[; ;dc_motor.c: 434:         }
+}
+[e :U 2092 ]
+"435
+[; ;dc_motor.c: 435:     }
+}
+[e :U 2090 ]
+"437
+[; ;dc_motor.c: 437:     if(color == 5){
+[e $ ! == _color -> -> 5 `i `ui 2100  ]
+{
+"438
+[; ;dc_motor.c: 438:         turnRightLong(motorL, motorR);
+[e ( _turnRightLong (2 , _motorL _motorR ]
+"439
+[; ;dc_motor.c: 439:         movement_list[index] = -3;
+[e = *U + &U _movement_list * -> -> _index `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 3 `i ]
+"440
+[; ;dc_motor.c: 440:         index += 1;
+[e =+ _index -> 1 `i ]
+"441
+[; ;dc_motor.c: 441:     }
+}
+[e :U 2100 ]
+"443
+[; ;dc_motor.c: 443:     if(color == 6){
+[e $ ! == _color -> -> 6 `i `ui 2101  ]
+{
+"444
+[; ;dc_motor.c: 444:         turnLeftLong(motorL, motorR);
+[e ( _turnLeftLong (2 , _motorL _motorR ]
+"445
+[; ;dc_motor.c: 445:         movement_list[index] = -4;
+[e = *U + &U _movement_list * -> -> _index `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 4 `i ]
+"446
+[; ;dc_motor.c: 446:         index += 1;
+[e =+ _index -> 1 `i ]
+"447
+[; ;dc_motor.c: 447:     }
+}
+[e :U 2101 ]
+"449
+[; ;dc_motor.c: 449:     if(color == 7){
+[e $ ! == _color -> -> 7 `i `ui 2102  ]
+{
+"450
+[; ;dc_motor.c: 450:         int i;
+[v _i `i ~T0 @X0 1 a ]
+"451
+[; ;dc_motor.c: 451:         for (i=0;i<2;i++)
 {
 [e = _i -> 0 `i ]
-[e $ < _i -> 2 `i 2095  ]
-[e $U 2096  ]
-[e :U 2095 ]
-"428
-[; ;dc_motor.c: 428:         {
+[e $ < _i -> 2 `i 2103  ]
+[e $U 2104  ]
+[e :U 2103 ]
+"452
+[; ;dc_motor.c: 452:         {
 {
-"429
-[; ;dc_motor.c: 429:             turnRight(motorL, motorR);
+"453
+[; ;dc_motor.c: 453:             turnRight(motorL, motorR);
 [e ( _turnRight (2 , _motorL _motorR ]
-"430
-[; ;dc_motor.c: 430:         }
+"454
+[; ;dc_motor.c: 454:         }
 }
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 2 `i 2095  ]
-[e :U 2096 ]
+[e $ < _i -> 2 `i 2103  ]
+[e :U 2104 ]
 }
-"432
-[; ;dc_motor.c: 432:         state = 1;
+"456
+[; ;dc_motor.c: 456:         state = 1;
 [e = _state -> 1 `i ]
-"433
-[; ;dc_motor.c: 433:     }
+"457
+[; ;dc_motor.c: 457:     }
 }
-[e :U 2094 ]
-"435
-[; ;dc_motor.c: 435:     if (color > 7)
-[e $ ! > _color -> -> 7 `i `ui 2098  ]
-"436
-[; ;dc_motor.c: 436:     {
+[e :U 2102 ]
+"459
+[; ;dc_motor.c: 459:     if (color > 7)
+[e $ ! > _color -> -> 7 `i `ui 2106  ]
+"460
+[; ;dc_motor.c: 460:     {
 {
-"437
-[; ;dc_motor.c: 437:         TimedfullSpeedAhead(motorL, motorR, 5);
+"461
+[; ;dc_motor.c: 461:         TimedfullSpeedAhead(motorL, motorR, 5);
 [e ( _TimedfullSpeedAhead (3 , , _motorL _motorR -> -> 5 `i `ui ]
-"438
-[; ;dc_motor.c: 438:     }
+"462
+[; ;dc_motor.c: 462:     }
 }
-[e :U 2098 ]
-"440
-[; ;dc_motor.c: 440: }
+[e :U 2106 ]
+"464
+[; ;dc_motor.c: 464: }
 [e :UE 2073 ]
 }
-"442
-[; ;dc_motor.c: 442: int get_state(void)
+"466
+[; ;dc_motor.c: 466: int get_state(void)
 [v _get_state `(i ~T0 @X0 1 ef ]
-"443
-[; ;dc_motor.c: 443: {
+"467
+[; ;dc_motor.c: 467: {
 {
 [e :U _get_state ]
 [f ]
-"444
-[; ;dc_motor.c: 444:     return state;
+"468
+[; ;dc_motor.c: 468:     return state;
 [e ) _state ]
-[e $UE 2099  ]
-"445
-[; ;dc_motor.c: 445: }
-[e :UE 2099 ]
+[e $UE 2107  ]
+"469
+[; ;dc_motor.c: 469: }
+[e :UE 2107 ]
 }
-"448
-[; ;dc_motor.c: 448: void add_seconds_to_list(void)
+"472
+[; ;dc_motor.c: 472: void add_seconds_to_list(void)
 [v _add_seconds_to_list `(v ~T0 @X0 1 ef ]
-"449
-[; ;dc_motor.c: 449: {
+"473
+[; ;dc_motor.c: 473: {
 {
 [e :U _add_seconds_to_list ]
 [f ]
-"450
-[; ;dc_motor.c: 450:     if (seconds > 11)
-[e $ ! > _seconds -> 11 `i 2101  ]
-"451
-[; ;dc_motor.c: 451:     {
+"474
+[; ;dc_motor.c: 474:     if (seconds > 11)
+[e $ ! > _seconds -> 11 `i 2109  ]
+"475
+[; ;dc_motor.c: 475:     {
 {
-"452
-[; ;dc_motor.c: 452:         movement_list[index] = seconds - 5;
+"476
+[; ;dc_motor.c: 476:         movement_list[index] = seconds - 5;
 [e = *U + &U _movement_list * -> -> _index `ui `ux -> -> # *U &U _movement_list `ui `ux - _seconds -> 5 `i ]
-"453
-[; ;dc_motor.c: 453:         index++;
+"477
+[; ;dc_motor.c: 477:         index++;
 [e ++ _index -> 1 `i ]
-"454
-[; ;dc_motor.c: 454:     }
+"478
+[; ;dc_motor.c: 478:     }
 }
-[e :U 2101 ]
-"455
-[; ;dc_motor.c: 455: }
-[e :UE 2100 ]
+[e :U 2109 ]
+"479
+[; ;dc_motor.c: 479: }
+[e :UE 2108 ]
 }
-"457
-[; ;dc_motor.c: 457: void return_back(struct DC_motor *motorL, struct DC_motor *motorR)
+"481
+[; ;dc_motor.c: 481: void return_back(struct DC_motor *motorL, struct DC_motor *motorR)
 [v _return_back `(v ~T0 @X0 1 ef2`*S2015`*S2015 ]
-"458
-[; ;dc_motor.c: 458: {
+"482
+[; ;dc_motor.c: 482: {
 {
 [e :U _return_back ]
-"457
-[; ;dc_motor.c: 457: void return_back(struct DC_motor *motorL, struct DC_motor *motorR)
+"481
+[; ;dc_motor.c: 481: void return_back(struct DC_motor *motorL, struct DC_motor *motorR)
 [v _motorL `*S2015 ~T0 @X0 1 r1 ]
 [v _motorR `*S2015 ~T0 @X0 1 r2 ]
-"458
-[; ;dc_motor.c: 458: {
+"482
+[; ;dc_motor.c: 482: {
 [f ]
-"459
-[; ;dc_motor.c: 459:     while (index > 0){
-[e $U 2103  ]
-[e :U 2104 ]
+"483
+[; ;dc_motor.c: 483:     while (index > 0){
+[e $U 2111  ]
+[e :U 2112 ]
 {
-"460
-[; ;dc_motor.c: 460:         if (movement_list[index-1] == -1){turnLeft(motorL, motorR);}
-[e $ ! == *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 1 `i 2106  ]
+"484
+[; ;dc_motor.c: 484:         if (movement_list[index-1] == -1){turnLeft(motorL, motorR);}
+[e $ ! == *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 1 `i 2114  ]
 {
 [e ( _turnLeft (2 , _motorL _motorR ]
 }
-[e $U 2107  ]
-"461
-[; ;dc_motor.c: 461:         else if (movement_list[index-1] == -2){turnRight(motorL, motorR);}
-[e :U 2106 ]
-[e $ ! == *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 2 `i 2108  ]
+[e $U 2115  ]
+"485
+[; ;dc_motor.c: 485:         else if (movement_list[index-1] == -2){turnRight(motorL, motorR);}
+[e :U 2114 ]
+[e $ ! == *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 2 `i 2116  ]
 {
 [e ( _turnRight (2 , _motorL _motorR ]
 }
-[e $U 2109  ]
-"462
-[; ;dc_motor.c: 462:         else if (movement_list[index-1] == -3){turnLeftLong(motorL, motorR);}
-[e :U 2108 ]
-[e $ ! == *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 3 `i 2110  ]
+[e $U 2117  ]
+"486
+[; ;dc_motor.c: 486:         else if (movement_list[index-1] == -3){turnLeftLong(motorL, motorR);}
+[e :U 2116 ]
+[e $ ! == *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 3 `i 2118  ]
 {
 [e ( _turnLeftLong (2 , _motorL _motorR ]
 }
-[e $U 2111  ]
-"463
-[; ;dc_motor.c: 463:         else if (movement_list[index-1] == -4){turnRightLong(motorL, motorR);}
-[e :U 2110 ]
-[e $ ! == *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 4 `i 2112  ]
+[e $U 2119  ]
+"487
+[; ;dc_motor.c: 487:         else if (movement_list[index-1] == -4){turnRightLong(motorL, motorR);}
+[e :U 2118 ]
+[e $ ! == *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 4 `i 2120  ]
 {
 [e ( _turnRightLong (2 , _motorL _motorR ]
 }
-[e $U 2113  ]
-"464
-[; ;dc_motor.c: 464:         else if (movement_list[index-1] > 0 || movement_list[index-2] > -3)
-[e :U 2112 ]
-[e $ ! || > *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -> 0 `i > *U + &U _movement_list * -> -> - _index -> 2 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 3 `i 2114  ]
-"465
-[; ;dc_motor.c: 465:         {
+[e $U 2121  ]
+"488
+[; ;dc_motor.c: 488:         else if (movement_list[index-1] > 0 || movement_list[index-2] > -3)
+[e :U 2120 ]
+[e $ ! || > *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -> 0 `i > *U + &U _movement_list * -> -> - _index -> 2 `i `ui `ux -> -> # *U &U _movement_list `ui `ux -U -> 3 `i 2122  ]
+"489
+[; ;dc_motor.c: 489:         {
 {
-"466
-[; ;dc_motor.c: 466:             TimedfullSpeedAhead(motorL, motorR, movement_list[index-1]);
+"490
+[; ;dc_motor.c: 490:             TimedfullSpeedAhead(motorL, motorR, movement_list[index-1]);
 [e ( _TimedfullSpeedAhead (3 , , _motorL _motorR -> *U + &U _movement_list * -> -> - _index -> 1 `i `ui `ux -> -> # *U &U _movement_list `ui `ux `ui ]
-"467
-[; ;dc_motor.c: 467:             _delay((unsigned long)((200)*(64000000/4000.0)));
+"491
+[; ;dc_motor.c: 491:             _delay((unsigned long)((200)*(64000000/4000.0)));
 [e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-"468
-[; ;dc_motor.c: 468:             TimedfullSpeedAhead(motorL, motorR, 5);
+"492
+[; ;dc_motor.c: 492:             TimedfullSpeedAhead(motorL, motorR, 5);
 [e ( _TimedfullSpeedAhead (3 , , _motorL _motorR -> -> 5 `i `ui ]
-"469
-[; ;dc_motor.c: 469:             moveBack(motorL, motorR, 5);
+"493
+[; ;dc_motor.c: 493:             moveBack(motorL, motorR, 5);
 [e ( _moveBack (3 , , _motorL _motorR -> -> 5 `i `ui ]
-"470
-[; ;dc_motor.c: 470:         }
+"494
+[; ;dc_motor.c: 494:         }
 }
-[e :U 2114 ]
-[e :U 2113 ]
-[e :U 2111 ]
-[e :U 2109 ]
-[e :U 2107 ]
-"471
-[; ;dc_motor.c: 471:         stop(motorL,motorR);
+[e :U 2122 ]
+[e :U 2121 ]
+[e :U 2119 ]
+[e :U 2117 ]
+[e :U 2115 ]
+"495
+[; ;dc_motor.c: 495:         stop(motorL,motorR);
 [e ( _stop (2 , _motorL _motorR ]
-"472
-[; ;dc_motor.c: 472:         index -= 1;
+"496
+[; ;dc_motor.c: 496:         index -= 1;
 [e =- _index -> 1 `i ]
-"473
-[; ;dc_motor.c: 473:     }
+"497
+[; ;dc_motor.c: 497:     }
 }
-[e :U 2103 ]
-"459
-[; ;dc_motor.c: 459:     while (index > 0){
-[e $ > _index -> 0 `i 2104  ]
-[e :U 2105 ]
-"474
-[; ;dc_motor.c: 474:     if (index == 0){state = 2;}
-[e $ ! == _index -> 0 `i 2115  ]
+[e :U 2111 ]
+"483
+[; ;dc_motor.c: 483:     while (index > 0){
+[e $ > _index -> 0 `i 2112  ]
+[e :U 2113 ]
+"498
+[; ;dc_motor.c: 498:     if (index == 0){state = 2;}
+[e $ ! == _index -> 0 `i 2123  ]
 {
 [e = _state -> 2 `i ]
 }
-[e :U 2115 ]
-"475
-[; ;dc_motor.c: 475: }
-[e :UE 2102 ]
+[e :U 2123 ]
+"499
+[; ;dc_motor.c: 499: }
+[e :UE 2110 ]
 }

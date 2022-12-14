@@ -24243,7 +24243,9 @@ void color_click_init(void);
 void color_writetoaddr(char address, char value);
 
 unsigned int get_color_code(void);
-unsigned int get_wall_presence(void);
+unsigned int get_wall_detection(void);
+void set_wall_detection(unsigned int);
+void set_wall_detection_mode(unsigned int);
 
 void set_led_color(unsigned int);
 void calibrate_white(void);
@@ -24286,6 +24288,7 @@ unsigned char I2C_2_Master_Read(unsigned char ack);
 # 3 "color.c" 2
 
 
+unsigned int wall_detection_mode = 0;
 
 struct RGB_val {
  unsigned long R;
@@ -24310,6 +24313,14 @@ struct RGB_val White_setup = {10492,6997,1904};
 struct RGB_val Black_setup = {1028,587,161};
 unsigned int wall_coef = 15;
 
+unsigned int clear1 = 0;
+unsigned int clear2 = 0;
+
+void set_wall_detection_mode(unsigned int mode){
+    wall_detection_mode = mode;
+    clear1 = 0;
+    clear2 = 0;
+}
 
 void color_click_init(void)
 {
@@ -24339,7 +24350,7 @@ void color_click_init(void)
     Color_rules[6] = Lightblue_rule;
     Color_rules[7] = White_rule;
     Color_rules[8] = Black_rule;
-# 66 "color.c"
+# 75 "color.c"
     TRISFbits.TRISF3=1;
     ANSELFbits.ANSELF3=0;
     TRISFbits.TRISF2=1;
@@ -24449,8 +24460,13 @@ void set_led_color(unsigned int color){
     }
 }
 
+unsigned int get_led_color(){
+    return LATFbits.LATF7 + (LATAbits.LATA4 << 1) + (LATGbits.LATG1 << 2);
+}
+
 unsigned int wait_time = 220;
 unsigned int get_color_code(){
+
 
 
     set_led_color(0b100);
@@ -24516,13 +24532,22 @@ void calibrate_white(){
     set_led_color(0b000);
 }
 
-unsigned int get_wall_presence(){
-    set_led_color(0b000);
-    _delay((unsigned long)((wait_time)*(64000000/4000.0)));
-    unsigned int clear1 = color_read_Clear();
-    set_led_color(0b111);
-    _delay((unsigned long)((wait_time)*(64000000/4000.0)));
-    unsigned int clear2 = color_read_Clear();
-    set_led_color(0b000);
+
+
+unsigned int get_wall_detection(){
+    if(clear1 == 0 || clear2 == 0){return 0;}
     return clear2 >= clear1*wall_coef;
+}
+
+void set_wall_detection(unsigned int mode){
+    if(wall_detection_mode == 0){
+        return;
+    }
+    if(mode == 0){
+        clear1 = color_read_Clear();
+        set_led_color(0b111);
+    }else if(mode == 1){
+        clear2 = color_read_Clear();
+        set_led_color(0b000);
+    }
 }

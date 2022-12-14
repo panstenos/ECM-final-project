@@ -15,11 +15,13 @@
 #define _XTAL_FREQ 64000000 //note intrinsic _delay function is 62.5ns at 64,000,000Hz  
 
 void main(void){
+    
+    color_click_init();
     Timer0_init();
     Interrupts_init();
     initDCmotorsPWM(99);
     unsigned int PWMcycle = 99;
-    color_click_init();
+    
         
     ANSELFbits.ANSELF2 = 0; //turn off analogue input on pin  
     TRISFbits.TRISF2 = 1; // set F2 to input
@@ -41,9 +43,11 @@ void main(void){
     
     __delay_ms(1000); 
     fullSpeedAhead(&motorL,&motorR); //start by moving ahead
+    set_wall_detection_mode(1);
     while(1){
         int state = get_state();
-        if(get_wall_presence() == 1 && state == 0 ){
+        if(get_wall_detection() == 1 && state == 0 ){
+            set_wall_detection_mode(0);
             //int state = get_state();
             add_seconds_to_list(); // add seconds of moving ahead to the list
             stop(&motorL,&motorR); // stop and add seconds movement to the list
@@ -55,11 +59,13 @@ void main(void){
                 stop(&motorL,&motorR); // stop and add seconds movement to the list
                 fullSpeedAhead(&motorL,&motorR); //move ahead            
             }
+            set_wall_detection_mode(1);
+
         }else if (state == 1){
+            set_wall_detection_mode(0);
             return_back(&motorL, &motorR);
-        }else{
-        
         }
+        
     }    
 }
 
