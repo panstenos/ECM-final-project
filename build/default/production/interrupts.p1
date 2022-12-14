@@ -2074,10 +2074,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `ui
 ]
 "24
-[; ;interrupts.c: 24: unsigned int wall_detection_counter = 0;
+[; ;interrupts.c: 24: unsigned int wall_detection_counter = 20;
 [v _wall_detection_counter `ui ~T0 @X0 1 e ]
 [i _wall_detection_counter
--> -> 0 `i `ui
+-> -> 20 `i `ui
 ]
 [v $root$_HighISR `(v ~T0 @X0 0 e ]
 "25
@@ -2093,63 +2093,66 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! == -> . . _PIR0bits 0 5 `i -> 1 `i 2018  ]
 {
 "28
-[; ;interrupts.c: 28:         incr_sec_counter += 10;
-[e =+ _incr_sec_counter -> -> 10 `i `ui ]
-"30
-[; ;interrupts.c: 30:         if(incr_sec_counter == 10){
+[; ;interrupts.c: 28:         incr_sec_counter += 1;
+[e =+ _incr_sec_counter -> -> 1 `i `ui ]
+"29
+[; ;interrupts.c: 29:         wall_detection_counter += 1;
+[e =+ _wall_detection_counter -> -> 1 `i `ui ]
+"31
+[; ;interrupts.c: 31:         if(incr_sec_counter == 10){
 [e $ ! == _incr_sec_counter -> -> 10 `i `ui 2019  ]
 {
-"31
-[; ;interrupts.c: 31:             increment_seconds();
-[e ( _increment_seconds ..  ]
 "32
-[; ;interrupts.c: 32:             incr_sec_counter = 0;
-[e = _incr_sec_counter -> -> 0 `i `ui ]
+[; ;interrupts.c: 32:             increment_seconds();
+[e ( _increment_seconds ..  ]
 "33
-[; ;interrupts.c: 33:         }
+[; ;interrupts.c: 33:             incr_sec_counter = 0;
+[e = _incr_sec_counter -> -> 0 `i `ui ]
+"34
+[; ;interrupts.c: 34:         }
 }
 [e :U 2019 ]
-"35
-[; ;interrupts.c: 35:         if(wall_detection_counter == 22){
+"36
+[; ;interrupts.c: 36:         if(wall_detection_counter == 22){
 [e $ ! == _wall_detection_counter -> -> 22 `i `ui 2020  ]
 {
-"36
-[; ;interrupts.c: 36:             set_wall_detection(0);
-[e ( _set_wall_detection (1 -> -> 0 `i `ui ]
 "37
-[; ;interrupts.c: 37:         }
+[; ;interrupts.c: 37:             set_wall_detection(0);
+[e ( _set_wall_detection (1 -> -> 0 `i `ui ]
+"38
+[; ;interrupts.c: 38:         }
 }
 [e $U 2021  ]
-"38
-[; ;interrupts.c: 38:         else if(wall_detection_counter == 44){
+"39
+[; ;interrupts.c: 39:         else if(wall_detection_counter == 44){
 [e :U 2020 ]
 [e $ ! == _wall_detection_counter -> -> 44 `i `ui 2022  ]
 {
-"39
-[; ;interrupts.c: 39:             set_wall_detection(1);
-[e ( _set_wall_detection (1 -> -> 1 `i `ui ]
 "40
-[; ;interrupts.c: 40:             wall_detection_counter = 0;
-[e = _wall_detection_counter -> -> 0 `i `ui ]
+[; ;interrupts.c: 40:             set_wall_detection(1);
+[e ( _set_wall_detection (1 -> -> 1 `i `ui ]
 "41
-[; ;interrupts.c: 41:         }
+[; ;interrupts.c: 41:             wall_detection_counter = 0;
+[e = _wall_detection_counter -> -> 0 `i `ui ]
+"42
+[; ;interrupts.c: 42:         }
 }
 [e :U 2022 ]
 [e :U 2021 ]
-"43
-[; ;interrupts.c: 43:         TMR0H=0b11111101;
-[e = _TMR0H -> -> 253 `i `uc ]
 "44
-[; ;interrupts.c: 44:         TMR0L=0b10010000;
+[; ;interrupts.c: 44:         TMR0H=0b11111101;
+[e = _TMR0H -> -> 253 `i `uc ]
+"45
+[; ;interrupts.c: 45:         TMR0L=0b10010000;
 [e = _TMR0L -> -> 144 `i `uc ]
-"46
-[; ;interrupts.c: 46:         PIR0bits.TMR0IF = 0;
-[e = . . _PIR0bits 0 5 -> -> 0 `i `uc ]
 "47
-[; ;interrupts.c: 47:  }
+[; ;interrupts.c: 47:         PIR0bits.TMR0IF = 0;
+[e = . . _PIR0bits 0 5 -> -> 0 `i `uc ]
+"48
+[; ;interrupts.c: 48:  }
 }
 [e :U 2018 ]
-"48
-[; ;interrupts.c: 48: }
+"49
+[; ;interrupts.c: 49: }
 [e :UE 2017 ]
 }

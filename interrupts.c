@@ -21,11 +21,12 @@ void Interrupts_init(void)
  * Make sure all enabled interrupts are checked and flags cleared
 ************************************/
 unsigned int incr_sec_counter = 0;
-unsigned int wall_detection_counter = 0;
+unsigned int wall_detection_counter = 20;
 void __interrupt(high_priority) HighISR()
 {   
     if(PIR0bits.TMR0IF == 1){//check the interrupt flag
-        incr_sec_counter += 10;
+        incr_sec_counter += 1;
+        wall_detection_counter += 1;
        
         if(incr_sec_counter == 10){
             increment_seconds(); //call the function to increment the seconds

@@ -24242,6 +24242,7 @@ void color_writetoaddr(char address, char value);
 unsigned int get_color_code(void);
 unsigned int get_wall_detection(void);
 void set_wall_detection(unsigned int);
+void set_wall_detection_mode(unsigned int);
 
 void set_led_color(unsigned int);
 void calibrate_white(void);
@@ -24284,6 +24285,7 @@ unsigned char I2C_2_Master_Read(unsigned char ack);
 # 3 "color.c" 2
 
 
+unsigned int wall_detection_mode = 0;
 
 struct RGB_val {
  unsigned long R;
@@ -24311,6 +24313,11 @@ unsigned int wall_coef = 15;
 unsigned int clear1 = 0;
 unsigned int clear2 = 0;
 
+void set_wall_detection_mode(unsigned int mode){
+    wall_detection_mode = mode;
+    clear1 = 0;
+    clear2 = 0;
+}
 
 void color_click_init(void)
 {
@@ -24340,7 +24347,7 @@ void color_click_init(void)
     Color_rules[6] = Lightblue_rule;
     Color_rules[7] = White_rule;
     Color_rules[8] = Black_rule;
-# 69 "color.c"
+# 75 "color.c"
     TRISFbits.TRISF3=1;
     ANSELFbits.ANSELF3=0;
     TRISFbits.TRISF2=1;
@@ -24458,6 +24465,7 @@ unsigned int wait_time = 220;
 unsigned int get_color_code(){
 
 
+
     set_led_color(0b100);
     _delay((unsigned long)((wait_time)*(64000000/4000.0)));
     RGB.R = color_read_Red();
@@ -24467,8 +24475,6 @@ unsigned int get_color_code(){
     set_led_color(0b001);
     _delay((unsigned long)((wait_time)*(64000000/4000.0)));
     RGB.B = color_read_Blue();
-    clear1 = 0;
-    clear2 = 0;
     set_led_color(0b000);
 
     struct RGB_val NormalizedRGB;
@@ -24531,12 +24537,14 @@ unsigned int get_wall_detection(){
 }
 
 void set_wall_detection(unsigned int mode){
-    if(mode == 0 && get_led_color == 0b000){
+    if(wall_detection_mode == 0){
+        return;
+    }
+    if(mode == 0){
         clear1 = color_read_Clear();
         set_led_color(0b111);
-    }else if(mode == 1 && get_led_color == 0b111){
+    }else if(mode == 1){
         clear2 = color_read_Clear();
         set_led_color(0b000);
     }
-    set_led_color(0b000);
 }

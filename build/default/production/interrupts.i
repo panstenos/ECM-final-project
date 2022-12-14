@@ -24288,6 +24288,7 @@ void color_writetoaddr(char address, char value);
 unsigned int get_color_code(void);
 unsigned int get_wall_detection(void);
 void set_wall_detection(unsigned int);
+void set_wall_detection_mode(unsigned int);
 
 void set_led_color(unsigned int);
 void calibrate_white(void);
@@ -24313,11 +24314,12 @@ void Interrupts_init(void)
 
 
 unsigned int incr_sec_counter = 0;
-unsigned int wall_detection_counter = 0;
+unsigned int wall_detection_counter = 20;
 void __attribute__((picinterrupt(("high_priority")))) HighISR()
 {
     if(PIR0bits.TMR0IF == 1){
-        incr_sec_counter += 10;
+        incr_sec_counter += 1;
+        wall_detection_counter += 1;
 
         if(incr_sec_counter == 10){
             increment_seconds();

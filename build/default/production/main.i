@@ -24308,6 +24308,7 @@ void color_writetoaddr(char address, char value);
 unsigned int get_color_code(void);
 unsigned int get_wall_detection(void);
 void set_wall_detection(unsigned int);
+void set_wall_detection_mode(unsigned int);
 
 void set_led_color(unsigned int);
 void calibrate_white(void);
@@ -24318,11 +24319,13 @@ void calibrate_black(void);
 
 
 void main(void){
+
+    color_click_init();
     Timer0_init();
     Interrupts_init();
     initDCmotorsPWM(99);
     unsigned int PWMcycle = 99;
-    color_click_init();
+
 
     ANSELFbits.ANSELF2 = 0;
     TRISFbits.TRISF2 = 1;
@@ -24344,9 +24347,11 @@ void main(void){
 
     _delay((unsigned long)((1000)*(64000000/4000.0)));
     fullSpeedAhead(&motorL,&motorR);
+    set_wall_detection_mode(1);
     while(1){
         int state = get_state();
         if(get_wall_detection() == 1 && state == 0 ){
+            set_wall_detection_mode(0);
 
             add_seconds_to_list();
             stop(&motorL,&motorR);
@@ -24358,10 +24363,11 @@ void main(void){
                 stop(&motorL,&motorR);
                 fullSpeedAhead(&motorL,&motorR);
             }
-        }else if (state == 1){
-            return_back(&motorL, &motorR);
-        }else{
+            set_wall_detection_mode(1);
 
+        }else if (state == 1){
+            set_wall_detection_mode(0);
+            return_back(&motorL, &motorR);
         }
 
     }
