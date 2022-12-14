@@ -4,7 +4,7 @@
 
 unsigned int wall_detection_mode = 0; // 0 : WallDetection; 1 : no Wall detection
 //definition of RGB structure
-struct RGB_val { 
+struct RGB_val {
 	unsigned long R;
 	unsigned long G;
 	unsigned long B;
@@ -30,13 +30,13 @@ unsigned int wall_coef = 15;
 unsigned int clear1 = 0;
 unsigned int clear2 = 0;
 
-void set_wall_detection_mode(unsigned int mode){
+void set_wall_detection_mode(unsigned int mode){ // Set the wall detection mode and reset clear values
     wall_detection_mode = mode;
     clear1 = 0;
     clear2 = 0;
 }
 
-void color_click_init(void)
+void color_click_init(void) // Initialise all the registers and variables
 {   
     //setup colour sensor via i2c interface
     I2C_2_Master_Init();      //Initialise i2c Master
@@ -55,7 +55,7 @@ void color_click_init(void)
     TRISGbits.TRISG1 = 0;
     TRISAbits.TRISA4 = 0;
     
-    Color_rules[0] = Red_rule;
+    Color_rules[0] = Red_rule; //Initialise all the colors into the color list
     Color_rules[1] = Green_rule;
     Color_rules[2] = Blue_rule;
     Color_rules[3] = Yellow_rule;
@@ -65,25 +65,19 @@ void color_click_init(void)
     Color_rules[7] = White_rule;
     Color_rules[8] = Black_rule;
     
-    /*
-    TRISDbits.TRISD3 = 0;
-    TRISHbits.TRISH1 = 0;
-    
-    LATDbits.LATD3 = 1;
-    LATHbits.LATH1 = 1;*/
-    
     TRISFbits.TRISF3=1; //set TRIS value for pin (input)
     ANSELFbits.ANSELF3=0; //turn off analogue input on pin
     TRISFbits.TRISF2=1; //set TRIS value for pin (input)
     ANSELFbits.ANSELF2=0; //turn off analogue input on pin
     
+    //Calibration code
     while (PORTFbits.RF3 && PORTFbits.RF2); //Wait until the button F3 or F2 is pushed
-    if(!PORTFbits.RF2){
+    if(!PORTFbits.RF2){ // Skip calibration if F2 is pushed
         return;
     }
     calibrate_white();     //Calibrate white value
     while (PORTFbits.RF3); //Wait until the button F3 is pushed
-    calibrate_black();
+    calibrate_black();     // Calibrate black values
     while (PORTFbits.RF3); //Wait until the button F3 is pushed
 
 }
@@ -181,11 +175,8 @@ void set_led_color(unsigned int color){
     }
 }
 
-unsigned int get_led_color(){
-    return LATFbits.LATF7 + (LATAbits.LATA4 << 1) + (LATGbits.LATG1 << 2);
-}
 
-unsigned int wait_time = 220;
+unsigned int wait_time = 220; // Wait time between 2 colors measurements
 unsigned int get_color_code(){ 
     // Returns an int representing the detected color
     //Red -> 0 | Green -> 1 | Blue -> 2 | Yellow -> 3 | Pink -> 4 | Orange -> 5 | Lightblue -> 6 | White -> 7 | Black -> 8
@@ -201,26 +192,26 @@ unsigned int get_color_code(){
     RGB.B = color_read_Blue();
     set_led_color(0b000);
     
-    struct RGB_val NormalizedRGB;
+    struct RGB_val NormalizedRGB; //Normalise the colors values according the calibration
     NormalizedRGB.R = RGB.R  >= Black_setup.R ? (RGB.R - Black_setup.R)*100/(White_setup.R - Black_setup.R) : 0;
     NormalizedRGB.G = RGB.G  >= Black_setup.G ? (RGB.G - Black_setup.G)*100/(White_setup.G - Black_setup.G) : 0;
     NormalizedRGB.B = RGB.B  >= Black_setup.B ? (RGB.B - Black_setup.B)*100/(White_setup.B - Black_setup.B) : 0;
     
     unsigned int min_value = get_color_distance(NormalizedRGB,Color_rules[0]);
     unsigned int min_index = 0;
-    for(unsigned int i = 1;i < 9; i++){
+    for(unsigned int i = 1;i < 9; i++){ //Check for minimal distance between measured color and stored color values
         unsigned int value = get_color_distance(NormalizedRGB,Color_rules[i]);
         if(value < min_value){
             min_index = i;
             min_value = value;
         }
     }
-    return min_index;
+    return min_index; //Return the color index
 
 
 }
 
-void calibrate_black(){
+void calibrate_black(){ //Measure red, green and blue colors for the black color. And clear for the wall detection
     set_led_color(0b100);
     __delay_ms(wait_time);
     Black_setup.R = color_read_Red();
@@ -237,10 +228,10 @@ void calibrate_black(){
     __delay_ms(wait_time);
     unsigned int clear2 = color_read_Clear(); //Clear value with led turned on
     set_led_color(0b000);
-    wall_coef = clear2/clear1/5;
+    wall_coef = clear2/clear1/5; //Get the wall detection coefficient
 }
 
-void calibrate_white(){
+void calibrate_white(){ //Measure red, green and blue colors for the white color.
     set_led_color(0b100);
     __delay_ms(wait_time);
     White_setup.R = color_read_Red();
@@ -255,12 +246,13 @@ void calibrate_white(){
 
 
 
-unsigned int get_wall_detection(){
+unsigned int get_wall_detection(){ // Check if their is a wall ahead
     if(clear1 == 0 || clear2 == 0){return 0;}
-    return clear2 >= clear1*wall_coef;
+    return clear2 >= clear1*wall_coef; //If light intensity with a flash is way higher than without there is a wall
 }
 
-void set_wall_detection(unsigned int mode){
+void set_wall_detection(unsigned int mode){ //Called by interrup.C
+    //Set the values for clear1 and clear2
     if(wall_detection_mode == 0){
         return;
     }

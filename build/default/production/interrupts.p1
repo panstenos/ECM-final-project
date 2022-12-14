@@ -2074,10 +2074,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `ui
 ]
 "24
-[; ;interrupts.c: 24: unsigned int wall_detection_counter = 20;
+[; ;interrupts.c: 24: unsigned int wall_detection_counter = 0;
 [v _wall_detection_counter `ui ~T0 @X0 1 e ]
 [i _wall_detection_counter
--> -> 20 `i `ui
+-> -> 0 `i `ui
 ]
 [v $root$_HighISR `(v ~T0 @X0 0 e ]
 "25

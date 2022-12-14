@@ -1,14 +1,14 @@
 #include <xc.h>
 #include "dc_motor.h"
 
-int seconds = 0;
-int movement_list[100]; 
-int index = 0;
-int state = 0; // 0 for going; 1 for returning
+int seconds = 0; // 0.1 second counter from the Timer0
+int movement_list[100]; //tracks the movement of the buggy
+int index = 0; //current index of the movement list
+int state = 0; // 0 for going to the white; 1 for returning to origin
 
 int blockahead = 16;
 int blockback = 16;
-int halfback = 5;
+int halfblock = 5;
 int twothirds = 11;
 // function initialise T2 and CCP for DC motor control
 void initDCmotorsPWM(int PWMperiod){
@@ -93,117 +93,67 @@ void setMotorPWM(DC_motor *m)
     }
 }
 
-//function to stop the robot gradually 
+//stop function
 void stop(struct DC_motor *mL, struct DC_motor *mR)
 {
-    (*mL).power=0;
+    (*mL).power=0; //power down the motors
     (*mR).power=0;
     setMotorPWM(mL);
     setMotorPWM(mR);
     __delay_ms(500);
 }
 
-//function to make the robot turn left 
+//turn left 
 void turnLeft(DC_motor *mL, DC_motor *mR)
 {
-    /* Small surface roughness turning
-    int i;
-    for(i=20;i<30;i+=5){ //increase power from 20 to 30 in steps of 5
-    (*mL).direction=0;
-    (*mR).direction=1;
-    (*mL).power=i;   
-    (*mR).power=i;
-    setMotorPWM(mL);
-    setMotorPWM(mR); 
-    __delay_ms(115); //turn at the specified power for 135ms
-    }
-    for(i=20;i>5;i-=5){ //decrease power from 25 to 10 in steps of 5
-    (*mL).direction=0;
-    (*mR).direction=1;
-    (*mL).power=i;   
-    (*mR).power=i;
-    setMotorPWM(mL);
-    setMotorPWM(mR); 
-    __delay_ms(135); //turn at the specified power for 160ms
-    if(i==10){__delay_ms(350);} //turn with 10 power for another 120ms
-    }
-    */
-    
-    /* High surface roughness turning */
     int k = 0;
-    for (k=0;k<2;k++)
+    for (k=0;k<2;k++) //repeats 2 45 degree turning
     {
         int i;
-        for(i=41;i<56;i+=5){ //increase power from 20 to 30 in steps of 5
-        (*mL).direction=1;
-        (*mR).direction=0;
+        for(i=41;i<56;i+=5){ //gradually increase the power
+        (*mL).direction=1; //backward direction
+        (*mR).direction=0; //forward direction
         (*mL).power=i;   
         (*mR).power=i;
         setMotorPWM(mL);
         setMotorPWM(mR); 
-        __delay_ms(58); //turn at the specified power for 135ms
+        __delay_ms(58); //turn at the specified power for 58ms
         }
-        for(i=46;i>31;i-=5){ //decrease power from 25 to 10 in steps of 5
+        for(i=46;i>31;i-=5){ //gradually decrease the power
         (*mL).direction=1;
         (*mR).direction=0;
         (*mL).power=i;   
         (*mR).power=i;
         setMotorPWM(mL);
         setMotorPWM(mR); 
-        __delay_ms(57); //turn at the specified power for 160ms
-        //if(i==10){__delay_ms(150);} //turn with 10 power for another 120ms
+        __delay_ms(57); //turn at the specified power for 57ms
         }
     }
 }
-//function to make the robot turn right 
+//turn right function
 void turnRight(struct DC_motor *mL, struct DC_motor *mR)
 {
-    /*  Small surface roughness turning 
-    int i;
-    for(i=20;i<30;i+=5){ //increase power from 20 to 30 in steps of 5
-    (*mL).direction=1;
-    (*mR).direction=0;
-    (*mL).power=i;   
-    (*mR).power=i;
-    setMotorPWM(mL);
-    setMotorPWM(mR); 
-    __delay_ms(115); //turn at the specified power for 135ms
-    }
-    for(i=20;i>5;i-=5){ //decrease power from 25 to 10 in steps of 5
-    (*mL).direction=1;
-    (*mR).direction=0;
-    (*mL).power=i;   
-    (*mR).power=i;
-    setMotorPWM(mL);
-    setMotorPWM(mR); 
-    __delay_ms(135); //turn at the specified power for 160ms
-    if(i==10){__delay_ms(350);} //turn with 10 power for another 120ms
-    }
-    */
-    
-    /*  High surface roughness turning */
     int k;
-    for (k=0;k<2;k++)
+    for (k=0;k<2;k++) //repeats 2 45 degree turning
     {
         int i;
-        for(i=23;i<38;i+=5){ //increase power from 20 to 30 in steps of 5
+        for(i=23;i<38;i+=5){ //gradually increase the power
         (*mL).direction=0;
         (*mR).direction=1;
         (*mL).power=i;   
         (*mR).power=i;
         setMotorPWM(mL);
         setMotorPWM(mR); 
-        __delay_ms(107); //turn at the specified power for 135ms
+        __delay_ms(107); //turn at the specified power for 107ms
         }
-        for(i=28;i>13;i-=5){ //decrease power from 25 to 10 in steps of 5
+        for(i=28;i>13;i-=5){ //gradually decrease the power
         (*mL).direction=0;
         (*mR).direction=1;
         (*mL).power=i;   
         (*mR).power=i;
         setMotorPWM(mL);
         setMotorPWM(mR); 
-        __delay_ms(105); //turn at the specified power for 160ms
-        //if(i==10){__delay_ms(150);} //turn with 10 power for another 120ms
+        __delay_ms(105); //turn at the specified power for 105ms
         }
     }
 }
@@ -211,56 +161,53 @@ void turnRight(struct DC_motor *mL, struct DC_motor *mR)
 void turnLeftLong(struct DC_motor *mL, struct DC_motor *mR)
 { 
     int k = 0;
-    for (k=0;k<3;k++)
+    for (k=0;k<3;k++) //repeats 3 45 degree turning
     {
         int i;
-        for(i=41;i<56;i+=5){ //increase power from 20 to 30 in steps of 5
+        for(i=41;i<56;i+=5){
         (*mL).direction=1;
         (*mR).direction=0;
         (*mL).power=i;   
         (*mR).power=i;
         setMotorPWM(mL);
         setMotorPWM(mR); 
-        __delay_ms(58); //turn at the specified power for 135ms
+        __delay_ms(58); //turn at the specified power for 58ms
         }
-        for(i=46;i>31;i-=5){ //decrease power from 25 to 10 in steps of 5
+        for(i=46;i>31;i-=5){
         (*mL).direction=1;
         (*mR).direction=0;
         (*mL).power=i;   
         (*mR).power=i;
         setMotorPWM(mL);
         setMotorPWM(mR); 
-        __delay_ms(57); //turn at the specified power for 160ms
-        //if(i==10){__delay_ms(150);} //turn with 10 power for another 120ms
+        __delay_ms(57); //turn at the specified power for 57ms
         }
     }
 }
 
 void turnRightLong(struct DC_motor *mL, struct DC_motor *mR)
 {  
-    /*  High surface roughness turning */
     int k;
-    for (k=0;k<3;k++)
+    for (k=0;k<3;k++) 
     {
         int i;
-        for(i=23;i<38;i+=5){ //increase power from 20 to 30 in steps of 5
+        for(i=23;i<38;i+=5){
         (*mL).direction=0;
         (*mR).direction=1;
         (*mL).power=i;   
         (*mR).power=i;
         setMotorPWM(mL);
         setMotorPWM(mR); 
-        __delay_ms(107); //turn at the specified power for 135ms
+        __delay_ms(107); //turn at the specified power for 107ms
         }
-        for(i=28;i>13;i-=5){ //decrease power from 25 to 10 in steps of 5
+        for(i=28;i>13;i-=5){
         (*mL).direction=0;
         (*mR).direction=1;
         (*mL).power=i;   
         (*mR).power=i;
         setMotorPWM(mL);
         setMotorPWM(mR); 
-        __delay_ms(105); //turn at the specified power for 160ms
-        //if(i==10){__delay_ms(150);} //turn with 10 power for another 120ms
+        __delay_ms(105); //turn at the specified power for 105ms
         }
     }
 }
@@ -270,12 +217,12 @@ void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR)
     seconds = 0; // reset the timer
     (*mL).direction=0;
     (*mR).direction=0;
-    (*mL).power=68; //34
-    (*mR).power=68; //34
+    (*mL).power=68;
+    (*mR).power=68;
     setMotorPWM(mL);
     setMotorPWM(mR);
 }
-
+// function to move straight for a specified time period
 void TimedfullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned int time)
 {
     seconds = 0;
@@ -284,13 +231,14 @@ void TimedfullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned int 
         // used for returning back to the entrance
         (*mL).direction=0;
         (*mR).direction=0;
-        (*mL).power=68; //34
-        (*mR).power=68; //34
+        (*mL).power=68;
+        (*mR).power=68;
         setMotorPWM(mL);
         setMotorPWM(mR);
         }
 }
 
+// function to move back for a specified time period
 void moveBack(struct DC_motor *mL, struct DC_motor *mR, unsigned int time)
 {
     seconds = 0; // reset the seconds timer
@@ -298,8 +246,8 @@ void moveBack(struct DC_motor *mL, struct DC_motor *mR, unsigned int time)
     {
         (*mL).direction=1;
         (*mR).direction=1;
-        (*mL).power=70; //35
-        (*mR).power=68; //34
+        (*mL).power=70;
+        (*mR).power=68; 
         setMotorPWM(mL);
         setMotorPWM(mR);
     }
@@ -311,10 +259,10 @@ void increment_seconds()
     seconds += 1; // increment by the second
 }
 
-// color 0-8 detecting color; state 0 -> moving forwards 1 -> not moving forwards; list -> add list elements etc.
+// color 0-8 detecting color
 void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
 {
-    moveBack(motorL, motorR, 5); // move back to the centre of the block 
+    moveBack(motorL, motorR, halfblock); // move back to the centre of the block 
     stop(motorL,motorR); //built in delay 1 s
     
     //RED + R90     r   -1
@@ -341,14 +289,14 @@ void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
     //YEL + B1R90   -1 , r *
     if(color == 3){
         //move back + turn right
-        moveBack(motorL, motorR, 16); // move back a block
+        moveBack(motorL, motorR, blockback); // move back a block
         stop(motorL, motorR);
         turnRight(motorL, motorR);
         //if the last element of the list is integer greater or equal to a block
-        if (movement_list[index-1] > 5)
+        if (movement_list[index-1] > halfblock)
         {
         //  subtract 1 block 
-            movement_list[index-1] -= 11;
+            movement_list[index-1] -= twothirds;
         //  add r to the list
             movement_list[index] = -1;
             index += 1;
@@ -378,7 +326,7 @@ void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
                 movement_list[index-1] = -3;
             }            
             //  add 0l to the list
-            movement_list[index] = 16; // add a block's length    
+            movement_list[index] = blockahead; // add a block's length    
             index += 1;
             //  add l to the list
             movement_list[index] = -2;
@@ -389,14 +337,14 @@ void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
     
     if(color == 4){
         //move back + turn left
-        moveBack(motorL, motorR, 16); // move back a block
+        moveBack(motorL, motorR, blockback); // move back a block
         stop(motorL, motorR);
         turnLeft(motorL, motorR);        
         //if the last element of the list is integer greater or equal to a block
-        if (movement_list[index-1] > 5)
+        if (movement_list[index-1] > halfblock)
         {
         //  subtract 01 block 
-            movement_list[index-1] -= 11;
+            movement_list[index-1] -= twothirds;
         //  add l to the list
             movement_list[index] = -2;
             index += 1;
@@ -426,7 +374,7 @@ void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
                 movement_list[index-1] = -3;
             } 
         //  add 0l to the list
-        movement_list[index] = 16; // add a block's length    
+        movement_list[index] = blockahead; // add a block's length    
         index += 1;
         //  add r to the list
         movement_list[index] = -1;
@@ -458,7 +406,7 @@ void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
     // BLACK OR NO COLOR
     if (color > 7)
     {
-        TimedfullSpeedAhead(motorL, motorR, 5); // move ahead to get a better look at the color
+        TimedfullSpeedAhead(motorL, motorR, halfblock); // move ahead to get a better look at the color
     }
     
 }
@@ -471,9 +419,9 @@ int get_state(void)
 
 void add_seconds_to_list(void)
 {
-    if (seconds > 11) // set some threshold here for what is considered to be a block 
+    if (seconds > twothirds) // set some threshold here for what is considered to be a block 
     {
-        movement_list[index] = seconds - 5; //import the seconds to the list remove half block and add to the list 
+        movement_list[index] = seconds - halfblock; //import the seconds to the list remove half block and add to the list 
         index++; // increase the index value for the next value
     }
 }
@@ -489,8 +437,8 @@ void return_back(struct DC_motor *motorL, struct DC_motor *motorR)
         {
             TimedfullSpeedAhead(motorL, motorR, movement_list[index-1]); //move ahead
             __delay_ms(200);
-            TimedfullSpeedAhead(motorL, motorR, 5);
-            moveBack(motorL, motorR, 5);
+            TimedfullSpeedAhead(motorL, motorR, halfblock);
+            moveBack(motorL, motorR, halfblock);
         }
         stop(motorL,motorR); // stop and add seconds movement to the list
         index -= 1;

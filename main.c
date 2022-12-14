@@ -61,7 +61,7 @@ void main(void){
             }
             set_wall_detection_mode(1);
 
-        }else if (state == 1){
+        }else if (state == 1){ // if you return back call the return_back function
             set_wall_detection_mode(0);
             return_back(&motorL, &motorR);
         }
@@ -71,4 +71,4 @@ void main(void){
 
 // fetching test
 
-// fetching test
+// fetching test5

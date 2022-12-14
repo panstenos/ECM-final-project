@@ -24350,11 +24350,12 @@ void color_click_init(void)
     Color_rules[6] = Lightblue_rule;
     Color_rules[7] = White_rule;
     Color_rules[8] = Black_rule;
-# 75 "color.c"
+
     TRISFbits.TRISF3=1;
     ANSELFbits.ANSELF3=0;
     TRISFbits.TRISF2=1;
     ANSELFbits.ANSELF2=0;
+
 
     while (PORTFbits.RF3 && PORTFbits.RF2);
     if(!PORTFbits.RF2){
@@ -24460,9 +24461,6 @@ void set_led_color(unsigned int color){
     }
 }
 
-unsigned int get_led_color(){
-    return LATFbits.LATF7 + (LATAbits.LATA4 << 1) + (LATGbits.LATG1 << 2);
-}
 
 unsigned int wait_time = 220;
 unsigned int get_color_code(){
@@ -24540,6 +24538,7 @@ unsigned int get_wall_detection(){
 }
 
 void set_wall_detection(unsigned int mode){
+
     if(wall_detection_mode == 0){
         return;
     }

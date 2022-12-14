@@ -20,24 +20,24 @@ void Interrupts_init(void)
  * High priority interrupt service routine
  * Make sure all enabled interrupts are checked and flags cleared
 ************************************/
-unsigned int incr_sec_counter = 0;
-unsigned int wall_detection_counter = 20;
+unsigned int incr_sec_counter = 0; //Counter for the increment_second function
+unsigned int wall_detection_counter = 0; //Counter for the wall_detection function
 void __interrupt(high_priority) HighISR()
 {   
     if(PIR0bits.TMR0IF == 1){//check the interrupt flag
         incr_sec_counter += 1;
         wall_detection_counter += 1;
        
-        if(incr_sec_counter == 10){
-            increment_seconds(); //call the function to increment the seconds
+        if(incr_sec_counter == 10){ //Trigger every 0.1 sec
+            increment_seconds(); //call the function to increment the seconds in dc_motors.C
             incr_sec_counter = 0;
         }
         
-        if(wall_detection_counter == 22){
-            set_wall_detection(0);
+        if(wall_detection_counter == 22){//Trigger every 440ms
+            set_wall_detection(0); //Setup the clear1 value in color.C
         }
-        else if(wall_detection_counter == 44){
-            set_wall_detection(1);
+        else if(wall_detection_counter == 44){//Trigger every 440ms
+            set_wall_detection(1); //Setup the clear2 value in color.C
             wall_detection_counter = 0;
         }
         // set the timer to reset at 64912 every time the it overflows to measure 1/100 of a second

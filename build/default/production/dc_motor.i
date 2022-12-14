@@ -24273,7 +24273,7 @@ int state = 0;
 
 int blockahead = 16;
 int blockback = 16;
-int halfback = 5;
+int halfblock = 5;
 int twothirds = 11;
 
 void initDCmotorsPWM(int PWMperiod){
@@ -24371,7 +24371,6 @@ void stop(struct DC_motor *mL, struct DC_motor *mR)
 
 void turnLeft(DC_motor *mL, DC_motor *mR)
 {
-# 133 "dc_motor.c"
     int k = 0;
     for (k=0;k<2;k++)
     {
@@ -24393,14 +24392,12 @@ void turnLeft(DC_motor *mL, DC_motor *mR)
         setMotorPWM(mL);
         setMotorPWM(mR);
         _delay((unsigned long)((57)*(64000000/4000.0)));
-
         }
     }
 }
 
 void turnRight(struct DC_motor *mL, struct DC_motor *mR)
 {
-# 185 "dc_motor.c"
     int k;
     for (k=0;k<2;k++)
     {
@@ -24422,7 +24419,6 @@ void turnRight(struct DC_motor *mL, struct DC_motor *mR)
         setMotorPWM(mL);
         setMotorPWM(mR);
         _delay((unsigned long)((105)*(64000000/4000.0)));
-
         }
     }
 }
@@ -24450,14 +24446,12 @@ void turnLeftLong(struct DC_motor *mL, struct DC_motor *mR)
         setMotorPWM(mL);
         setMotorPWM(mR);
         _delay((unsigned long)((57)*(64000000/4000.0)));
-
         }
     }
 }
 
 void turnRightLong(struct DC_motor *mL, struct DC_motor *mR)
 {
-
     int k;
     for (k=0;k<3;k++)
     {
@@ -24479,7 +24473,6 @@ void turnRightLong(struct DC_motor *mL, struct DC_motor *mR)
         setMotorPWM(mL);
         setMotorPWM(mR);
         _delay((unsigned long)((105)*(64000000/4000.0)));
-
         }
     }
 }
@@ -24510,6 +24503,7 @@ void TimedfullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned int 
         }
 }
 
+
 void moveBack(struct DC_motor *mL, struct DC_motor *mR, unsigned int time)
 {
     seconds = 0;
@@ -24533,7 +24527,7 @@ void increment_seconds()
 
 void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
 {
-    moveBack(motorL, motorR, 5);
+    moveBack(motorL, motorR, halfblock);
     stop(motorL,motorR);
 
 
@@ -24560,14 +24554,14 @@ void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
 
     if(color == 3){
 
-        moveBack(motorL, motorR, 16);
+        moveBack(motorL, motorR, blockback);
         stop(motorL, motorR);
         turnRight(motorL, motorR);
 
-        if (movement_list[index-1] > 5)
+        if (movement_list[index-1] > halfblock)
         {
 
-            movement_list[index-1] -= 11;
+            movement_list[index-1] -= twothirds;
 
             movement_list[index] = -1;
             index += 1;
@@ -24597,7 +24591,7 @@ void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
                 movement_list[index-1] = -3;
             }
 
-            movement_list[index] = 16;
+            movement_list[index] = blockahead;
             index += 1;
 
             movement_list[index] = -2;
@@ -24608,14 +24602,14 @@ void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
 
     if(color == 4){
 
-        moveBack(motorL, motorR, 16);
+        moveBack(motorL, motorR, blockback);
         stop(motorL, motorR);
         turnLeft(motorL, motorR);
 
-        if (movement_list[index-1] > 5)
+        if (movement_list[index-1] > halfblock)
         {
 
-            movement_list[index-1] -= 11;
+            movement_list[index-1] -= twothirds;
 
             movement_list[index] = -2;
             index += 1;
@@ -24645,7 +24639,7 @@ void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
                 movement_list[index-1] = -3;
             }
 
-        movement_list[index] = 16;
+        movement_list[index] = blockahead;
         index += 1;
 
         movement_list[index] = -1;
@@ -24677,7 +24671,7 @@ void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
 
     if (color > 7)
     {
-        TimedfullSpeedAhead(motorL, motorR, 5);
+        TimedfullSpeedAhead(motorL, motorR, halfblock);
     }
 
 }
@@ -24690,9 +24684,9 @@ int get_state(void)
 
 void add_seconds_to_list(void)
 {
-    if (seconds > 11)
+    if (seconds > twothirds)
     {
-        movement_list[index] = seconds - 5;
+        movement_list[index] = seconds - halfblock;
         index++;
     }
 }
@@ -24708,8 +24702,8 @@ void return_back(struct DC_motor *motorL, struct DC_motor *motorR)
         {
             TimedfullSpeedAhead(motorL, motorR, movement_list[index-1]);
             _delay((unsigned long)((200)*(64000000/4000.0)));
-            TimedfullSpeedAhead(motorL, motorR, 5);
-            moveBack(motorL, motorR, 5);
+            TimedfullSpeedAhead(motorL, motorR, halfblock);
+            moveBack(motorL, motorR, halfblock);
         }
         stop(motorL,motorR);
         index -= 1;

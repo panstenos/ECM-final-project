@@ -24317,7 +24317,7 @@ void Interrupts_init(void)
 
 
 unsigned int incr_sec_counter = 0;
-unsigned int wall_detection_counter = 20;
+unsigned int wall_detection_counter = 0;
 void __attribute__((picinterrupt(("high_priority")))) HighISR()
 {
     if(PIR0bits.TMR0IF == 1){
