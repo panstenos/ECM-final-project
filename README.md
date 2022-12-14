@@ -10,7 +10,13 @@ We assume that you can compile the code and push it to the buggy
 5. Put the black sheet in front of the robot and push RF3 again and wait for the calibration to end.
 6. Push RF3 to start the robot.
 
+##Video Demonstration links:
 
+1. https://youtu.be/7Wn323PqI40 -> dark maze demonstration
+1. https://youtu.be/a0nYwGwe-zs -> bright maze demonstration
+1. https://youtu.be/L9qVYGuMSeI -> color detection 
+
+Notice that when the bot return, it makes use of shortcuts when detecting yellow or pink colors (moving back + turning)
 ## Challenge brief
 
 Your task is to develop an autonomous robot that can navigate a "mine" using a series of instructions coded in coloured cards and return to its starting position.  Your robot must be able to perform the following: 
