@@ -10,7 +10,7 @@ We assume that you can compile the code and push it to the buggy
 5. Put the black sheet in front of the robot and push RF3 again and wait for the calibration to end.
 6. Push RF3 to start the robot.
 
-##Video Demonstration links:
+## Video Demonstration links:
 
 1. https://youtu.be/7Wn323PqI40 -> dark maze demonstration
 1. https://youtu.be/a0nYwGwe-zs -> bright maze demonstration
