@@ -10,7 +10,7 @@ We assume that you can compile the code and push it to the buggy
 5. Put the black sheet in front of the robot and push RF3 again and wait for the calibration to end.
 6. Push RF3 to start the robot.
 
-## Logig Flow
+## Logic Flow
 
 1. Color is calibrated
 1. Robot moves ahead until it detects a wall (the counter is reset)
@@ -32,7 +32,9 @@ if the state of the robot is 1; i.e. returning to the start
 1. Command of the last index of the list is read and executed
 2. The robot moves a bit forward and backward to callibrate with the wall
 3. The motors are stopped
-Process above is repeated until the first index of the list is reached
+Process above is repeated until the first index of the list is reached (state is then changed to 2)
+
+if the state fo the robot is 2 all the functions are put to sleep
 
 ## Video Demonstration links:
 
