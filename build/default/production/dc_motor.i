@@ -24402,7 +24402,7 @@ void turnRight(struct DC_motor *mL, struct DC_motor *mR)
     for (k=0;k<2;k++)
     {
         int i;
-        for(i=23;i<38;i+=5){
+        for(i=24;i<39;i+=5){
         (*mL).direction=0;
         (*mR).direction=1;
         (*mL).power=i;
@@ -24411,7 +24411,7 @@ void turnRight(struct DC_motor *mL, struct DC_motor *mR)
         setMotorPWM(mR);
         _delay((unsigned long)((107)*(64000000/4000.0)));
         }
-        for(i=28;i>13;i-=5){
+        for(i=29;i>14;i-=5){
         (*mL).direction=0;
         (*mR).direction=1;
         (*mL).power=i;
@@ -24698,12 +24698,17 @@ void return_back(struct DC_motor *motorL, struct DC_motor *motorR)
         else if (movement_list[index-1] == -2){turnRight(motorL, motorR);}
         else if (movement_list[index-1] == -3){turnLeftLong(motorL, motorR);}
         else if (movement_list[index-1] == -4){turnRightLong(motorL, motorR);}
-        else if (movement_list[index-1] > 0 || movement_list[index-2] > -3)
+        else if (movement_list[index-1] > 0 && movement_list[index-2] > -3)
         {
             TimedfullSpeedAhead(motorL, motorR, movement_list[index-1]);
             _delay((unsigned long)((200)*(64000000/4000.0)));
             TimedfullSpeedAhead(motorL, motorR, halfblock);
             moveBack(motorL, motorR, halfblock);
+        }
+        else if (movement_list[index-1] > 0 && movement_list[index-2] <= -3)
+        {
+            TimedfullSpeedAhead(motorL, motorR, movement_list[index-1]);
+            _delay((unsigned long)((200)*(64000000/4000.0)));
         }
         stop(motorL,motorR);
         index -= 1;

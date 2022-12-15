@@ -136,8 +136,8 @@ void turnRight(struct DC_motor *mL, struct DC_motor *mR)
     int k;
     for (k=0;k<2;k++) //repeats 2 45 degree turning
     {
-        int i;
-        for(i=23;i<38;i+=5){ //gradually increase the power
+        int i; //23 38 
+        for(i=24;i<39;i+=5){ //gradually increase the power
         (*mL).direction=0;
         (*mR).direction=1;
         (*mL).power=i;   
@@ -145,8 +145,8 @@ void turnRight(struct DC_motor *mL, struct DC_motor *mR)
         setMotorPWM(mL);
         setMotorPWM(mR); 
         __delay_ms(107); //turn at the specified power for 107ms
-        }
-        for(i=28;i>13;i-=5){ //gradually decrease the power
+        } //28 13
+        for(i=29;i>14;i-=5){ //gradually decrease the power
         (*mL).direction=0;
         (*mR).direction=1;
         (*mL).power=i;   
@@ -294,7 +294,7 @@ void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
         turnRight(motorL, motorR);
         //if the last element of the list is integer greater or equal to a block
         if (movement_list[index-1] > halfblock)
-        {
+        { //shortcut 
         //  subtract 1 block 
             movement_list[index-1] -= twothirds;
         //  add r to the list
@@ -342,7 +342,7 @@ void RobotMovement(unsigned int color, DC_motor *motorL, DC_motor *motorR)
         turnLeft(motorL, motorR);        
         //if the last element of the list is integer greater or equal to a block
         if (movement_list[index-1] > halfblock)
-        {
+        { //shortcut 
         //  subtract 01 block 
             movement_list[index-1] -= twothirds;
         //  add l to the list
@@ -433,12 +433,17 @@ void return_back(struct DC_motor *motorL, struct DC_motor *motorR)
         else if (movement_list[index-1] == -2){turnRight(motorL, motorR);}
         else if (movement_list[index-1] == -3){turnLeftLong(motorL, motorR);}
         else if (movement_list[index-1] == -4){turnRightLong(motorL, motorR);}
-        else if (movement_list[index-1] > 0 || movement_list[index-2] > -3) // when moving forward and next move is a short turn
+        else if (movement_list[index-1] > 0 && movement_list[index-2] > -3) // when moving forward and next move is a short turn
         {
             TimedfullSpeedAhead(motorL, motorR, movement_list[index-1]); //move ahead
             __delay_ms(200);
             TimedfullSpeedAhead(motorL, motorR, halfblock);
             moveBack(motorL, motorR, halfblock);
+        }
+        else if (movement_list[index-1] > 0 && movement_list[index-2] <= -3) // when moving forward and next move is a short turn
+        {
+            TimedfullSpeedAhead(motorL, motorR, movement_list[index-1]); //move ahead
+            __delay_ms(200);
         }
         stop(motorL,motorR); // stop and add seconds movement to the list
         index -= 1;
