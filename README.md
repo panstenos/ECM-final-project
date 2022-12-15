@@ -23,13 +23,16 @@ if the state of the robot is 0; i.e. going to the white wall:
 	- The color of the wall is scanned
 	- The robot moves by moving slighlty forward and backward to callibrate
 	- The robot executes the command specified by the color 
+		- Action is stored in the movement list as a negative integer (ex. right turn is -1)
+		- if white is detected state changes to 1
 	- Unless the state changes to 1: Robot moves ahead until it detects a wall (the counter is reset)
 	
+if the state of the robot is 1; i.e. returning to the start
 
-	
-	
-
-1. The
+1. Command of the last index of the list is read and executed
+2. The robot moves a bit forward and backward to callibrate with the wall
+3. The motors are stopped
+Process above is repeated until the first index of the list is reached
 
 ## Video Demonstration links:
 
