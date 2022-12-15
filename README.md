@@ -10,6 +10,27 @@ We assume that you can compile the code and push it to the buggy
 5. Put the black sheet in front of the robot and push RF3 again and wait for the calibration to end.
 6. Push RF3 to start the robot.
 
+## Logig Flow
+
+1. Color is calibrated
+1. Robot moves ahead until it detects a wall (the counter is reset)
+
+### Main While Loop
+if the state of the robot is 0; i.e. going to the white wall:
+1. When a wall is detected:
+	- The time of moving ahead is stored in the movement list (as possitive integer)
+	- The motors are stopped
+	- The color of the wall is scanned
+	- The robot moves by moving slighlty forward and backward to callibrate
+	- The robot executes the command specified by the color 
+	- Unless the state changes to 1: Robot moves ahead until it detects a wall (the counter is reset)
+	
+
+	
+	
+
+1. The
+
 ## Video Demonstration links:
 
 1. https://youtu.be/7Wn323PqI40 -> dark maze demonstration
